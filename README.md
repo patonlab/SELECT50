@@ -18,11 +18,11 @@ The core benchmark comprises **50 selectivity cases and 100 reference transition
 | Optimized structures | Nine geometry sets, each containing 100 XYZ files; reference copies are byte-identical to the starting structures | [Optimized geometries](optimized-geometries/) |
 | Selectivity energies | Electronic-energy and Gibbs-energy differences for 50 cases | [ΔE](results/energetics/delta_e.csv), [ΔG](results/energetics/delta_g.csv) |
 | Geometry comparisons | 800 heavy-atom RMSDs and 1,504 bond-distance rows | [Geometry tables](results/geometry/) |
-| Cycloaddition landscape · Figure 6 | Ten stationary-point structures, Gibbs energies, a 100-point two-dimensional scan, IRC trajectories, and activation-strain tables | [Cycloaddition](reaction_landscapes/cycloaddition/) |
-| Palladium-cyclization landscape · Figure 7 | 21 UMA stationary-point structures, Gibbs energies, spectator-adjusted profiles, IRC/NEB paths, a 73-point dihedral scan, and published DFT geometries | [Palladium cyclization](reaction_landscapes/palladium_cyclization/) |
-| Larger systems · Figure 8 | Six transition-state pairs, comprising 12 XYZ files | [Large systems](large_systems/) |
-| Selectivity calibration · Figure 9 | Ni and Pd transition-state pairs, calibration scripts, split memberships, held-out predictions, and fit/error summaries | [Ni study](calibration/nickel_epoxide_arylation/), [Pd study](calibration/palladium_enone_addition/) |
-| Perturbed-guess recovery · Figure 5 | Reserved directory; recovery inputs and results are not yet deposited | [Perturbed guesses](results/perturbed_guesses/) |
+| Cycloaddition landscape  | Ten stationary-point structures, Gibbs energies, a 100-point two-dimensional scan, IRC trajectories, and activation-strain tables | [Cycloaddition](reaction_landscapes/cycloaddition/) |
+| Palladium-cyclization landscape  | 21 UMA stationary-point structures, Gibbs energies, spectator-adjusted profiles, IRC/NEB paths, a 73-point dihedral scan, and published DFT geometries | [Palladium cyclization](reaction_landscapes/palladium_cyclization/) |
+| Larger systems | Six transition-state pairs, comprising 12 XYZ files | [Large systems](large_systems/) |
+| Selectivity calibration  | Ni and Pd transition-state pairs, calibration scripts, split memberships, held-out predictions, and fit/error summaries | [Ni study](calibration/nickel_epoxide_arylation/), [Pd study](calibration/palladium_enone_addition/) |
+| Perturbed-guess recovery | Reserved directory; recovery inputs and results are not yet deposited | [Perturbed guesses](results/perturbed_guesses/) |
 
 ## Data conventions
 
