@@ -84,27 +84,6 @@ The calibration scripts require NumPy and implement repeated-split linear fits o
 
 Independent reruns currently require input repairs: the Ni series headers differ from those expected by its script, and `pd_series.csv` is not deposited. See the [Ni analysis notes](calibration/nickel_epoxide_arylation/README.txt) for the seed, split protocol, and additional provenance limitations.
 
-## Reproducibility and outstanding metadata
-
-The deposited files support inspection of geometries and numerical comparisons. The following items remain necessary for a complete publication package:
-
-- Figure 5 perturbation inputs or their generator, recovery results, bootstrap procedure, and consistent acceptance criteria.
-- Per-case experimental selectivity, temperature, literature references, large-system reference geometries/RMSDs, and timings.
-- Complete calibration input tables and identification of the analyses used in the manuscript and SI figures.
-- Computational settings, model/checkpoint versions, source outputs, and published comparison data sufficient to reproduce the reported calculations and overlays.
-- Resolution of the duplicate `ac32_minor` r2SCAN-3c bond entry and the missing `ja1g` bond definitions; clarification of palladium NEB image counts and geometry-comparison conventions.
-- A case-metadata table with mechanism types, finalized naming, updated validation/documentation, and a versioned archival deposit.
-
-The manuscript, its Supporting Information, and model checkpoints are not deposited here. The [repository status](repository_status.md) includes an earlier audit; its inventory and some unresolved-item descriptions predate subsequent data additions.
-
-## Citation
-
-Please cite this repository when using its data or analysis scripts, and identify the commit or archived version used. Machine-readable citation metadata is provided in [CITATION.cff](CITATION.cff), which also enables GitHub's **Cite this repository** feature.
-
-> Pounder, Austin. *SELECT50: Data and benchmark materials*. https://github.com/apounder/SELECT50.
-
-The current citation identifies the repository. It does not substitute for the associated manuscript's complete author list and publication reference, which will need to be recorded when available.
-
 ## License
 
 Scientific data and documentation are licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE-DATA). Source code, tests, and repository automation and configuration are licensed under the [MIT License](LICENSE-CODE). See [LICENSE](LICENSE) for the scope of each license. Separately identified third-party material retains its original license and attribution notices.
