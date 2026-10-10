@@ -24,7 +24,7 @@ All 1,002 XYZ files parse (1,031 frames total). Every optimized set matches refe
 - Corrected `reults/` to [results/](results/).
 - Replaced documentation for absent `select50/`, `paper/`, and `provenance/` trees with actual links and counts.
 - Removed unsupported claims that naming maps, a move manifest, manuscripts, and 30 unassigned geometries were included and verified.
-- Added a standard-library validator, regression tests, and CI.
+- Added a standard-library validator and regression tests. Automatic GitHub Actions validation was subsequently removed at the repository owner's request; checks can still be run manually.
 - Added ignore rules for local credentials, caches, editor files, and temporary files.
 
 ## Unresolved scientific metadata
@@ -51,4 +51,4 @@ python3 -m unittest discover -s tests
 
 Validation establishes file consistency, not scientific correctness or calculation provenance.
 
-The audit run passed the full validator and seven regression tests. SHA-256 checks confirmed that all 1,006 scientific files (1,002 XYZ and four CSV files) remain byte-identical after relocation. Text whitespace checks passed. A working-tree scan found no matches for common AWS access keys, GitHub tokens, OpenAI-style API keys, or private-key blocks; this scan does not cover unavailable Git history or every possible secret format. The GitHub Actions workflow has not been run remotely.
+The audit run passed the full validator and seven regression tests. SHA-256 checks confirmed that all 1,006 scientific files (1,002 XYZ and four CSV files) remain byte-identical after relocation. Text whitespace checks passed. A working-tree scan found no matches for common AWS access keys, GitHub tokens, OpenAI-style API keys, or private-key blocks; this scan does not cover unavailable Git history or every possible secret format. These results describe the original audit snapshot. The automatic GitHub Actions validation workflow has since been removed.
