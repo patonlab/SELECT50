@@ -28,7 +28,17 @@ calibration/                       two screening-study placeholders
 scripts/                          data validation
 ```
 
-The manuscript, Supporting Information, naming maps, raw calculation outputs, and model checkpoints are not included. The [status file](repository_status.md) records outstanding data and metadata needs. No redistribution license has been supplied.
+The manuscript, Supporting Information, naming maps, raw calculation outputs, and model checkpoints are not included. The [status file](repository_status.md) records outstanding data and metadata needs.
+
+## License and citation
+
+Scientific data and documentation are licensed under [CC BY 4.0](LICENSE-DATA). Source code, tests, and repository automation and configuration are licensed under [MIT](LICENSE-CODE). See [LICENSE](LICENSE) for the scope of each license.
+
+Use [CITATION.cff](CITATION.cff) or GitHub's **Cite this repository** feature to cite the repository. Include the commit hash used to identify the exact snapshot. A plain-text citation is:
+
+> Pounder, Austin. SELECT50: Data and benchmark materials. https://github.com/apounder/SELECT50. Commit: <commit hash used>.
+
+This citation covers the repository. The associated manuscript's complete author list and publication DOI have not been supplied.
 
 ## Validate the data
 

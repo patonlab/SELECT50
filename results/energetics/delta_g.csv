@@ -1,4 +1,4 @@
-benchmark_id,dft_delta_g_minor_minus_major,esen_delta_g_minor_minus_major,mace_omol_delta_g_minor_minus_major,uma_m_delta_g_minor_minus_major,uma_s_delta_g_minor_minus_major,gxtb_delta_g_minor_minus_major,spe_corr_delta_g_minor_minus_major
+benchmark_id,dft_delta_g_minor_minus_major (kcal/mol),esen_delta_g_minor_minus_major (kcal/mol),mace_omol_delta_g_minor_minus_major (kcal/mol),uma_m_delta_g_minor_minus_major (kcal/mol),uma_s_delta_g_minor_minus_major (kcal/mol),gxtb_delta_g_minor_minus_major (kcal/mol),spe_corr_delta_g_minor_minus_major (kcal/mol)
 ac16,4.371713,3.153907,2.727821334,3.148748,3.791575,2.457534,3.064073
 ac27,0.002455,-0.065863,-1.214481836,0.436678,0.146887,0.807165,0.37598
 ac30,2.178798,2.382861,3.327180733,1.869156,1.638515,1.240649,1.822015

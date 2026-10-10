@@ -1,0 +1,17 @@
+plotted_order,original_xyz_frame,irc_step,electronic_energy_hartree,relative_energy_kcal_per_mol,xyz_comment
+1,1,-11,-3751.588079368000,0.00000000,Coordinates from ORCA-job job_orca_IRC_Full E -3751.588079368000
+2,2,-10,-3751.588009905000,0.04358869,Coordinates from ORCA-job job_orca_IRC_Full E -3751.588009905000
+3,3,-9,-3751.587944718000,0.08449415,Coordinates from ORCA-job job_orca_IRC_Full E -3751.587944718000
+4,4,-8,-3751.587898035000,0.11378818,Coordinates from ORCA-job job_orca_IRC_Full E -3751.587898035000
+5,5,-7,-3751.587754413000,0.20391234,Coordinates from ORCA-job job_orca_IRC_Full E -3751.587754413000
+6,6,-6,-3751.587573536000,0.31741437,Coordinates from ORCA-job job_orca_IRC_Full E -3751.587573536000
+7,7,-5,-3751.587363360000,0.44930180,Coordinates from ORCA-job job_orca_IRC_Full E -3751.587363360000
+8,8,-4,-3751.587148417000,0.58418057,Coordinates from ORCA-job job_orca_IRC_Full E -3751.587148417000
+9,9,-3,-3751.586973428000,0.69398783,Coordinates from ORCA-job job_orca_IRC_Full E -3751.586973428000
+10,10,-2,-3751.586610798000,0.92154159,Coordinates from ORCA-job job_orca_IRC_Full E -3751.586610798000
+11,11,-1,-3751.585658259000,1.51926884,Coordinates from ORCA-job job_orca_IRC_Full E -3751.585658259000
+12,12,0,-3751.585256131000,1.77160796,Coordinates from ORCA-job job_orca_IRC_Full E -3751.585256131000
+13,13,1,-3751.586416954000,1.04318053,Coordinates from ORCA-job job_orca_IRC_Full E -3751.586416954000
+14,14,2,-3751.586654326000,0.89422736,Coordinates from ORCA-job job_orca_IRC_Full E -3751.586654326000
+15,15,3,-3751.586741803000,0.83933471,Coordinates from ORCA-job job_orca_IRC_Full E -3751.586741803000
+16,16,4,-3751.586819853000,0.79035759,Coordinates from ORCA-job job_orca_IRC_Full E -3751.586819853000

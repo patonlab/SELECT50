@@ -1,6 +1,14 @@
+# Repository text uses LF on every platform.
+* text=auto
+.gitattributes text eol=lf
+.gitignore text eol=lf
+LICENSE* text eol=lf
+*.cff text eol=lf
 *.md text eol=lf
+*.txt text eol=lf
 *.py text eol=lf
 *.yml text eol=lf
+*.yaml text eol=lf
 # Keep supplied scientific files byte-for-byte on checkout.
 *.xyz -text
 *.csv -text

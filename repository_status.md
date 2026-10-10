@@ -34,13 +34,13 @@ All 1,002 XYZ files parse (1,031 frames total). Every optimized set matches refe
 3. **Naming and versions:** The corrected major/minor map is absent. Earlier notes flag `ja37` versus `ja37f`, legacy manuscript signs (including `jo2y`), and UMA 1.1 versus 1.2 labels. The manuscript and checkpoints are unavailable, so these notes remain unverified.
 4. **Reproducibility:** Raw outputs, settings, energies, and checkpoints are absent. Bond distances can be checked against coordinates; energies and RMSD alignment settings cannot be reproduced.
 5. **Other studies:** Landscape coordinates are present, but raw outputs and path-analysis settings are missing. Perturbed guesses, large-system pairs, and calibration data remain absent. Earlier notes mention six large-system pairs and 300 perturbed runs; neither count can be verified.
-6. **Publication metadata:** Manuscript, Supporting Information, citation metadata, and an author-approved redistribution license are absent.
+6. **Publication metadata:** Manuscript, Supporting Information, the manuscript's complete author list, and publication DOI are absent. Repository citation metadata is now available in [CITATION.cff](CITATION.cff). The repository owner selected CC BY 4.0 for data and documentation and MIT for source code and repository automation and configuration; see [LICENSE](LICENSE).
 
 These limitations allow a clearly labeled preliminary snapshot to be committed, but prevent presenting it as a complete, reproducible publication package.
 
 ## Git readiness
 
-The workspace exposes an empty, read-only `.git/` directory. `git status` reports that this is not a Git repository. Branch, history, remote, staged changes, and historical secrets cannot be checked here. Initialize or restore Git metadata in an environment with writable access. No commit or push was performed.
+Checked 2026-10-10: the workspace is an initialized Git repository on `main`, tracking `origin/main` at `https://github.com/apounder/SELECT50.git`, with two existing commits. Existing history and working-tree data changes were preserved. Local credentials and agent configuration are ignored. Text checkout rules use LF; scientific XYZ and CSV files retain their supplied bytes. No commit or push was performed for the licensing and citation update.
 
 ## Repeatable checks
 

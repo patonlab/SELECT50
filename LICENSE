@@ -1,0 +1,15 @@
+SELECT50 licensing
+
+Copyright (c) 2026 Austin Pounder
+
+Scientific data and documentation in this repository are licensed under
+Creative Commons Attribution 4.0 International (SPDX: CC-BY-4.0).
+The full license text is in LICENSE-DATA:
+https://creativecommons.org/licenses/by/4.0/
+
+Source code, including Python scripts and tests, and repository automation
+and configuration files are licensed under the MIT License (SPDX: MIT).
+The full license text is in LICENSE-CODE.
+
+Any separately identified third-party material retains its original license
+and attribution notices.

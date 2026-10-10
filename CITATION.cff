@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: >-
+  If you use this dataset or its scripts, please cite this repository.
+  Include the commit hash used so that the cited snapshot can be identified.
+type: dataset
+title: "SELECT50: Data and benchmark materials"
+authors:
+  - family-names: Pounder
+    given-names: Austin
+repository-code: "https://github.com/apounder/SELECT50"
+url: "https://github.com/apounder/SELECT50"
+abstract: >-
+  Data and benchmark materials for Mapping Organic Selectivity with
+  Machine-Learned Interatomic Potentials: Introduction of the SELECT50 Data
+  Set. Scientific data and documentation are licensed under CC BY 4.0;
+  source code and repository automation and configuration are MIT licensed.
+  This citation identifies the repository, not the associated manuscript.
+keywords:
+  - organic selectivity
+  - machine-learned interatomic potentials
+  - transition states
+  - benchmark dataset
+license: CC-BY-4.0
