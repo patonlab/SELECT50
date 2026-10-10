@@ -1,4 +1,4 @@
-![SELECT50 banner showing two selectivity energy profiles](select50-github-banner.png)
+![SELECT50 banner showing two selectivity energy profiles](assets/select50-github-banner.png)
 
 # SELECT50
 
@@ -9,6 +9,26 @@ This repository contains molecular geometries, energy differences, geometry comp
 The core benchmark comprises **50 selectivity cases and 100 reference transition-state geometries**, reported as optimized at ωB97X-D3(BJ)/def2-TZVP. Eight comparison methods are represented alongside the reference geometries. Supporting datasets cover reaction landscapes, larger molecular systems, and calibration against experimental selectivity.
 
 **Release status:** This is a research snapshot. Some experimental metadata, computational provenance, and figure-reproduction materials remain incomplete. A publication DOI and archived dataset DOI are not currently recorded in this repository.
+
+## Transition-state gallery
+
+The four render sheets show all **100 transition-state structures across 50 selectivity cases**, with the major structure on the left and the minor structure on the right of each pair. Case labels match the [reference structure filenames](results/reference/starting_structures/). Select a sheet to open the full-size SVG.
+
+**Sheet 1 — 15 cases / 30 structures**
+
+[![SELECT50 transition-state render sheet 1, showing 15 major/minor pairs from ac16 to d12k](assets/figure_01.svg)](assets/figure_01.svg)
+
+**Sheet 2 — 15 cases / 30 structures**
+
+[![SELECT50 transition-state render sheet 2, showing 15 major/minor pairs from d15k to ja5b](assets/figure_02.svg)](assets/figure_02.svg)
+
+**Sheet 3 — 15 cases / 30 structures**
+
+[![SELECT50 transition-state render sheet 3, showing 15 major/minor pairs from ja5j to ol1s](assets/figure_03.svg)](assets/figure_03.svg)
+
+**Sheet 4 — 5 cases / 10 structures**
+
+[![SELECT50 transition-state render sheet 4, showing five major/minor pairs from ol7q to sc99](assets/figure_04.svg)](assets/figure_04.svg)
 
 ## Data inventory
 
@@ -36,6 +56,7 @@ The core benchmark comprises **50 selectivity cases and 100 reference transition
 
 ```text
 SELECT50/
+├── assets/                         Banner and transition-state render sheets
 ├── optimized-geometries/<method>/<structure_id>/<structure_id>.xyz
 ├── results/
 │   ├── reference/starting_structures/
