@@ -1,0 +1,6 @@
+*.md text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+# Keep supplied scientific files byte-for-byte on checkout.
+*.xyz -text
+*.csv -text

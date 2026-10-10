@@ -1,0 +1,25 @@
+# Local credentials and agent configuration
+.aws/
+.agents/
+.codex/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python and editor artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary files; retain scientific calculation outputs
+*.tmp
+*.swp
+*~

@@ -1,0 +1,54 @@
+# SELECT50 repository status
+
+Audited 2026-10-09 against files available in this workspace. This data repository is intended for local analysis and benchmark submissions; there is no application server.
+
+## Verified inventory
+
+| Data | Available |
+| --- | --- |
+| Reference inputs | 100 XYZ files, 50 complete major/minor pairs |
+| Optimized geometries | Nine method folders, 100 XYZ files each; eight comparison methods and the reference method |
+| Reference copies | All 100 reference-method files are byte-identical to benchmark inputs |
+| Electronic-energy differences | 50 unique cases |
+| Free-energy differences | 50 unique cases |
+| Heavy-atom RMSD | 800 rows: 100 structures and eight methods |
+| TS bond distances | 1,503 main rows: 98 structures and nine methods, plus one auxiliary row |
+| Cycloaddition landscape | 10 XYZ frames |
+| Palladium-cyclization landscape | 21 XYZ frames |
+| Perturbed guesses, large systems, calibration | Empty placeholders |
+
+All 1,002 XYZ files parse (1,031 frames total). Every optimized set matches reference IDs and atom ordering. RMSD heavy-atom counts match reference inputs. All 1,503 main bond-distance rows match method coordinates within 0.00002 Å. Reference ΔE values are positive under the supplied `minor_minus_major` convention. Scientific file bytes were preserved during this audit.
+
+## Repository fixes
+
+- Corrected `reults/` to [results/](results/).
+- Replaced documentation for absent `select50/`, `paper/`, and `provenance/` trees with actual links and counts.
+- Removed unsupported claims that naming maps, a move manifest, manuscripts, and 30 unassigned geometries were included and verified.
+- Added a standard-library validator, regression tests, and CI.
+- Added ignore rules for local credentials, caches, editor files, and temporary files.
+
+## Unresolved scientific metadata
+
+1. **Energy units and provenance:** Neither energy CSV declares units. Source calculations, thermochemistry settings, and the meaning of `spe_corr` are missing. Confirm these before interpreting numerical comparisons; do not guess units or silently convert values.
+2. **Bond-table gaps:** `ja1g_major` and `ja1g_minor` have no bond-distance rows for any method; source bond definitions are needed to fill them. One `ac32_minor` row is labeled `r2SCAN-3c/ac32_minor`, with C17–H25 distance 2.342934 Å. No separate auxiliary structure is included. This row is preserved and reported, but cannot be matched to supplied coordinates until its source is identified.
+3. **Naming and versions:** The corrected major/minor map is absent. Earlier notes flag `ja37` versus `ja37f`, legacy manuscript signs (including `jo2y`), and UMA 1.1 versus 1.2 labels. The manuscript and checkpoints are unavailable, so these notes remain unverified.
+4. **Reproducibility:** Raw outputs, settings, energies, and checkpoints are absent. Bond distances can be checked against coordinates; energies and RMSD alignment settings cannot be reproduced.
+5. **Other studies:** Landscape coordinates are present, but raw outputs and path-analysis settings are missing. Perturbed guesses, large-system pairs, and calibration data remain absent. Earlier notes mention six large-system pairs and 300 perturbed runs; neither count can be verified.
+6. **Publication metadata:** Manuscript, Supporting Information, citation metadata, and an author-approved redistribution license are absent.
+
+These limitations allow a clearly labeled preliminary snapshot to be committed, but prevent presenting it as a complete, reproducible publication package.
+
+## Git readiness
+
+The workspace exposes an empty, read-only `.git/` directory. `git status` reports that this is not a Git repository. Branch, history, remote, staged changes, and historical secrets cannot be checked here. Initialize or restore Git metadata in an environment with writable access. No commit or push was performed.
+
+## Repeatable checks
+
+```sh
+python3 scripts/validate_data.py
+python3 -m unittest discover -s tests
+```
+
+Validation establishes file consistency, not scientific correctness or calculation provenance.
+
+The audit run passed the full validator and seven regression tests. SHA-256 checks confirmed that all 1,006 scientific files (1,002 XYZ and four CSV files) remain byte-identical after relocation. Text whitespace checks passed. A working-tree scan found no matches for common AWS access keys, GitHub tokens, OpenAI-style API keys, or private-key blocks; this scan does not cover unavailable Git history or every possible secret format. The GitHub Actions workflow has not been run remotely.
