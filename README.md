@@ -39,6 +39,7 @@ The four render sheets show all **100 transition-state structures across 50 sele
 ## Data conventions
 
 - **Coordinates and distances:** XYZ coordinates, RMSDs, and bond distances are expressed in ångströms (Å). Bond-table atom indices are one-based.
+- **RMSD methodology:** The supplied [RMSD script](scripts/calculate_heavy_atom_rmsd.py) uses NumPy's Kabsch fit with atoms paired by XYZ order. Hydrogen is excluded, and all remaining atoms contribute equally with no outlier rejection. It reproduces all 800 deposited comparisons within 0.000001 Å. See the [equations and method details](results/geometry/README.md#rmsd-methodology), including the distinction from PyMOL `align` with `cycles=0`. All-atom RMSDs in supporting tables include hydrogen and are distinct from heavy-atom RMSDs.
 - **Energy differences:** The core ΔE and ΔG headers specify kcal/mol. Differences use `minor_minus_major`. Reaction-landscape tables distinguish absolute energies in hartree from relative energies in kcal/mol where indicated in their headers.
 - **Structure identifiers:** Core XYZ files use `<case_id>_major.xyz` and `<case_id>_minor.xyz`. Major/minor labels follow the supplied reference electronic-energy ordering and remain provisional pending the final naming map.
 - **Methods:** Geometry folders include eSEN, g-xTB, MACE-OMOL, UMA-M, UMA-S, PBE0-D3(BJ)/def2-SVP, r2SCAN-3c, and ωB97X-D3(BJ)/def2-SVP, alongside the ωB97X-D3(BJ)/def2-TZVP reference.
@@ -83,7 +84,7 @@ Record the commit hash with any analysis to identify the exact dataset snapshot.
 
 ### Validation
 
-The validation tools require Python 3.10 or newer and use only the standard library:
+The structural validator requires Python 3.10 or newer and uses only the standard library. The RMSD regression tests additionally require NumPy:
 
 ```sh
 python3 scripts/validate_data.py
@@ -91,6 +92,15 @@ python3 -m unittest discover -s tests
 ```
 
 The validator checks XYZ syntax, core case/method coverage, atom ordering, CSV schemas, bond distances, and local Markdown links. Bond coverage includes the assigned P1–C3 breaking bond for `ja1g_minor` and explicitly accounts for rotational `ja1g_major`, which has no assigned forming/breaking bond. These checks establish file consistency; they do not establish scientific correctness or reproduce the reported calculations.
+
+### RMSD recalculation
+
+```sh
+python3 -m pip install numpy
+python3 scripts/calculate_heavy_atom_rmsd.py --strict
+```
+
+The script reads `optimized-geometries/` and uses `wB97X-D3(BJ)-def2-TZVP` as the reference. It writes a separate `results/geometry/heavy_atom_rmsd_recalculated.csv` with source paths and per-comparison status. The deposited RMSD table is retained. See the [geometry guide](results/geometry/README.md#recalculate-the-benchmark) for options and verification results.
 
 ### Calibration analyses
 
