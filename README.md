@@ -30,7 +30,7 @@ The four render sheets show all **100 transition-state structures across 50 sele
 | Optimized structures | Nine geometry sets, each containing 100 XYZ files; reference copies are byte-identical to the starting structures | [Optimized geometries](optimized-geometries/) |
 | Selectivity energies | Electronic-energy and Gibbs-energy differences for 50 cases | [ΔE](results/energetics/delta_e.csv), [ΔG](results/energetics/delta_g.csv) |
 | Geometry comparisons | 800 heavy-atom RMSDs and 1,512 bond-distance rows; rotational `ja1g_major` has no assigned forming/breaking bond | [Geometry tables and assignments](results/geometry/) |
-| Cycloaddition landscape  | Ten stationary-point structures, Gibbs energies, a 100-point two-dimensional scan, IRC trajectories, and activation-strain tables | [Cycloaddition](reaction_landscapes/cycloaddition/) |
+| Cycloaddition landscape  | Ten stationary-point structures, Gibbs energies, a 100-point two-dimensional scan, IRC trajectories, and activation-strain tables | [Cycloaddition data and methods](reaction_landscapes/cycloaddition/README.md) |
 | Palladium-cyclization landscape  | 21 UMA stationary-point structures, Gibbs energies, spectator-adjusted profiles, IRC/NEB paths, a 73-point dihedral scan, and published DFT geometries | [Palladium cyclization](reaction_landscapes/palladium_cyclization/) |
 | Larger systems | Six transition-state pairs, comprising 12 XYZ files | [Large systems](large_systems/) |
 | Selectivity calibration  | Ni and Pd transition-state pairs, calibration scripts, split memberships, held-out predictions, and fit/error summaries | [Ni study](calibration/nickel_epoxide_arylation/), [Pd study](calibration/palladium_enone_addition/) |
@@ -95,7 +95,7 @@ The validator checks XYZ syntax, core case/method coverage, atom ordering, CSV s
 
 The calibration scripts require NumPy and implement repeated-split linear fits of experimental ΔΔG against raw predicted ΔΔG. Saved outputs include train/test memberships, fitted coefficients, and held-out errors.
 
-Independent reruns currently require input repairs: the Ni series headers differ from those expected by its script, and `pd_series.csv` is not deposited. See the [Ni analysis notes](calibration/nickel_epoxide_arylation/README.txt) for the seed, split protocol, and additional provenance limitations.
+Both [Ni](calibration/nickel_epoxide_arylation/ni_series.csv) and [Pd](calibration/palladium_enone_addition/pd_series.csv) input tables use the headers expected by their scripts. Ni ee values are left blank for completion; experimental temperatures and references remain incomplete in both tables. The deposited ΔΔG values are retained for calibration. See the [Ni analysis notes](calibration/nickel_epoxide_arylation/README.txt) for the seed, split protocol, and additional provenance limitations.
 
 ## License
 

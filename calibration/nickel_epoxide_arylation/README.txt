@@ -1,7 +1,7 @@
 Standalone NI calibration
 
 Move this directory anywhere; keep calibrate.py and ni_series.csv together.
-Install: python -m pip install -r requirements.txt
+Install: python -m pip install numpy
 Run: python calibrate.py
 Only NumPy is required. Inputs and outputs are resolved beside the script, so it
 also works when launched from another working directory. Existing derived outputs
@@ -24,6 +24,10 @@ Outputs:
 - ni_held_out_predictions.csv: raw/calibrated held-out predictions and residuals.
 - calibration_summary.csv: means, SDs, pooled errors, unique-entry raw errors, full-data fit.
 - runtime.json: NumPy version, seed, training size and number of splits.
+
+Input columns: entry_id, ligand_or_substrate, ee_percent, temperature_K,
+ddG_exp, ddG_uma_raw, reference. Ligand identifiers were taken from the deposited
+geometry filenames. Original entry order and energy values are preserved.
 
 Experimental metadata gaps in the input remain blank; no ee values or experimental
 temperatures are inferred. Literature attribution remains unverified. Ni P12 keeps
