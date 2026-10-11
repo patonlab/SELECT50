@@ -52,12 +52,17 @@ class ValidationTests(unittest.TestCase):
 
     def test_bond_coverage_rejects_missing_structures_and_method_rows(self):
         structures = {f"s{i}" for i in range(98)} | {"ja1g_major", "ja1g_minor"}
-        bonds = {(f"s{i}", 1, 2) for i in range(98)} | {(f"s{i}", 2, 3) for i in range(69)}
+        bonds = {(f"s{i}", 1, 2) for i in range(98)} | {(f"s{i}", 2, 3) for i in range(69)} | {("ja1g_minor", 1, 3)}
         check_bond_coverage({REFERENCE: bonds, "other": bonds}, structures)
         with self.assertRaisesRegex(ValueError, "differs between methods"):
             check_bond_coverage({REFERENCE: bonds, "other": bonds - {("s0", 1, 2)}}, structures)
-        with self.assertRaisesRegex(ValueError, "98 structures"):
+        with self.assertRaisesRegex(ValueError, "99 structures"):
             check_bond_coverage({REFERENCE: bonds}, structures | {"extra"})
+        with self.assertRaisesRegex(ValueError, "99 structures"):
+            check_bond_coverage({REFERENCE: bonds - {("ja1g_minor", 1, 3)}}, structures)
+        with self.assertRaisesRegex(ValueError, "P1–C3"):
+            wrong_bond = bonds - {("ja1g_minor", 1, 3)} | {("ja1g_minor", 1, 2)}
+            check_bond_coverage({REFERENCE: wrong_bond}, structures)
 
     def test_local_links_allow_fragments_and_parentheses_but_reject_missing_files(self):
         self.write("method(BJ).xyz", "content")

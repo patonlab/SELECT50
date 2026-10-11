@@ -29,7 +29,7 @@ The four render sheets show all **100 transition-state structures across 50 sele
 | Reference structures | 100 XYZ files: two transition states per selectivity case | [Starting structures](results/reference/starting_structures/) |
 | Optimized structures | Nine geometry sets, each containing 100 XYZ files; reference copies are byte-identical to the starting structures | [Optimized geometries](optimized-geometries/) |
 | Selectivity energies | Electronic-energy and Gibbs-energy differences for 50 cases | [ΔE](results/energetics/delta_e.csv), [ΔG](results/energetics/delta_g.csv) |
-| Geometry comparisons | 800 heavy-atom RMSDs and 1,504 bond-distance rows | [Geometry tables](results/geometry/) |
+| Geometry comparisons | 800 heavy-atom RMSDs and 1,512 bond-distance rows; rotational `ja1g_major` has no assigned forming/breaking bond | [Geometry tables and assignments](results/geometry/) |
 | Cycloaddition landscape  | Ten stationary-point structures, Gibbs energies, a 100-point two-dimensional scan, IRC trajectories, and activation-strain tables | [Cycloaddition](reaction_landscapes/cycloaddition/) |
 | Palladium-cyclization landscape  | 21 UMA stationary-point structures, Gibbs energies, spectator-adjusted profiles, IRC/NEB paths, a 73-point dihedral scan, and published DFT geometries | [Palladium cyclization](reaction_landscapes/palladium_cyclization/) |
 | Larger systems | Six transition-state pairs, comprising 12 XYZ files | [Large systems](large_systems/) |
@@ -89,7 +89,7 @@ python3 scripts/validate_data.py
 python3 -m unittest discover -s tests
 ```
 
-The validator checks XYZ syntax, core case/method coverage, atom ordering, CSV schemas, bond distances, and local Markdown links. It currently expects the previous palladium-trajectory location and energy-column names, so it does **not** pass on this snapshot. The seven existing regression tests pass, but do not establish complete dataset validity or reproduce the reported scientific results.
+The validator checks XYZ syntax, core case/method coverage, atom ordering, CSV schemas, bond distances, and local Markdown links. Bond coverage includes the assigned P1–C3 breaking bond for `ja1g_minor` and explicitly accounts for rotational `ja1g_major`, which has no assigned forming/breaking bond. These checks establish file consistency; they do not establish scientific correctness or reproduce the reported calculations.
 
 ### Calibration analyses
 

@@ -21,14 +21,10 @@ METHODS = {
     "wB97X-D3(BJ)/def2-TZVP": "wB97X-D3(BJ)-def2-TZVP",
 }
 REFERENCE = "wB97X-D3(BJ)/def2-TZVP"
-MISSING_BONDS = {"ja1g_major", "ja1g_minor"}
+# The supplied render identifies ja1g_major as rotation, with no assigned TS bond.
+BONDLESS_STRUCTURES = {"ja1g_major"}
 ELEMENTS = set("H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Cs Ba La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn Fr Ra Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr Rf Db Sg Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv Ts Og".split())
 ENERGY_METHODS = ("dft", "esen", "mace_omol", "uma_m", "uma_s", "gxtb", "spe_corr")
-AUXILIARY = {
-    "structure_name": "ac32_minor", "atom_i_1based": "17",
-    "atom_j_1based": "25", "atom_i_symbol": "C", "atom_j_symbol": "H",
-    "distance_angstrom": "2.342934", "theory": "r2SCAN-3c/ac32_minor",
-}
 
 
 def require(condition, message):
@@ -75,7 +71,7 @@ def read_table(path, columns):
     return rows
 
 
-def check_bond(row, atoms, check_distance=True):
+def check_bond(row, atoms):
     i = int(row["atom_i_1based"]) - 1
     j = int(row["atom_j_1based"]) - 1
     require(0 <= i < len(atoms) and 0 <= j < len(atoms) and i != j,
@@ -84,10 +80,9 @@ def check_bond(row, atoms, check_distance=True):
             f"Bond atom symbols disagree with XYZ: {row}")
     distance = number(row["distance_angstrom"])
     require(distance > 0, f"Invalid bond distance: {row}")
-    if check_distance:
-        actual = math.dist(atoms[i][1], atoms[j][1])
-        require(abs(actual - distance) <= 0.00002,
-                f"Bond distance disagrees with XYZ ({actual:.6f}): {row}")
+    actual = math.dist(atoms[i][1], atoms[j][1])
+    require(abs(actual - distance) <= 0.00002,
+            f"Bond distance disagrees with XYZ ({actual:.6f}): {row}")
 
 
 def check_links(root):
@@ -104,8 +99,9 @@ def check_links(root):
 
 def check_bond_coverage(bond_sets, structures):
     reference_bonds = bond_sets[REFERENCE]
-    require(len(reference_bonds) == 167 and {s for s, _, _ in reference_bonds} == structures - MISSING_BONDS,
-            "Expected 167 reference bonds covering 98 structures; ja1g bond definitions are missing")
+    require(len(reference_bonds) == 168 and {s for s, _, _ in reference_bonds} == structures - BONDLESS_STRUCTURES,
+            "Expected 168 reference bonds covering 99 structures; ja1g_major is a rotational TS without an assigned bond")
+    require(("ja1g_minor", 1, 3) in reference_bonds, "ja1g_minor requires the assigned P1–C3 breaking bond")
     require(all(b == reference_bonds for b in bond_sets.values()), "Bond coverage differs between methods")
 
 
@@ -137,13 +133,14 @@ def validate(root=ROOT):
     for s in refs:
         copy = root / "optimized-geometries" / METHODS[REFERENCE] / s / f"{s}.xyz"
         require((inputs / f"{s}.xyz").read_bytes() == copy.read_bytes(), f"{s}: reference copies differ")
-    for landscape, count in (("cycloaddition", 10), ("palladium_cyclization", 21)):
-        p = root / "reaction_landscapes" / landscape / f"{landscape}_structures.xyz"
-        require(p in xyz and len(xyz[p]) == count, f"{landscape}: unexpected landscape frame count")
+    for relative_path, count in (("cycloaddition/cycloaddition_structures.xyz", 10),
+                                 ("palladium_cyclization/structures/uma/all_21_frames.xyz", 21)):
+        p = root / "reaction_landscapes" / relative_path
+        require(p in xyz and len(xyz[p]) == count, f"{relative_path}: unexpected landscape frame count")
 
     for kind in ("e", "g"):
         path = root / f"results/energetics/delta_{kind}.csv"
-        columns = ["benchmark_id"] + [f"{m}_delta_{kind}_minor_minus_major" for m in ENERGY_METHODS]
+        columns = ["benchmark_id"] + [f"{m}_delta_{kind}_minor_minus_major (kcal/mol)" for m in ENERGY_METHODS]
         rows = read_table(path, columns)
         require(len(rows) == 50 and {r["benchmark_id"] for r in rows} == cases,
                 f"{path}: missing or duplicate cases")
@@ -168,27 +165,20 @@ def validate(root=ROOT):
                         "atom_j_symbol", "distance_angstrom", "theory"])
     seen = set()
     bond_sets = {t: set() for t in METHODS}
-    auxiliary = 0
     for row in bonds:
         s, theory = row["structure_name"], row["theory"]
         require(s in refs, f"Unknown bond structure: {s}")
         key = (s, theory, int(row["atom_i_1based"]), int(row["atom_j_1based"]))
         require(key not in seen, f"Duplicate bond: {row}")
         seen.add(key)
-        if row == AUXILIARY:
-            check_bond(row, refs[s], check_distance=False)
-            auxiliary += 1
-            continue
         require(theory in METHODS, f"Unknown bond theory: {theory}")
         check_bond(row, geometries[METHODS[theory]][s])
         bond_sets[theory].add((s, key[2], key[3]))
-    require(auxiliary == 1, "Known auxiliary bond row changed or missing; resolve its provenance before updating validation")
     check_bond_coverage(bond_sets, set(refs))
     check_links(root)
     print(f"PASS: {len(cases)} cases, {len(xyz)} XYZ files, {sum(map(len, xyz.values()))} frames, "
-          f"{len(folders)} method sets, {len(rmsd)} RMSD rows, {len(bonds) - auxiliary} verified bond rows; local links valid.")
-    print("KNOWN LIMIT: one auxiliary r2SCAN-3c/ac32_minor bond row has no matching source geometry.")
-    print("KNOWN LIMIT: ja1g_major and ja1g_minor have no bond-distance rows in any method.")
+          f"{len(folders)} method sets, {len(rmsd)} RMSD rows, {len(bonds)} verified bond rows; local links valid.")
+    print("NOTE: ja1g_major is a rotational TS without an assigned forming/breaking bond; see results/geometry/README.md.")
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
 
 Audited 2026-10-09 against files available in this workspace. This data repository is intended for local analysis and benchmark submissions; there is no application server.
 
-## Verified inventory
+## Original audit inventory (2026-10-09)
 
 | Data | Available |
 | --- | --- |
@@ -30,7 +30,7 @@ All 1,002 XYZ files parse (1,031 frames total). Every optimized set matches refe
 ## Unresolved scientific metadata
 
 1. **Energy units and provenance:** Neither energy CSV declares units. Source calculations, thermochemistry settings, and the meaning of `spe_corr` are missing. Confirm these before interpreting numerical comparisons; do not guess units or silently convert values.
-2. **Bond-table gaps:** `ja1g_major` and `ja1g_minor` have no bond-distance rows for any method; source bond definitions are needed to fill them. One `ac32_minor` row is labeled `r2SCAN-3c/ac32_minor`, with C17–H25 distance 2.342934 Å. No separate auxiliary structure is included. This row is preserved and reported, but cannot be matched to supplied coordinates until its source is identified.
+2. **Bond-table corrections (2026-10-10):** Removed the conflicting `ac32_minor` r2SCAN-3c C17–H25 duplicate, retaining the coordinate-matched 2.354753 Å row. Added the figure-assigned `ja1g_minor` P1–C3 breaking bond for all nine methods. The figure identifies `ja1g_major` as rotation with no assigned forming/breaking bond, so it is intentionally excluded. The corrected table contains 1,512 verified distances covering 99 structures. See [geometry notes](results/geometry/README.md) for provenance. The rotational torsion indices remain unspecified.
 3. **Naming and versions:** The corrected major/minor map is absent. Earlier notes flag `ja37` versus `ja37f`, legacy manuscript signs (including `jo2y`), and UMA 1.1 versus 1.2 labels. The manuscript and checkpoints are unavailable, so these notes remain unverified.
 4. **Reproducibility:** Raw outputs, settings, energies, and checkpoints are absent. Bond distances can be checked against coordinates; energies and RMSD alignment settings cannot be reproduced.
 5. **Other studies:** Landscape coordinates are present, but raw outputs and path-analysis settings are missing. Perturbed guesses, large-system pairs, and calibration data remain absent. Earlier notes mention six large-system pairs and 300 perturbed runs; neither count can be verified.
