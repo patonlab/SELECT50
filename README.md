@@ -73,6 +73,8 @@ Coordinates are distributed as XYZ files, tabulated results as CSV files, and re
 
 The repository includes:
 
+- A [MACE-OMOL/ASE calculation example](examples/calculations/opt_mace_omol.py) with setup and run instructions.
+- ORCA external-UMA templates for [minimum optimization](examples/calculations/job_orca.inp), [TS optimization](examples/calculations/job_orca_ts.inp), [relaxed scans](examples/calculations/job_orca_scan.inp), and [IRC calculations](examples/calculations/job_orca_irc.inp). These are workflow examples; per-job provenance must accompany calculation results.
 - [A structural data validator](scripts/validate_data.py) for XYZ parsing, table schemas, case coverage, atom ordering, bond distances, and local documentation links.
 - [A heavy-atom RMSD calculator](scripts/calculate_heavy_atom_rmsd.py) using NumPy and the ωB97X-D3(BJ)/def2-TZVP geometry directory as its reference.
 - [Ni calibration](calibration/nickel_epoxide_arylation/calibrate.py) and [Pd calibration](calibration/palladium_enone_addition/calibrate.py) scripts using NumPy for repeated-split linear fits of experimental ΔΔG against computed ΔΔG.

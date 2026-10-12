@@ -1,0 +1,48 @@
+# SELECT50 example: UMA-S-1.1 IRC in both directions from a converged TS.
+#
+# SETUP
+# Install ORCA 6 and ORCA External Tools with UMA support as described at the
+# top of job_orca.inp: https://github.com/faccts/orca-external-tools
+# Replace ProgExt with the full installed oet_client path (.exe on Windows).
+# Start the server in another terminal and leave it running:
+#   oet_server uma -b 127.0.0.1:20001 -n 4
+# Adjust the CPU allocation and cuda/cpu selection for your installation.
+#
+# RUN
+# First finish the companion job_orca_ts.inp optimization/frequency calculation.
+# Check that the TS has one chemically relevant imaginary mode. Copy its FINAL
+# job_orca_ts.xyz and matching job_orca_ts.hess into a fresh IRC job directory.
+# Keep atom ordering, geometry, charge/multiplicity and model identical to the
+# TS/frequency calculation. Edit the filenames below if your TS used another name.
+#   /path/to/orca job_orca_irc.inp > job_orca_irc.out 2>&1
+# Windows PowerShell:
+#   & "C:/path/to/orca.exe" job_orca_irc.inp > job_orca_irc.out 2>&1
+#
+# If no matching final Hessian is available, replace InitHess read with
+# InitHess calc_numfreq and remove Hess_Filename to calculate it at the input TS.
+# MaxIter 100 is an example allowance; check whether either direction hits it.
+# Inspect job_orca_irc_IRC_Full_trj.xyz and both path endpoints. Optimize the
+# endpoints separately with job_orca.inp and check their identity/frequencies.
+# Forward/backward labels do not by themselves identify reactant and product.
+# This is a derived template, not an original record of a deposited IRC.
+# IRC keywords: https://www.faccts.de/docs/orca/6.1/manual/contents/structurereactivity/irc.html
+#
+! ExtOpt IRC
+
+%method
+  ProgExt "/path/to/oet_client"
+  Ext_Params "-b 127.0.0.1:20001 --model uma-s-1p1 --task omol --device cuda"
+end
+
+%pal
+  nprocs 4
+end
+
+%irc
+  Direction both
+  MaxIter 100
+  InitHess read
+  Hess_Filename "job_orca_ts.hess"
+end
+
+* xyzfile 0 1 job_orca_ts.xyz

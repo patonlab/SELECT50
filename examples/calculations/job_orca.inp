@@ -1,0 +1,53 @@
+# SELECT50 example: ORCA minimum optimization + numerical frequencies with UMA.
+#
+# SETUP
+# 1. Install ORCA 6 and its platform-specific runtime requirements:
+#    https://www.faccts.de/docs/orca/6.1/manual/
+# 2. Install ORCA External Tools with UMA support using Python >=3.11:
+#    git clone https://github.com/faccts/orca-external-tools.git
+#    cd orca-external-tools
+#    python install.py -e uma --venv-dir .venv-uma --script-dir bin-uma
+#    Follow that project's UMA/model-access and PyTorch/CUDA setup instructions.
+#    Keep its environment at the installation location; wrappers refer to it.
+# 3. Replace ProgExt below with the FULL path to the installed oet_client
+#    wrapper (oet_client.exe on Windows). Use forward slashes in this input.
+#    Add the wrapper directory to PATH, or use full paths in the commands below.
+# 4. In a separate terminal, start the UMA server and leave it running:
+#    oet_server uma -b 127.0.0.1:20001 -n 4
+#    The loopback address is generic; server and client must use the same port.
+#    Check oet_server --help for resource settings supported by your version.
+#
+# RUN
+# Copy this input and your geometry as molecule.xyz into a fresh job directory.
+# XYZ coordinates are in angstrom. Edit the final line's charge/multiplicity
+# (0 1 = neutral singlet) for your molecule. Select cuda or cpu in Ext_Params.
+# Four processes are an example allocation; adjust nprocs and server resources.
+# From the job directory, using your installed ORCA executable's full path:
+#   /path/to/orca job_orca.inp > job_orca.out 2>&1
+# Windows PowerShell syntax for a quoted executable path:
+#   & "C:/path/to/orca.exe" job_orca.inp > job_orca.out 2>&1
+#
+# This retains the supplied UMA-S-1.1/OMol settings and minimum optimization.
+# It is not a TS-search or reference-DFT input. NumFREQ requests numerical
+# frequencies after optimization; inspect convergence and the resulting modes.
+# Retain the input/output, server log, software versions and checkpoint identity
+# with results. This example does not establish settings for other deposited jobs.
+# External-method setup: https://github.com/faccts/orca-external-tools
+#
+! ExtOpt TIGHTOPT NumFREQ
+
+%method
+  ProgExt "/path/to/oet_client"
+  Ext_Params "-b 127.0.0.1:20001 --model uma-s-1p1 --task omol --device cuda"
+end
+
+%pal
+  nprocs 4
+end
+
+%geom
+  MaxStep 0.2
+  MaxIter 1000
+end
+
+* xyzfile 0 1 molecule.xyz

@@ -1,0 +1,46 @@
+# SELECT50 example: UMA-S-1.1 transition-state optimization and frequencies.
+#
+# SETUP
+# Install ORCA 6 and ORCA External Tools with UMA support as described at the
+# top of job_orca.inp: https://github.com/faccts/orca-external-tools
+# Replace ProgExt with the full installed oet_client path (.exe on Windows).
+# Start the server in another terminal and leave it running:
+#   oet_server uma -b 127.0.0.1:20001 -n 4
+# Adjust the CPU allocation and cuda/cpu selection for your installation.
+#
+# RUN
+# Use a fresh directory containing this input and a plausible TS guess named
+# ts_guess.xyz (angstrom). Set the final line's charge and multiplicity.
+# Run with the full path to your installed ORCA executable:
+#   /path/to/orca job_orca_ts.inp > job_orca_ts.out 2>&1
+# Windows PowerShell:
+#   & "C:/path/to/orca.exe" job_orca_ts.inp > job_orca_ts.out 2>&1
+#
+# Calc_Hess/NumHess request an initial numerical Hessian for the TS search.
+# NumFreq requests another frequency calculation at the optimized geometry.
+# Check convergence and that the imaginary mode describes the intended reaction.
+# For the companion IRC, retain the FINAL job_orca_ts.xyz and job_orca_ts.hess;
+# intermediate numbered Hessians belong to earlier optimization geometries.
+# This is a derived template, not an original record of a deposited TS job.
+# TS keywords: https://www.faccts.de/docs/orca/6.1/manual/contents/structurereactivity/optimizations_TS.html
+# Numerical Hessian: https://www.faccts.de/docs/orca/6.1/manual/contents/structurereactivity/optimizations.html
+#
+! ExtOpt OptTS TightOpt NumFreq
+
+%method
+  ProgExt "/path/to/oet_client"
+  Ext_Params "-b 127.0.0.1:20001 --model uma-s-1p1 --task omol --device cuda"
+end
+
+%pal
+  nprocs 4
+end
+
+%geom
+  MaxStep 0.2
+  MaxIter 1000
+  Calc_Hess true
+  NumHess true
+end
+
+* xyzfile 0 1 ts_guess.xyz
