@@ -10,6 +10,8 @@ The core benchmark comprises **50 selectivity cases and 100 reference transition
 
 **Release status:** This is a research snapshot. Some experimental metadata, computational provenance, and figure-reproduction materials remain incomplete. A publication DOI and archived dataset DOI are not currently recorded in this repository.
 
+The current [repository status](repository_status.md) distinguishes deposited materials from remaining gaps. Draft [case metadata and structure aliases](results/reference/README.md) are available for review; mechanism assignments, source corrections, and manuscript pathway roles still require confirmation.
+
 ## Transition-state gallery
 
 The four render sheets show all **100 transition-state structures across 50 selectivity cases**, with the major structure on the left and the minor structure on the right of each pair. Case labels match the [reference structure filenames](results/reference/starting_structures/). Select a sheet to open the full-size SVG.
@@ -27,13 +29,14 @@ The four render sheets show all **100 transition-state structures across 50 sele
 | Dataset | Contents | Location |
 | --- | --- | --- |
 | Reference structures | 100 XYZ files: two transition states per selectivity case | [Starting structures](results/reference/starting_structures/) |
+| Case metadata and aliases | 50 SI-transcribed case rows with proposed mechanism types; 100 aliases preserving reference XYZ source labels | [Metadata guide](results/reference/README.md) |
 | Optimized structures | Nine geometry sets, each containing 100 XYZ files; reference copies are byte-identical to the starting structures | [Optimized geometries](optimized-geometries/) |
 | Selectivity energies | Electronic-energy and Gibbs-energy differences for 50 cases | [ΔE](results/energetics/delta_e.csv), [ΔG](results/energetics/delta_g.csv) |
 | Geometry comparisons | 800 heavy-atom RMSDs and 1,512 bond-distance rows; rotational `ja1g_major` has no assigned forming/breaking bond | [Geometry tables and assignments](results/geometry/) |
 | Cycloaddition landscape  | Ten stationary-point structures, Gibbs energies, a 100-point two-dimensional scan, IRC trajectories, and activation-strain tables | [Cycloaddition data and methods](reaction_landscapes/cycloaddition/README.md) |
-| Palladium-cyclization landscape  | 21 UMA stationary-point structures, Gibbs energies, spectator-adjusted profiles, IRC/NEB paths, a 73-point dihedral scan, and published DFT geometries | [Palladium cyclization](reaction_landscapes/palladium_cyclization/) |
-| Larger systems | Six transition-state pairs, comprising 12 XYZ files | [Large systems](large_systems/) |
-| Selectivity calibration  | Ni and Pd transition-state pairs, calibration scripts, split memberships, held-out predictions, and fit/error summaries | [Ni study](calibration/nickel_epoxide_arylation/), [Pd study](calibration/palladium_enone_addition/) |
+| Palladium-cyclization landscape  | 21 UMA stationary-point structures, Gibbs energies, spectator-adjusted profiles, IRC/NEB paths, a 73-point dihedral scan, and 22 published DFT geometries | [Palladium data guide](reaction_landscapes/palladium_cyclization/README.md) |
+| Larger systems | Six transition-state pairs: 12 optimized XYZ files and 12 DFT starting geometries | [Large-system data guide](large_systems/README.md) |
+| Selectivity calibration  | Ni and Pd transition-state pairs, calibration scripts, saved 100-split memberships, held-out predictions, and fit/error summaries | [Ni study](calibration/nickel_epoxide_arylation/README.txt), [Pd study](calibration/palladium_enone_addition/README.md) |
 | Perturbed-guess recovery | Reserved directory; recovery inputs and results are not yet deposited | [Perturbed guesses](results/perturbed_guesses/) |
 
 ## Data conventions
@@ -41,9 +44,9 @@ The four render sheets show all **100 transition-state structures across 50 sele
 - **Coordinates and distances:** XYZ coordinates, RMSDs, and bond distances are expressed in ångströms (Å). Bond-table atom indices are one-based.
 - **RMSD methodology:** The supplied [RMSD script](scripts/calculate_heavy_atom_rmsd.py) uses NumPy's Kabsch fit with atoms paired by XYZ order. Hydrogen is excluded, and all remaining atoms contribute equally with no outlier rejection. It reproduces all 800 deposited comparisons within 0.000001 Å. See the [equations and method details](results/geometry/README.md#rmsd-methodology), including the distinction from PyMOL `align` with `cycles=0`. All-atom RMSDs in supporting tables include hydrogen and are distinct from heavy-atom RMSDs.
 - **Energy differences:** The core ΔE and ΔG headers specify kcal/mol. Differences use `minor_minus_major`. Reaction-landscape tables distinguish absolute energies in hartree from relative energies in kcal/mol where indicated in their headers.
-- **Structure identifiers:** Core XYZ files use `<case_id>_major.xyz` and `<case_id>_minor.xyz`. Major/minor labels follow the supplied reference electronic-energy ordering and remain provisional pending the final naming map.
+- **Structure identifiers:** Core XYZ files use `<case_id>_major.xyz` and `<case_id>_minor.xyz`. Major/minor labels follow the supplied reference electronic-energy ordering. The working SI assigns roles by Gibbs energy instead, so [draft aliases](results/reference/structure_aliases.csv) remain pending confirmation. Existing case IDs and file roles are retained.
 - **Methods:** Geometry folders include eSEN, g-xTB, MACE-OMOL, UMA-M, UMA-S, PBE0-D3(BJ)/def2-SVP, r2SCAN-3c, and ωB97X-D3(BJ)/def2-SVP, alongside the ωB97X-D3(BJ)/def2-TZVP reference.
-- **UMA versions and interface:** Reaction profiles were calculated using **UMA-S-1.1 through ORCA's `ExtOpt` interface**. All other UMA calculations used **UMA-S-1.2** and **UMA-M-1.1**.
+- **UMA versions and interface:** Landscape records identify **UMA-S-1.1** with ORCA's external-method interface. The working manuscript/SI identify core **UMA-S-1.2** and **UMA-M-1.1**. The repository author confirmed UMA-M-1.1, and the core CSV/validator labels now agree. Large-system/calibration prose says UMA-S-1.1, but Prins XYZ comments identify UMA Small 1.2; those UMA-S checkpoint assignments remain unresolved. See the [study guides](large_systems/README.md) and [repository status](repository_status.md).
 - **Thermochemistry and experimental selectivity:** Use the conditions and definitions associated with each study. The meaning of `spe_corr`, the full core thermochemistry protocol, and experimental selectivity metadata are not yet documented completely.
 
 ## Repository structure
@@ -106,7 +109,7 @@ The script reads `optimized-geometries/` and uses `wB97X-D3(BJ)-def2-TZVP` as th
 
 The calibration scripts require NumPy and implement repeated-split linear fits of experimental ΔΔG against raw predicted ΔΔG. Saved outputs include train/test memberships, fitted coefficients, and held-out errors.
 
-Both [Ni](calibration/nickel_epoxide_arylation/ni_series.csv) and [Pd](calibration/palladium_enone_addition/pd_series.csv) input tables use the headers expected by their scripts. Ni ee values are left blank for completion; experimental temperatures and references remain incomplete in both tables. The deposited ΔΔG values are retained for calibration. See the [Ni analysis notes](calibration/nickel_epoxide_arylation/README.txt) for the seed, split protocol, and additional provenance limitations.
+Both [Ni](calibration/nickel_epoxide_arylation/ni_series.csv) and [Pd](calibration/palladium_enone_addition/pd_series.csv) input tables use the headers expected by their scripts. Ni ee fields remain blank in the CSV, although the separately supplied SI Table S24 contains all 13 values. Experimental temperatures and references remain incomplete in both CSVs; two Pd ee values conflict with S24. The deposited ΔΔG values are retained. Both saved analyses contain 100 splits with seed `20260810`, but the Pd script currently requests 1,000; rerunning it overwrites the saved analysis with a different partition sample. See the [Ni notes](calibration/nickel_epoxide_arylation/README.txt) and [Pd guide](calibration/palladium_enone_addition/README.md) before regenerating results.
 
 ## License
 
