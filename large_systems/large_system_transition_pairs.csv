@@ -1,0 +1,13 @@
+case_study_id,case_number,description,pathway,n_atoms_total,charge_e,spin_multiplicity,model_id,electronic_energy_hartree,gibbs_energy_hartree,imaginary_frequency_cm_1,selectivity_class,time_seconds
+large_pair_01,1,Enantioselective trichloromethylation,major,117,0,2,uma_s_1p2,-4648.007588,-4647.142952,-294.46,stereoselectivity,234
+large_pair_01,1,Enantioselective trichloromethylation,minor,117,0,2,uma_s_1p3,-4648.002007,-4647.137101,-328.52,stereoselectivity,226
+large_pair_02,2,Enantioselective hydroacetalization,major,205,0,1,uma_s_1p4,-6154.394844,-6152.744666,-650.51,stereoselectivity,571
+large_pair_02,2,Enantioselective hydroacetalization,minor,205,0,1,uma_s_1p5,-6154.390802,-6152.739802,-622.2,stereoselectivity,484
+large_pair_03,3,Regioselective borylation,major,174,0,1,uma_s_1p6,-3965.483013,-3964.119542,-829.56,regioselectivity,491
+large_pair_03,3,Regioselective borylation,minor,174,0,1,uma_s_1p7,-3965.483554,-3964.117139,-818.12,regioselectivity,399
+large_pair_04,4,Enantioselective Prins-semipinacol rearrangement,major,211,0,1,uma_s_1p8,-9919.889409,-9918.397123,-147.72,stereoselectivity,714
+large_pair_04,4,Enantioselective Prins-semipinacol rearrangement,minor,211,0,1,uma_s_1p9,-9919.884672,-9918.394411,-252.06,stereoselectivity,826
+large_pair_05,5,Peptide-catalyzed enantioselective oxidation of sulfides,major,137,0,1,uma_s_1p10,-4718.719579,-4717.746895,-751.99,stereoselectivity,267
+large_pair_05,5,Peptide-catalyzed enantioselective oxidation of sulfides,minor,137,0,1,uma_s_1p11,-4718.717893,-4717.745106,-483.66,stereoselectivity,213
+large_pair_06,6,Enantioselective fluoride elimination,major,160,0,1,uma_s_1p12,-7799.07731,-7797.924877,-180.68,stereoselectivity,242
+large_pair_06,6,Enantioselective fluoride elimination,minor,160,0,1,uma_s_1p13,-7799.074763,-7797.916943,-245.19,stereoselectivity,266
