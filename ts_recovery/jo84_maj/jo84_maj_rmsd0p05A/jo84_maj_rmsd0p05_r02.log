@@ -1,0 +1,133 @@
+   __________  _   ______  ____  ____
+  / ____/ __ \/ | / / __ \/ __ \/ __ \
+ / /   / / / /  |/ / / / / / / / /_/ /
+/ /___/ /_/ / /|  / /_/ / /_/ / _, _/
+\____/\____/_/ |_/_____/\____/_/ |_|
+
+Condor: a computational chemistry package
+Copyright Rowan Scientific, 2026
+Condor version: 0fc0f8d
+
+Fetching workflow data from backend
+Workflow data fetched in 0.1 s; 1.2 s elapsed since started_at (queue wait + subprocess launch + imports)
+Starting: BasicCalculationWorkflow
+Started at: 2026-08-21 02:42:26.827954+00:00
+
+initial_molecule = <OpenStructure "C4H10O2">
+symmetry = C1
+tasks = ['OPTIMIZE_TS', 'FREQUENCIES']
+engine = FAIRChemEngine
+level of theory = uma_s_1_2_omol
+
+Starting optimization
+Initial transition-state Hessian: 3 imaginary frequencies (-1426.6, -470.2, -320.3 cm⁻¹); lowest real frequency 29.9 cm⁻¹. A first-order saddle point requires exactly one imaginary frequency; the optimization may not converge to the intended transition state.
+
+      |               Energy            |        Gradient     |        Displacement         | Trust |  Time  | Last |
+ Step |       Value      |      Δ       |    RMS   |    Max   |  Total  |   RMS   |   Max   | Rad.  |   (s)  | Save | Notes
+------+------------------+--------------+----------+----------+---------+---------+---------+-------+--------+------+---------------------
+Crit. |                  |   0.00000100 |  0.00060 |  0.00090 |         | 0.00100 | 0.00200 |       |        |      |
+------+------------------+--------------+----------+----------+---------+---------+---------+-------+--------+------+---------------------
+    0 |    -308.70602435 |              |  0.02852 |  0.07785 |         |         |         | 0.005 |    0.4 |    — | 
+    1 |    -308.71083112 |  -0.00480676 |  0.02007 |  0.04986 | 0.04414 | 0.00637 | 0.01484 | 0.005 |    0.4 |    0 | 
+    2 |    -308.71511504 |  -0.00428392 |  0.00936 |  0.03065 | 0.06248 | 0.00902 | 0.02219 | 0.007 |    0.3 |    0 | 
+    3 |    -308.71678214 |  -0.00166710 |  0.00184 |  0.00680 | 0.07628 | 0.01101 | 0.02751 | 0.011 |    0.4 |    0 | 
+    4 |    -308.71687168 |  -0.00008954 |  0.00030*|  0.00103 | 0.09758 | 0.01408 | 0.04829 | 0.015 |    0.3 |    0 | 
+    5 |    -308.71687285 |  -0.00000117 |  0.00007*|  0.00019*| 0.00647 | 0.00093*| 0.00229 | 0.016 |    0.4 |    0 | 
+    6 |    -308.71687288 |  -0.00000003*|  0.00002*|  0.00006*| 0.00660 | 0.00095*| 0.00213 | 0.016 |    0.3 |    0 | 
+Optimization converged     in    6 steps (   18.4 s): E =   -308.71687288 Ha, ΔE(final-initial) = -0.01084853 Ha
+Optimization complete: symmetry = C1
+Running remaining tasks: {<Task.FREQUENCIES: 'frequencies'>}
+Remaining tasks complete in 7.77 seconds: energy=-308.7168728731
+results=['vibrational_analysis', 'energy', 'hessian', 'resources']
+Results:
+Properties:
++------------------+---------------+
+| Energy (Hartree) | -308.71687287 |
++------------------+---------------+
+
+Vibrational frequencies:
++--------------------+----------------------+-------------------------+
+|   Frequency (cm⁻¹) |   Reduced Mass (amu) |   Force Const (mDyne/Å) |
++====================+======================+=========================+
+|           -1398.56 |                1.129 |                 -1.3016 |
+|              66.18 |                1.402 |                  0.0036 |
+|              82.93 |                1.885 |                  0.0076 |
+|             123.33 |                3.099 |                  0.0278 |
+|             184.19 |                1.041 |                  0.0208 |
+|             233.12 |                1.063 |                  0.0340 |
+|             273.49 |                4.500 |                  0.1983 |
+|             319.45 |                2.427 |                  0.1459 |
+|             358.21 |                1.117 |                  0.0844 |
+|             380.05 |                2.814 |                  0.2395 |
+|             436.46 |                2.502 |                  0.2808 |
+|             514.38 |                2.162 |                  0.3371 |
+|             574.58 |                2.034 |                  0.3957 |
+|             725.98 |                5.396 |                  1.6756 |
+|             806.89 |                4.642 |                  1.7808 |
+|             914.59 |                1.597 |                  0.7871 |
+|             927.42 |                1.993 |                  1.0101 |
+|             942.51 |                1.459 |                  0.7638 |
+|             987.12 |                2.443 |                  1.4026 |
+|            1106.83 |                2.871 |                  2.0721 |
+|            1147.76 |                2.336 |                  1.8128 |
+|            1178.45 |                1.108 |                  0.9065 |
+|            1205.84 |                2.328 |                  1.9945 |
+|            1268.94 |                1.178 |                  1.1175 |
+|            1321.45 |                1.134 |                  1.1666 |
+|            1363.88 |                1.203 |                  1.3185 |
+|            1391.29 |                1.239 |                  1.4134 |
+|            1434.99 |                1.053 |                  1.2780 |
+|            1439.44 |                1.038 |                  1.2676 |
+|            1456.73 |                1.047 |                  1.3096 |
+|            1460.94 |                1.048 |                  1.3176 |
+|            1473.94 |                1.049 |                  1.3428 |
+|            1488.74 |                1.062 |                  1.3865 |
+|            3070.21 |                1.023 |                  5.6788 |
+|            3070.67 |                1.032 |                  5.7306 |
+|            3077.84 |                1.032 |                  5.7591 |
+|            3154.31 |                1.104 |                  6.4705 |
+|            3161.87 |                1.104 |                  6.5056 |
+|            3164.22 |                1.104 |                  6.5143 |
+|            3168.70 |                1.105 |                  6.5342 |
+|            3192.65 |                1.108 |                  6.6517 |
+|            3194.00 |                1.108 |                  6.6578 |
++--------------------+----------------------+-------------------------+
+
+Thermochemical Analysis (T = 298.00 K)
+    RRHO with Cramer–Truhlar quasi-harmonic correction
++--------------------------------+-----------+------------+
+| Thermochemistry                |   Hartree |   kcal/mol |
++================================+===========+============+
+| Zero-Point Energy              |  0.127223 |    79.8338 |
+| Translational Energy           |  0.001416 |     0.8883 |
+| Rotational Energy              |  0.001416 |     0.8883 |
+| Vibrational Energy             |  0.133303 |    83.6492 |
+| Total Thermal Energy           |  0.136135 |    85.4258 |
+| Enthalpy (H)                   |  0.137078 |    86.0179 |
+| Translational T*S              |  0.018713 |    11.7426 |
+| Rotational T*S                 |  0.012852 |     8.0650 |
+| Vibrational T*S                |  0.010650 |     6.6828 |
+| Electronic T*S                 |  0.001037 |     0.6506 |
+| Total T*S                      |  0.043252 |    27.1409 |
+| Gibbs Free Energy (G = H - TS) |  0.093827 |    58.8770 |
++--------------------------------+-----------+------------+
+
+Resources used:
+  wall_seconds: 8.058
+  cpu_seconds: 7.970
+  peak_ram_gb: 6.787
+  location: modal
+  node:
+    cpu_model: unknown
+    total_cores: 17
+    total_ram_gb: 1099.512
+    gpu_model: NVIDIA A100-SXM4-40GB
+    gpu_count: 1
+Completed BasicCalculationWorkflow in 26.57 seconds
+
+Completed in 28.4 s
+
++--------------------------------------------------+
+| FALL IN LOVE WITH THE PROBLEM, NOT THE SOLUTION. |
+|     - MARTY CAGAN                                |
++--------------------------------------------------+
