@@ -19,6 +19,6 @@ On 2026-10-12 the author confirmed that both ja1g structures remain excluded fro
 
 The core's supplied checkpoint labels are UMA-M-1.1 and UMA-S-1.2; names are not per-job file hashes. The reported electronic reference is ωB97M-V/def2-TZVPD on ωB97X-D3(BJ)/def2-TZVP geometries. SPEcorr uses high-level single points on UMA-S geometries; complete original thermal/job provenance remains outstanding.
 
-Fields ending in `_inferred` in the wide energy tables are heuristic classifications, not approved mechanism assignments or a four-family census. Filling an82's description does not validate or regenerate those fields. Source review remains open for the ac30 incomplete DOI, ac16 DOI conflict, ja37/ja37f identity, competing-spin cases and ja1m/jo90/sc99 assignments. Matching element sequences across geometries does not prove correspondence among identical atoms.
+Fields ending in `_inferred` in the wide energy tables are heuristic classifications, not approved mechanism assignments or a four-family census. Filling an82's description does not validate or regenerate those fields. Source review remains open for the ac30 incomplete DOI, ac16 DOI conflict, competing-spin cases and ja1m/jo90/sc99 assignments. Matching element sequences across geometries does not prove correspondence among identical atoms.
 
 Reference frequency and high-level single-point outputs are not deposited. Example input files describe related workflows but do not establish settings of every original job. See [repository status](../../repository_status.md).

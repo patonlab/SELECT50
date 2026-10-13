@@ -14,7 +14,7 @@ SERIES = 'pd'
 RANDOM_SEED = 20260810
 EXPECTED_ROWS = 15
 TRAIN_SIZE = 8
-N_SPLITS = 1000
+N_SPLITS = 100
 
 
 def read_csv(path):
