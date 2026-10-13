@@ -1,7 +1,6 @@
 label,spectators_added,elemental_total,E_total_hartree,G_total_hartree,G_relative_kcal,element_balance,charge_balance
 3a,1*PdL; 2*CsOAc,"{""Br"": 1, ""C"": 67.0, ""Cs"": 2.0, ""H"": 58.0, ""N"": 1, ""O"": 7.0, ""P"": 2.0, ""Pd"": 1.0}",-6594.408814686801,-6593.51197515,0.0,True,neutral; verified from original input echoes
 4a,1*PdL; 1*CsOAc; 0.5*di-CsBr; 1*HOAc,"{""Br"": 1.0, ""C"": 67.0, ""Cs"": 2.0, ""H"": 58.0, ""N"": 1, ""O"": 7.0, ""P"": 2.0, ""Pd"": 1.0}",-6594.4730719251,-6593.585223519999,-45.96404613431482,True,neutral; verified from original input echoes
-4a_prime,1*PdL; 1*CsOAc; 0.5*di-CsBr; 1*HOAc,"{""Br"": 1.0, ""C"": 67.0, ""Cs"": 2.0, ""H"": 58.0, ""N"": 1, ""O"": 7.0, ""P"": 2.0, ""Pd"": 1.0}",-6594.4730179621,-6593.58538315,-46.06421547214926,True,neutral; verified from original input echoes
 Int1,2*CsOAc,"{""Br"": 1, ""C"": 67.0, ""Cs"": 2.0, ""H"": 58.0, ""N"": 1, ""O"": 7.0, ""P"": 2, ""Pd"": 1}",-6594.453159745801,-6593.5275623,-9.781084298706183,True,neutral; verified from original input echoes
 int2,2*CsOAc,"{""Br"": 1, ""C"": 67.0, ""Cs"": 2.0, ""H"": 58.0, ""N"": 1, ""O"": 7.0, ""P"": 2, ""Pd"": 1}",-6594.4800739658,-6593.55436936,-26.602768420775842,True,neutral; verified from original input echoes
 int3,1*CsOAc; 0.5*di-CsBr,"{""Br"": 1.0, ""C"": 67.0, ""Cs"": 2.0, ""H"": 58.0, ""N"": 1, ""O"": 7.0, ""P"": 2, ""Pd"": 1}",-6594.4827574104,-6593.54593297,-21.30885376857256,True,neutral; verified from original input echoes

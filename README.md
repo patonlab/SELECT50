@@ -29,7 +29,7 @@ The four sheets illustrate 50 transition-state pairs. Each pair is labelled by c
 | Geometry comparisons | 796 heavy-atom RMSD rows and 1,488 bond-distance rows | [RMSDs](results/geometry/heavy_atom_rmsd.csv), [bond distances](results/geometry/ts_bond_distances.csv) |
 | Transition-state recovery | 300 calculation logs and 300 XYZ exports, organized by transition structure, perturbation magnitude, and replicate | [Recovery calculations](ts_recovery/) |
 | Cycloaddition landscape | Ten stationary structures with E/G records, a 100-point two-dimensional scan, IRC trajectories, and 72 activation-strain rows | [Cycloaddition data](reaction_landscapes/cycloaddition/) |
-| Palladium-cyclization landscape | 21 UMA stationary structures, spectator-adjusted energy profiles, IRC and NEB paths, a 73-point dihedral scan, and 22 published DFT structures | [Palladium data](reaction_landscapes/palladium_cyclization/) |
+| Palladium-cyclization landscape | 20 UMA stationary structures, spectator-adjusted energy profiles, IRC and NEB paths, a 73-point dihedral scan, and 21 published DFT structures | [Palladium data](reaction_landscapes/palladium_cyclization/) |
 | Larger systems | Six transition-state pairs: 12 optimized structures, 12 DFT starting structures, and a table of energies, frequencies, and recorded timings | [Structures](large_systems/), [transition-pair table](large_systems/large_system_transition_pairs.csv) |
 | Experimental calibration | Ni and Pd series with 13 and 15 entries, respectively, plus transition structures, fitting scripts, saved split memberships, and held-out predictions | [Nickel series](calibration/nickel_epoxide_arylation/), [palladium series](calibration/palladium_enone_addition/) |
 

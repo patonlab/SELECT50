@@ -232,7 +232,7 @@ def validate(root=ROOT):
         copy = root / "optimized-geometries" / METHODS[REFERENCE] / s / f"{s}.xyz"
         require((inputs / f"{s}.xyz").read_bytes() == copy.read_bytes(), f"{s}: reference copies differ")
     for relative_path, count in (("cycloaddition/cycloaddition_structures.xyz", 10),
-                                 ("palladium_cyclization/structures/uma/all_21_frames.xyz", 21)):
+                                 ("palladium_cyclization/structures/uma/all_20_frames.xyz", 20)):
         p = root / "reaction_landscapes" / relative_path
         require(p in xyz and len(xyz[p]) == count, f"{relative_path}: unexpected landscape frame count")
     energies = {}

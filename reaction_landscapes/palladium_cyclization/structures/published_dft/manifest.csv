@@ -1,6 +1,5 @@
 label,filename,atoms,Eopt_Hartree,PDF_start_page
 3a,3a.xyz,44,-3587.879666,389
-4a',4a_prime.xyz,42,-1015.893238,389
 4a,4a.xyz,42,-1015.893238,390
 CsOAc,CsOAc.xyz,8,-248.682029,390
 HOAc,HOAc.xyz,8,-229.077609,390
