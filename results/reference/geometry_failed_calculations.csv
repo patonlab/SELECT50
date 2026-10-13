@@ -1,0 +1,11 @@
+﻿source_file,source_row_1based,source_structure_id,model_id,quantity,value_unit,excluded_source_value_angstrom,atom_i_1based,atom_j_1based,data_status,reason
+heavy_atom_rmsd_vs_wb.csv,406,an82_major,r2scan_3c,rmsd_angstrom,angstrom,,,,calculation_failed,Author confirmed an82 major and minor r2SCAN-3c geometry calculations failed; excluded from all geometry analyses
+heavy_atom_rmsd_vs_wb.csv,414,an82_minor,r2scan_3c,rmsd_angstrom,angstrom,0.109635,,,calculation_failed,Author confirmed an82 major and minor r2SCAN-3c geometry calculations failed; excluded from all geometry analyses
+ts-bond-distances-mace.csv,808,an82_decarb,r2scan_3c,distance_angstrom,angstrom,1.788991,1,10,calculation_failed,Author confirmed an82 major and minor r2SCAN-3c geometry calculations failed; excluded from all geometry analyses
+ts-bond-distances-mace.csv,821,an82_hat,r2scan_3c,distance_angstrom,angstrom,1.181706,3,9,calculation_failed,Author confirmed an82 major and minor r2SCAN-3c geometry calculations failed; excluded from all geometry analyses
+ts-bond-distances-mace.csv,822,an82_hat,r2scan_3c,distance_angstrom,angstrom,1.497089,9,12,calculation_failed,Author confirmed an82 major and minor r2SCAN-3c geometry calculations failed; excluded from all geometry analyses
+heavy_atom_rmsd_vs_wb.csv,403,an82_major,gxtb,rmsd_angstrom,angstrom,0.086792,,,calculation_failed,Author confirmed an82 major and minor g-xTB geometries must be excluded from all geometry analyses
+heavy_atom_rmsd_vs_wb.csv,411,an82_minor,gxtb,rmsd_angstrom,angstrom,0.1614,,,calculation_failed,Author confirmed an82 major and minor g-xTB geometries must be excluded from all geometry analyses
+ts-bond-distances-mace.csv,805,an82_decarb,gxtb,distance_angstrom,angstrom,1.677641,1,10,calculation_failed,Author confirmed an82 major and minor g-xTB geometries must be excluded from all geometry analyses
+ts-bond-distances-mace.csv,815,an82_hat,gxtb,distance_angstrom,angstrom,1.127872,3,9,calculation_failed,Author confirmed an82 major and minor g-xTB geometries must be excluded from all geometry analyses
+ts-bond-distances-mace.csv,816,an82_hat,gxtb,distance_angstrom,angstrom,1.58096,9,12,calculation_failed,Author confirmed an82 major and minor g-xTB geometries must be excluded from all geometry analyses

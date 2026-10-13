@@ -25,8 +25,8 @@ The four sheets illustrate 50 transition-state pairs. Each pair is labelled by c
 | Dataset | Contents | Location |
 | --- | --- | --- |
 | Reference and optimized geometries | Reference coordinates and method-specific transition-state XYZ files | [Reference structures](results/reference/starting_structures/), [optimized geometries](optimized-geometries/) |
-| Selectivity energies | Electronic- and Gibbs-energy separation tables, each containing 50 case rows | [Electronic energies](results/energetics/delta_e.csv), [Gibbs energies](results/energetics/delta_g.csv) |
-| Geometry comparisons | 800 heavy-atom RMSD rows and 1,512 bond-distance rows | [RMSDs](results/geometry/heavy_atom_rmsd.csv), [bond distances](results/geometry/ts_bond_distance.csv) |
+| Selectivity energies | Electronic- and Gibbs-energy separation tables, each containing 50 case rows | [Electronic energies](results/energetics/delta_delta_e.csv), [Gibbs energies](results/energetics/delta_delta_g.csv) |
+| Geometry comparisons | 796 heavy-atom RMSD rows and 1,488 bond-distance rows | [RMSDs](results/geometry/heavy_atom_rmsd.csv), [bond distances](results/geometry/ts_bond_distances.csv) |
 | Transition-state recovery | 300 calculation logs and 300 XYZ exports, organized by transition structure, perturbation magnitude, and replicate | [Recovery calculations](ts_recovery/) |
 | Cycloaddition landscape | Ten stationary structures with E/G records, a 100-point two-dimensional scan, IRC trajectories, and 72 activation-strain rows | [Cycloaddition data](reaction_landscapes/cycloaddition/) |
 | Palladium-cyclization landscape | 21 UMA stationary structures, spectator-adjusted energy profiles, IRC and NEB paths, a 73-point dihedral scan, and 22 published DFT structures | [Palladium data](reaction_landscapes/palladium_cyclization/) |
@@ -46,10 +46,12 @@ The optimized-geometry directories represent the following methods:
 
 The recovery logs identify UMA-S-1.2 with the OMol task. Reaction-landscape records identify UMA-S-1.1 with the OMol task through ORCA's external-method interface.
 
+The active core contains 50 pairs, including an82 in place of ja30. Seven geometry sets contain 100 structures each; g-xTB and r²SCAN-3c contain 98 each because both an82 calculations failed. The g-xTB energy tables evaluate 49 pairs. Both ja1g structures are excluded from bond analysis, as confirmed by the author on 2026-10-12. See [metadata and exclusions](results/reference/README.md) and [current repository status](repository_status.md).
+
 ## Data conventions
 
 - **Coordinates and geometry:** XYZ coordinates, RMSDs, and bond distances use ångströms (Å). Bond-table atom indices are one-based.
-- **Core energy differences:** CSV headers specify kcal/mol and the signed convention `minor_minus_major`: ΔΔE = E(minor) − E(major), with the analogous definition for ΔΔG.
+- **Core energy differences:** CSV headers specify kcal/mol. ΔΔE = E(minor) − E(major), with the analogous definition for ΔΔG. Major is the lower reference electronic-energy structure; that role is fixed for both E and G. Only reference ΔΔE is positive by construction; five reference ΔΔG values are negative.
 - **Absolute energies:** Landscape and large-system tables report electronic and Gibbs energies in hartree. Relative landscape energies are recorded in kcal/mol.
 - **Frequencies and timings:** Imaginary frequencies in the large-system table use cm⁻¹; its `time_seconds` field uses seconds.
 - **Structure names:** Core XYZ filenames use `<case_id>_major.xyz` and `<case_id>_minor.xyz`. Method geometries are organized as `optimized-geometries/<method>/<structure_id>/<structure_id>.xyz`.
