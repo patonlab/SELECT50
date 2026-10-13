@@ -25,7 +25,7 @@ Recovery includes 300 logs and 299 final XYZ exports plus a placeholder for the 
 
 Cycloaddition and palladium landscape data are deposited. C05/C06 corrections, source-backed audits and replacement plots are prepared in the user's separate Downloads audit and **have not been integrated here**, as requested. Existing study guides and manuscript/SI still need those corrections.
 
-Calibration supplies 13 Ni and 15 Pd ee entries and saved 100-partition analyses. Pd experimental P03/P11 values conflict across current inputs, and the Pd script requests 1000 partitions. Resolve inputs/protocol before regenerating final results. Calibration OLE drawings still need portable replacements.
+Calibration supplies 13 Ni and 15 Pd ee entries and saved 100-partition analyses. Pd P03/P11 are resolved as −87%/+87% from Table S3 of DOI `10.1021/acs.joc.1c00136`; both repository ee tables agree. The Pd script still requests 1000 partitions instead of the retained 100; align the script before regenerating results. Calibration OLE drawings still need portable replacements.
 
 The current manuscript/SI remain unchanged: core tables/figures and study corrections still require a careful merge. Source identity questions are tracked in [reference guide](results/reference/README.md). Original reference outputs, complete checkpoint/environment/thermal provenance, final release attribution and an actual archival DOI remain outstanding. Input templates are examples, not original-job evidence.
 
