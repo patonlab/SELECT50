@@ -1,0 +1,5 @@
+quantity,benchmark_id,structure_id,model_id,status,reason,evidence
+geometry,an82,an82_major,gxtb,calculation_failed,Author-confirmed failed an82 geometry; excluded from RMSD and bond analyses,geometry_failed_calculations.csv
+geometry,an82,an82_minor,gxtb,calculation_failed,Author-confirmed failed an82 geometry; excluded from RMSD and bond analyses,geometry_failed_calculations.csv
+geometry,an82,an82_major,r2scan_3c,calculation_failed,Author-confirmed failed an82 geometry; excluded from RMSD and bond analyses,geometry_failed_calculations.csv
+geometry,an82,an82_minor,r2scan_3c,calculation_failed,Author-confirmed failed an82 geometry; excluded from RMSD and bond analyses,geometry_failed_calculations.csv

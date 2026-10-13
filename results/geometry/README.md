@@ -1,10 +1,10 @@
 # Geometry comparisons
 
-[heavy_atom_rmsd.csv](heavy_atom_rmsd.csv) contains 800 heavy-atom RMSDs in ångströms. [ts_bond_distance.csv](ts_bond_distance.csv) contains 1,512 distances in ångströms: 168 assigned bonds across 99 structures, each evaluated for all nine geometry methods. Atom indices refer to the one-based order in each deposited XYZ file.
+[heavy_atom_rmsd.csv](heavy_atom_rmsd.csv) contains 796 heavy-atom RMSDs in ångströms. [ts_bond_distances.csv](ts_bond_distances.csv) contains 1,488 distances: 166 assigned reference bonds across 98 structures, with both ja1g structures excluded. The six complete comparison methods have 166 bonds each; g-xTB and r²SCAN-3c have 163 each over 96 structures because both an82 calculations failed. [ts_bond_errors.csv](ts_bond_errors.csv) contains the 1,322 non-reference comparisons. Atom indices are one-based.
 
 ## RMSD methodology
 
-The supplied analysis script, now [scripts/calculate_heavy_atom_rmsd.py](../../scripts/calculate_heavy_atom_rmsd.py), calculates the core heavy-atom RMSDs directly with NumPy and the Kabsch algorithm. It does not call PyMOL. The script reproduces the 800 deposited comparisons to within 0.000001 Å on the current geometries.
+The supplied analysis script, now [scripts/calculate_heavy_atom_rmsd.py](../../scripts/calculate_heavy_atom_rmsd.py), calculates the core heavy-atom RMSDs directly with NumPy and the Kabsch algorithm. It does not call PyMOL. The script reproduces the 796 deposited comparisons to within 0.000001 Å on the current geometries.
 
 ### Atom correspondence and selection
 
@@ -38,14 +38,14 @@ Python and NumPy are required. From the repository root:
 
 ```sh
 python3 -m pip install numpy
-python3 scripts/calculate_heavy_atom_rmsd.py --strict
+python3 scripts/calculate_heavy_atom_rmsd.py --output /tmp/select50_rmsd.csv
 ```
 
 The script resolves its default paths relative to its own location, so it also works when launched from another directory. It uses the current `<method>/<structure_id>/<structure_id>.xyz` layout, including `MACE-OMOL`, and compares all 100 structures across the eight non-reference methods.
 
 By default it writes `results/geometry/heavy_atom_rmsd_recalculated.csv`, leaving the deposited `heavy_atom_rmsd.csv` unchanged. The recalculated CSV includes method/reference folder names, heavy-atom counts, RMSDs, source paths, and success/error status. Rerunning overwrites that recalculated file. `--output` selects another destination; `--strict` returns a nonzero exit status if any comparison fails. Missing or invalid geometries are reported rather than replaced by another XYZ file.
 
-Verification on 2026-10-10 used Python 3.14.4 and NumPy 2.5.4: all 800 comparisons completed successfully, heavy-atom counts matched the deposited table, and RMSDs agreed within 0.000001 Å. These are verification-environment versions; the original analysis environment was not supplied. The structural validator checks the deposited counts and table coverage; the RMSD script separately reproduces the fitted values.
+Verification on 2026-10-12 used Python 3.14.4 and NumPy 2.5.4: 796 comparisons succeeded, matched heavy-atom counts, and agreed at six-decimal output precision. Four comparisons fail because the an82 g-xTB/r²SCAN-3c geometries are absent. These are declared exclusions; `--strict` therefore returns 1 on the current deposit. The earlier 800-success result described the superseded benchmark and is not current coverage. These are verification-environment versions, not the original calculation environment. The structural validator checks coverage against the failure ledger; the RMSD script separately reproduces fitted values.
 
 ### Relationship to PyMOL `align` and `cycles=0`
 
@@ -65,11 +65,4 @@ The r2SCAN-3c C17–H25 entry is **2.354753 Å**, matching [the deposited geomet
 
 ### ja1g
 
-Assignments follow the supplied [render sheet 2](../../assets/figure_02.svg):
-
-| Structure | Assignment | Bond-table treatment |
-| --- | --- | --- |
-| `ja1g_minor` | P1–C3 bond breaking | Added the P1–C3 distance calculated from each of the nine deposited method geometries. The reference distance is 2.383415 Å, consistent with the figure's 2.383 Å annotation. |
-| `ja1g_major` | Rotation | No forming/breaking bond is assigned in the figure. This structure is intentionally excluded from the bond-distance table and explicitly accounted for in validation. |
-
-Added distances were calculated as the Euclidean separation of atoms 1 and 3 and rounded to six decimal places, following the existing table. No coordinates were changed. The rotational assignment does not define a torsion's atom indices; no torsional coordinate has been inferred.
+The author confirmed on 2026-10-12 that **both `ja1g_major` and `ja1g_minor` remain excluded from bond analysis**, matching the current SI and recomputed tables. This supersedes the earlier guide's minor P1–C3 inclusion. The current definition contains 166 reference bonds across 98 structures; no numerical tables or aggregates need recomputation for this decision. Both structures remain in the coordinate and RMSD datasets. See [render sheet 2](../../assets/figure_02.png) and the [recorded decision](../reference/README.md#roles-and-exclusions). No torsional atom indices have been inferred.

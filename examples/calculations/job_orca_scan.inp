@@ -1,0 +1,52 @@
+# SELECT50 example: UMA-S-1.1 relaxed coordinate scan.
+#
+# SETUP
+# Install ORCA 6 and ORCA External Tools with UMA support as described at the
+# top of job_orca.inp: https://github.com/faccts/orca-external-tools
+# Replace ProgExt with the full installed oet_client path (.exe on Windows).
+# Start the server in another terminal and leave it running:
+#   oet_server uma -b 127.0.0.1:20001 -n 4
+# Adjust the CPU allocation and cuda/cpu selection for your installation.
+#
+# RUN
+# Use a fresh directory with this input and molecule.xyz (angstrom).
+# Set the final line's charge/multiplicity and EDIT THE SCAN DEFINITION below.
+# ORCA scan atom indices start at ZERO: index 0 is the first XYZ atom.
+# SELECT50 bond-table indices start at ONE; subtract one when transferring them.
+# The active example scans atoms 0 and 1 from 1.2 to 2.4 angstrom in 13 steps;
+# these are illustrative values, not an assignment for your molecule.
+# Choose a starting geometry close to the first requested scan coordinate.
+#   /path/to/orca job_orca_scan.inp > job_orca_scan.out 2>&1
+# Windows PowerShell:
+#   & "C:/path/to/orca.exe" job_orca_scan.inp > job_orca_scan.out 2>&1
+#
+# Each point optimizes the other degrees of freedom. This input does not request
+# frequencies at every point. Inspect convergence, energies and structures;
+# a scan maximum can provide a TS guess but is not itself a verified TS.
+# Replace the active B line with an A or D line for an angular scan (degrees),
+# for example: A 0 1 2 = 100.0, 140.0, 21
+#          or D 0 1 2 3 = -180.0, 180.0, 37
+# Adding another active line creates a multidimensional scan by default.
+# This is a derived template, not an original record of a deposited scan.
+# Scan keywords: https://www.faccts.de/docs/orca/6.1/manual/contents/structurereactivity/optimizations_scans.html
+#
+! ExtOpt TightOpt
+
+%method
+  ProgExt "/path/to/oet_client"
+  Ext_Params "-b 127.0.0.1:20001 --model uma-s-1p1 --task omol --device cuda"
+end
+
+%pal
+  nprocs 4
+end
+
+%geom
+  MaxStep 0.2
+  MaxIter 1000
+  Scan
+    B 0 1 = 1.2, 2.4, 13
+  end
+end
+
+* xyzfile 0 1 molecule.xyz
