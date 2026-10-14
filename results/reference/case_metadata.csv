@@ -47,5 +47,5 @@ an85,Nucleophilic addition to alkynes,C18H18F5NS,Regioselective,0,1,10.1002/anie
 d08a,Chiral CPA Aza-cope reaction,C63H52Br2NO4P,Stereoselective,0,1,10.1039/d0ob02458a,,Metal-free,False
 ja0q,Wittig E vs Z selectivity,C28H25O3P,Stereoselective,0,1,10.1021/ja056650q,,Metal-free,False
 ja2s,Guanidinium catalyzed Claisen rearrangement,C42H54N5O3,Stereoselective,1,1,10.1021/ja110842s,,Metal-free,False
-sc99,Ipso vs ortho menisci addition,C16H16NO,Regioselective,0,2,10.1126/sciadv.aeg0999,,Metal-free,False
+sc99,Ipso vs ortho Minisci addition,C16H16NO,Regioselective,0,2,10.1126/sciadv.aeg0999,,Metal-free,False
 ja86,Pd-beta vs gamma Csp3-H arylation,C16H20F3N3O5Pd,Regioselective,0,1,10.1021/jacs.1c13586,Pd,Metal-containing,True
