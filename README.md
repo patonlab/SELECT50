@@ -46,7 +46,7 @@ The optimized-geometry directories represent the following methods:
 
 The recovery logs identify UMA-S-1.2 with the OMol task. Reaction-landscape records identify UMA-S-1.1 with the OMol task through ORCA's external-method interface.
 
-The active core contains 50 pairs, including an82. Seven geometry sets contain 100 structures each; g-xTB and r²SCAN-3c contain 98 each because both an82 calculations failed. The g-xTB energy tables evaluate 49 pairs. Both ja1g structures are excluded from bond analysis, as confirmed by the author on 2026-10-12. See [metadata and exclusions](results/reference/README.md) and [current repository status](repository_status.md).
+The core contains 50 pairs, including an82. Seven geometry sets contain 100 structures each; g-xTB and r²SCAN-3c contain 98 each because both an82 calculations failed. The g-xTB energy tables evaluate 49 pairs. Both ja1g structures are excluded from bond analysis. See [metadata and exclusions](results/reference/README.md).
 
 ## Data conventions
 

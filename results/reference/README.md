@@ -13,7 +13,7 @@ Case metadata are repeated in the electronic- and Gibbs-energy tables. The ac16 
 
 Major is fixed by lower reference electronic energy. The same role applies to Gibbs energies; five reference pairs reverse energetic preference between E and G. an82 source names are `an82_decarb` → major and `an82_hat` → minor. Both g-xTB an82 energy predictions remain blank, giving 49 evaluated pairs. The validator enforces these two energy exclusions directly; they are not additional rows in the geometry-failure ledger.
 
-On 2026-10-12 the author confirmed that both ja1g structures remain excluded from bond analysis, matching the current SI and tables. Both remain in the geometry/RMSD datasets. This supersedes the old minor P1–C3 inclusion, without changing numerical tables.
+Both ja1g structures are excluded from bond analysis and included in the geometry/RMSD datasets.
 
 ## Computational labels
 

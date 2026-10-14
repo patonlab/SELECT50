@@ -33,7 +33,7 @@ The four starting TS geometries provide the DFT comparison coordinates for Table
 
 ## Activation-strain methods
 
-For the TSA and TSB pathways, fragments were extracted from IRC geometries and their electronic energies evaluated at the same level as the ORCA UMA-S-1.1 jobs, as confirmed by the repository author. The associated IRC tables record the model/task as `UMA-s-1p1/omol`. The decomposition uses electronic energies; Gibbs energies and thermal corrections are not used in the activation-strain terms.
+For the TSA and TSB pathways, fragments were extracted from IRC geometries and their electronic energies evaluated at the same level as the ORCA UMA-S-1.1 jobs. The associated IRC tables record the model/task as `UMA-s-1p1/omol`. The decomposition uses electronic energies; Gibbs energies and thermal corrections are not used in the activation-strain terms.
 
 The complex and both fragments are neutral singlets. [fragment_definition.csv](fragment_definition.csv) records the fragment membership using one-based indices in the full complex geometry. Fragment 1 has formula C13H22O4Si and fragment 2 has formula C4H10N2Si; their memberships together cover all 57 atoms of the complex without overlap.
 

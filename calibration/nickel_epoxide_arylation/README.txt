@@ -3,7 +3,7 @@ Ni epoxide-arylation calibration — Figure 8A
 This dataset maps to manuscript Figure 8A, SI Tables S23/S24 and Figure S15.
 The reaction-study DOI is 10.1021/jacs.1c08105.
 
-The author-confirmed experimental temperature is 34 °C (307.15 K).
+The experimental temperature is 34 °C (307.15 K).
 Experimental gaps are converted from signed ee using
 ddG_exp = R*T*ln((1+ee/100)/(1-ee/100)), with
 R = 0.00198720425864083 kcal mol^-1 K^-1. Raw UMA gaps are retained.

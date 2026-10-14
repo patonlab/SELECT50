@@ -21,7 +21,7 @@ XYZ coordinates use Å. Helper/spectator rows in the profile have blank adjusted
 
 - Figure 6A uses spectator-adjusted relative Gibbs energies. `3a` corresponds to SI `Sub`; `4a` to `Prod`. Folder/CSV `Int1`, `int2`–`int5`, and `ts1`–`ts4` correspond to the formatted SI labels; `_prime` represents a prime mark.
 - Figure 6B/S14 use IRC paths. The unprimed TS1–TS4 and TS4′ energy tables contain 37, 16, 11, 51, and 51 points, respectively.
-- Figure 6C uses the 73-point UMA dihedral scan and the [DFT/UMA overlay table](scan_paths/scan_dihedral/DFT_UMA_relaxed_scan_overlay.csv). Raw scan angles and plotting angles are distinct columns.
+- Figure 6C uses the [DFT/UMA overlay table](scan_paths/scan_dihedral/DFT_UMA_relaxed_scan_overlay.csv). Raw scan angles and plotting angles are distinct columns.
 - Figure 6D uses product-forming NEB paths. Deposited bands contain 18 frames for TS1 (16 intermediate images) and 22 each for TS4/TS4′ (20 intermediate images). MEP profiles are separately sampled paths.
 - Figure 6E compares four TS overlays. The tabulated all-atom RMSDs round to TS1 1.031, TS3 0.446, TS4 0.353, TS4′ 0.513 Å. Heavy-atom RMSDs are separate columns.
 

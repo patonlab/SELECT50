@@ -2,7 +2,7 @@
 
 This folder maps to manuscript Figure 8B, SI Tables S23/S24 and Figure S16. The 15 named entries match Table S3 (S-21–S-22) of the Q2MM study SI, DOI `10.1021/acs.joc.1c00136`. The reaction study is cited as DOI `10.1021/ja401713g`.
 
-The author-confirmed experimental temperature is **333 K**. Signed ee values are converted using `ddG_exp = R*T*ln((1+ee/100)/(1-ee/100))`, with `R = 0.00198720425864083 kcal mol⁻¹ K⁻¹`. Raw UMA Gibbs-energy gaps are retained.
+The experimental temperature is **333 K**. Signed ee values are converted using `ddG_exp = R*T*ln((1+ee/100)/(1-ee/100))`, with `R = 0.00198720425864083 kcal mol⁻¹ K⁻¹`. Raw UMA Gibbs-energy gaps are retained.
 
 ## Files and units
 
