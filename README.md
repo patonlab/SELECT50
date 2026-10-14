@@ -24,8 +24,7 @@ Reference geometries were optimized at ωB97X-D3(BJ)/def2-TZVP. The electronic-e
 
 Coordinates and geometric errors use ångströms; absolute energies use hartree and relative energies use kcal/mol. Major/minor roles are fixed by the reference electronic energies, with ΔΔE = E(minor) − E(major) and the same structure assignments for ΔΔG. See the [reference definitions](results/reference/README.md) for roles and exclusions.
 
-<details>
-<summary>Transition-state gallery: 50 pairs</summary>
+### Transition-state gallery
 
 [![Gallery sheet 1](assets/figure_01.png)](assets/figure_01.png)
 
@@ -35,7 +34,6 @@ Coordinates and geometric errors use ångströms; absolute energies use hartree 
 
 [![Gallery sheet 4](assets/figure_04.png)](assets/figure_04.png)
 
-</details>
 
 ## Usage
 
