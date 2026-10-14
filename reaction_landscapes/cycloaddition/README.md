@@ -52,4 +52,4 @@ The activation-strain table contains 72 rows:
 - **TSA:** 23 points, numbered 0–22. Their forming-bond distances match frames 23–1 of [TSA.xyz](irc/TSA.xyz), respectively, corresponding to IRC steps −1 through −23 in [TSA.csv](irc/TSA.csv). This covers the negative branch and excludes the step-0 transition state and positive branch.
 - **TSB:** 49 points, numbered 0–48. Their forming-bond distances match frames 1–49 of [TSB.xyz](irc/TSB.xyz), respectively, corresponding to IRC steps −25 through +23 in [TSB.csv](irc/TSB.csv).
 
-These mappings are established from the deposited bond distances. The activation-strain table also records source output filenames, source line numbers, and fragment electronic energies.
+These mappings are established from the deposited bond distances. The CSV tables contain the complex and fragment electronic energies, thermochemical quantities, and activation-strain terms; the XYZ files provide the stationary-point, scan, and IRC geometries. Fragment membership is specified in `fragment_definition.csv` using one-based indices in the full complex geometry.
