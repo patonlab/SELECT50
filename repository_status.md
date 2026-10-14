@@ -32,3 +32,5 @@ Tests are available with `python -m unittest discover -s tests`; the RMSD tests 
 | Ni/Pd calibration | 8A/B | S23/S24; S15/S16 | 13/15 entries, 100 partitions each, memberships, coefficients and held-out predictions |
 
 The recovery dataset contains 300 logs and 300 XYZ exports. Its [300-row summary](results/perturbed_guesses/ts_recovery_full_data.csv) records recovery metrics and classifications. The recovery XYZ count includes the starting-geometry export for jo8v_min_rmsd0p14_r05.
+
+Calibration experimental gaps use the author-confirmed temperatures: Ni 307.15 K and Pd 333 K. The refit retains the existing 100 partitions, seed record and raw UMA predictions. Partition plotting files provide raw/calibrated MAEs and separately labeled mean-prediction null errors; per-entry plotting files provide Figure 8 coordinates and sample SDs. The shared [refresh driver](calibration/refresh_saved_calibration.py) and family-level `calibration_refit.json` files record this conversion and refit.

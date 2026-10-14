@@ -61,6 +61,8 @@ Recovery runs are arranged at six target Cartesian RMSD magnitudes—0.05, 0.08,
 
 The saved Ni and Pd calibration analyses each contain 100 partitions. Their tables record training/test memberships, fitted coefficients, held-out predictions, and raw and calibrated error metrics.
 
+Experimental calibration gaps are converted from signed ee at **307.15 K for Ni** and **333 K for Pd**. Each series includes partition-level plotting data and per-entry held-out prediction means/sample SDs. The [saved-partition refresh driver](calibration/refresh_saved_calibration.py) recomputes these records without changing the saved training/test memberships.
+
 ## Access and analysis
 
 Clone the repository and record the commit used for an analysis:

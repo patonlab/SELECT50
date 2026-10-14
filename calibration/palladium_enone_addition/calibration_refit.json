@@ -1,0 +1,13 @@
+{
+  "temperature_K": 333.0,
+  "temperature_source": "Author-confirmed experimental temperature, 2026-10-13",
+  "R_kcal_mol_K": 0.00198720425864083,
+  "formula": "R*T*ln((1+ee/100)/(1-ee/100))",
+  "seed": 20260810,
+  "n_splits": 100,
+  "partition_selection": "Existing saved memberships retained; no new random sampling",
+  "input_sha256": "ec510a6f015cdefafad0346a021a1e03db51cb72c6773cea3063ae1dd630f453",
+  "membership_flags_sha256": "1e2c08d2b7150971b36870a183c2788bac3029b10b843cf425e5a0d6bbe7eb31",
+  "refit_method": "OLS with intercept, Python standard library",
+  "python_version": "3.14.4"
+}
