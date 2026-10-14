@@ -2,14 +2,14 @@
 
 This directory contains the [ten stationary-point geometries](cycloaddition_structures.xyz), [electronic and Gibbs energies](gibbs_energies.csv), [two-dimensional scan](2d-scan/scan2d.csv), [IRC trajectories and energy tables](irc/), and [activation-strain decomposition](activation_strain.csv).
 
-The supplied working drafts map this study to manuscript Figure 6, SI Tables S19/S20, and Figure S13. Literature attribution is main/SI reference 79, DOI `10.1021/acs.orglett.6c01569`. The DOCX drafts are supplied beside the checkout, not deposited inside the repository.
+This study maps to manuscript Figure 5, SI Tables S19/S20, and Figure S13. The literature source DOI is `10.1021/acs.orglett.6c01569`.
 
 ## Figure inputs and units
 
-- Figure 6B/S19: ten stationary-point E/G rows in `gibbs_energies.csv`; absolute energies in hartree, relative energies in kcal/mol, recorded temperature 298.15 K, pressure 1 atm, quasi-RRHO flag, and imaginary frequencies in cm⁻¹. E/G values match the supplied S19.
-- Figure 6C: 100 points in `2d-scan/scan2d.csv`, headers `r1,r2,E_rel_kcal`; distances and XYZ coordinates in Å, relative electronic energies in kcal/mol. Surface interpolation/normalization and the drawn route still need a plotting recipe.
-- Figure 6D/S13: deposited UMA IRC paths for TSA–TSD and the activation-strain inputs below. Published DFT TSA/TSB IRC curves/digitization provenance were not found in this study's deposited files.
-- Figure 6E/S20: UMA coordinates are available; an identified published DFT TSA–TSD reference set is still missing. DFT TSB `r2` is 2.06 Å in the working main text/figure versus 2.08 Å in S20, pending coordinate verification.
+- Figure 5B/S19: ten stationary-point E/G rows in `gibbs_energies.csv`; absolute energies in hartree, relative energies in kcal/mol, recorded temperature 298.15 K, pressure 1 atm, quasi-RRHO flag, and imaginary frequencies in cm⁻¹.
+- Figure 5C: 100 points in `2d-scan/scan2d.csv`, headers `r1,r2,E_rel_kcal`; distances and XYZ coordinates in Å, relative electronic energies in kcal/mol.
+- Figure 5D/S13: UMA IRC paths for TSA–TSD and the activation-strain inputs below. [normalized_IRC_DFT_MLIP.csv](normalized_IRC_DFT_MLIP.csv) contains the tabulated DFT/UMA path comparison.
+- Figure 5E/S20: [ts_bond_lengths.csv](ts_bond_lengths.csv) contains all-atom RMSDs and two forming-bond distances for TSA–TSD. The DFT TSB `r2` value is 2.060679 Å, rounding to 2.06 Å.
 
 CSV labels `alkene`, `diazomethane`, `ts-a`–`ts-d`, and `prod-a`–`prod-d` correspond to S19's cyclopentenone, TMS-diazomethane, TSA–TSD, and Prod-A–D, respectively. The SI RMSDs for this study are all-atom values, distinct from the core heavy-atom benchmark.
 
@@ -52,8 +52,4 @@ The activation-strain table contains 72 rows:
 - **TSA:** 23 points, numbered 0–22. Their forming-bond distances match frames 23–1 of [TSA.xyz](irc/TSA.xyz), respectively, corresponding to IRC steps −1 through −23 in [TSA.csv](irc/TSA.csv). This covers the negative branch and excludes the step-0 transition state and positive branch.
 - **TSB:** 49 points, numbered 0–48. Their forming-bond distances match frames 1–49 of [TSB.xyz](irc/TSB.xyz), respectively, corresponding to IRC steps −25 through +23 in [TSB.csv](irc/TSB.csv).
 
-These mappings are established from the deposited bond distances. The reason for the different path coverage is not yet documented.
-
-## Remaining provenance
-
-The table includes source output filenames and line numbers, but the named source outputs and fragment manifests are not deposited. The supplied SI reports ORCA 6.1.1, UMA-S-1.1/OMol through an external-method interface, RTX 5070, and TIGHTOPT relaxed scans. Original per-job inputs/external-model records, fragment relaxation/constraint treatment, and reference-fragment optimization protocol remain to be deposited/verified. The SI also lacks a dedicated activation-strain methods paragraph. No unreported settings or path-selection rationale have been inferred.
+These mappings are established from the deposited bond distances. The activation-strain table also records source output filenames, source line numbers, and fragment electronic energies.

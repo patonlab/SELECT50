@@ -27,7 +27,7 @@ The four sheets illustrate 50 transition-state pairs. Each pair is labelled by c
 | Reference and optimized geometries | Reference coordinates and method-specific transition-state XYZ files | [Reference structures](results/reference/starting_structures/), [optimized geometries](optimized-geometries/) |
 | Selectivity energies | Electronic- and Gibbs-energy separation tables, each containing 50 case rows | [Electronic energies](results/energetics/delta_delta_e.csv), [Gibbs energies](results/energetics/delta_delta_g.csv) |
 | Geometry comparisons | 796 heavy-atom RMSD rows and 1,488 bond-distance rows | [RMSDs](results/geometry/heavy_atom_rmsd.csv), [bond distances](results/geometry/ts_bond_distances.csv) |
-| Transition-state recovery | 300 calculation logs and 300 XYZ exports, organized by transition structure, perturbation magnitude, and replicate | [Recovery calculations](ts_recovery/) |
+| Transition-state recovery | 300 calculation logs and 300 XYZ exports, organized by transition structure, perturbation magnitude, and replicate | [Recovery calculations](ts_recovery/), [summary table](results/perturbed_guesses/ts_recovery_full_data.csv) |
 | Cycloaddition landscape | Ten stationary structures with E/G records, a 100-point two-dimensional scan, IRC trajectories, and 72 activation-strain rows | [Cycloaddition data](reaction_landscapes/cycloaddition/) |
 | Palladium-cyclization landscape | 20 UMA stationary structures, spectator-adjusted energy profiles, IRC and NEB paths, a 73-point dihedral scan, and 21 published DFT structures | [Palladium data](reaction_landscapes/palladium_cyclization/) |
 | Larger systems | Six transition-state pairs: 12 optimized structures, 12 DFT starting structures, and a table of energies, frequencies, and recorded timings | [Structures](large_systems/), [transition-pair table](large_systems/large_system_transition_pairs.csv) |
@@ -46,7 +46,7 @@ The optimized-geometry directories represent the following methods:
 
 The recovery logs identify UMA-S-1.2 with the OMol task. Reaction-landscape records identify UMA-S-1.1 with the OMol task through ORCA's external-method interface.
 
-The active core contains 50 pairs, including an82 in place of ja30. Seven geometry sets contain 100 structures each; g-xTB and r²SCAN-3c contain 98 each because both an82 calculations failed. The g-xTB energy tables evaluate 49 pairs. Both ja1g structures are excluded from bond analysis, as confirmed by the author on 2026-10-12. See [metadata and exclusions](results/reference/README.md) and [current repository status](repository_status.md).
+The active core contains 50 pairs, including an82. Seven geometry sets contain 100 structures each; g-xTB and r²SCAN-3c contain 98 each because both an82 calculations failed. The g-xTB energy tables evaluate 49 pairs. Both ja1g structures are excluded from bond analysis, as confirmed by the author on 2026-10-12. See [metadata and exclusions](results/reference/README.md) and [current repository status](repository_status.md).
 
 ## Data conventions
 
@@ -76,7 +76,7 @@ Coordinates are distributed as XYZ files, tabulated results as CSV files, and re
 The repository includes:
 
 - A [MACE-OMOL/ASE calculation example](examples/calculations/opt_mace_omol.py) with setup and run instructions.
-- ORCA external-UMA templates for [minimum optimization](examples/calculations/job_orca.inp), [TS optimization](examples/calculations/job_orca_ts.inp), [relaxed scans](examples/calculations/job_orca_scan.inp), and [IRC calculations](examples/calculations/job_orca_irc.inp). These are workflow examples; per-job provenance must accompany calculation results.
+- ORCA external-UMA templates for [minimum optimization](examples/calculations/job_orca.inp), [TS optimization](examples/calculations/job_orca_ts.inp), [relaxed scans](examples/calculations/job_orca_scan.inp), and [IRC calculations](examples/calculations/job_orca_irc.inp).
 - [A structural data validator](scripts/validate_data.py) for XYZ parsing, table schemas, case coverage, atom ordering, bond distances, and local documentation links.
 - [A heavy-atom RMSD calculator](scripts/calculate_heavy_atom_rmsd.py) using NumPy and the ωB97X-D3(BJ)/def2-TZVP geometry directory as its reference.
 - [Ni calibration](calibration/nickel_epoxide_arylation/calibrate.py) and [Pd calibration](calibration/palladium_enone_addition/calibrate.py) scripts using NumPy for repeated-split linear fits of experimental ΔΔG against computed ΔΔG.

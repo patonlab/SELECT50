@@ -1,34 +1,34 @@
 # Repository status
 
-Updated 2026-10-12 against local HEAD `bc98c02021b8993215afd8d8235bdbc2b0a0c068` plus the working-tree integration described here. This is a local checkout audit; live GitHub verification was unavailable because credentials were missing. No commit, push or release was made.
+Updated 2026-10-13 to describe the current deposited files and analysis conventions.
 
-## Current core inventory
+## Core inventory
 
-- 50 cases including an82; 100 current reference copies, each byte-identical to the optimized DFT reference.
-- 896 active optimized XYZs: seven methods × 100 and g-xTB/r²SCAN-3c × 98. Four obsolete ja30 copies are preserved in the historical archive.
-- Two 50-row energy masters; g-xTB has 49 evaluated pairs in each. an82 source description/DOI are filled from current SI S2.
-- 796 heavy-atom RMSDs, 1,488 coordinate-verified bond distances and 1,322 bond errors.
-- 166 reference bonds over 98 structures. Both ja1g structures are excluded by author confirmation on 2026-10-12. g-xTB/r²SCAN-3c each cover 163 bonds over 96 structures.
-- 600 source-orientation records, case metadata and explicit geometry-failure ledgers. Supporting aliases, method/provenance notes and source hashes remain in the Downloads audit/export at the author’s request.
+- 50 cases including an82; 100 reference copies, each byte-identical to the optimized DFT reference.
+- 896 optimized XYZs: seven methods ×100 and g-xTB/r²SCAN-3c ×98.
+- Two 50-row pair-energy tables; g-xTB evaluates 49 pairs in each.
+- Six 100-row raw electronic-energy tables using canonical major/minor structure identifiers.
+- 796 heavy-atom RMSDs, 1,488 bond distances and 1,322 non-reference bond errors.
+- 166 reference bonds over 98 structures. Both ja1g structures are excluded from bond analysis. g-xTB/r²SCAN-3c each cover 163 bonds over 96 structures.
+- 600 source-orientation records, case metadata and explicit geometry-failure ledgers.
 
-Major is fixed by lower reference electronic energy and retained for Gibbs energy. The five negative reference G gaps are valid. Eighteen original pairs were jointly reoriented. Model labels for the core are UMA-M-1.1 and UMA-S-1.2; these do not establish per-job checkpoint identity.
+Major/minor identities are assigned using the reference DFT electronic energies and retained for Gibbs comparisons. Five reference Gibbs gaps are negative. Core model labels are UMA-M-1.1 and UMA-S-1.2. MACE electronic ordering is 46/50 after the ac27, d17c and ja03 sign corrections.
+
+The ac16 and ac30 DOI fields are synchronized across case metadata and both pair-energy tables: `10.1021/acscatal.1c00616` and `10.1021/acsomega.9b00030`, respectively.
 
 ## Validation
 
-Run `python3 scripts/validate_data.py` and `python3 -m unittest discover -s tests` (install NumPy to run the RMSD tests). The validator covers XYZ parsing, current method/case coverage, reference-copy equality, element ordering, metadata atom counts, required CSV columns, allowed energy missingness, common E/G orientations, energy method summaries, bond distances/errors and local inline Markdown links. Regression tests reject coverage gaps, undeclared missing values and independent G-role reversal.
+Run `python scripts/validate_data.py`. It checks XYZ parsing, method/case coverage, reference-copy equality, element ordering, metadata atom counts, CSV schemas, declared energy exclusions, E/G orientation records, energy method summaries, bond distances/errors and local Markdown links.
 
-The RMSD calculator separately reproduces all 796 available values at six-decimal output precision. Its strict mode reports the four known absent geometries as failures. Passing structural validation does not verify every original job, plot, category statistic, literature assignment or manuscript statement.
+Tests are available with `python -m unittest discover -s tests`; the RMSD tests require NumPy. The [RMSD calculator](scripts/calculate_heavy_atom_rmsd.py) uses fixed XYZ atom order, heavy atoms and a proper Kabsch rotation. Validation of deposited tables is distinct from authentication of original calculation outputs.
 
-## Other deposited work and remaining gaps
+## Related datasets and figure map
 
-Recovery includes 300 logs and 299 final XYZ exports plus a placeholder for the documented missing jo8v final export. Reproducible recovery summaries and generator/reference provenance remain pending. Large systems contain 12 optimized and 12 starting geometries plus E/G/frequency/timing values; original job versions, mappings and timing scope need reconciliation.
+| Dataset | Main figure | SI tables/figures | Deposited records |
+| --- | --- | --- | --- |
+| Cycloaddition landscape | 5 | S19/S20; S13 | Stationary structures, E/G, 2D scan, IRC and activation-strain tables |
+| Palladium-cyclization landscape | 6 | S21; S14 | 20 UMA stationary structures, 21 published DFT structures, profiles, IRC, dihedral scan and NEB/MEP paths |
+| Large systems | 7 | S22 | 12 optimized/start pairs and an E/G/frequency/timing table |
+| Ni/Pd calibration | 8A/B | S23/S24; S15/S16 | 13/15 entries, 100 partitions each, memberships, coefficients and held-out predictions |
 
-Cycloaddition and palladium landscape data are deposited. C05/C06 corrections, source-backed audits and replacement plots are prepared in the user's separate Downloads audit and **have not been integrated here**, as requested. Existing study guides and manuscript/SI still need those corrections.
-
-Calibration supplies 13 Ni and 15 Pd ee entries and saved 100-partition analyses. Pd P03/P11 are resolved as −87%/+87% from Table S3 of DOI `10.1021/acs.joc.1c00136`; both repository ee tables agree. The Pd script still requests 1000 partitions instead of the retained 100; align the script before regenerating results. Calibration OLE drawings still need portable replacements.
-
-The current manuscript/SI remain unchanged: core tables/figures and study corrections still require a careful merge. Source identity questions are tracked in [reference guide](results/reference/README.md). Original reference outputs, complete checkpoint/environment/thermal provenance, final release attribution and an actual archival DOI remain outstanding. Input templates are examples, not original-job evidence.
-
-## Historical audit results
-
-The pre-integration validator failed because it expected obsolete folders, CSV schemas and complete coverage. Eight broken links and the stale reference/MACE ja30 copies were found then. Those findings describe the earlier working tree; use the current validator and inventory above for this integration. C05/C06 scientific findings remain staged for review.
+The recovery dataset contains 300 logs and 300 XYZ exports. Its [300-row summary](results/perturbed_guesses/ts_recovery_full_data.csv) records recovery metrics and classifications. The recovery XYZ count includes the starting-geometry export for jo8v_min_rmsd0p14_r05.

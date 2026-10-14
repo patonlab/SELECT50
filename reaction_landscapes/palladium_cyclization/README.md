@@ -1,6 +1,6 @@
-# Palladium-cyclization landscape — Figure 7
+# Palladium-cyclization landscape — Figure 6
 
-This study maps to manuscript Figure 7 and SI Table S21/Figure S14 in the separately supplied working drafts. The literature source is printed as main reference 82 and SI reference 80, DOI `10.1021/acscatal.3c00732`. This guide describes deposited files; it does not establish missing calculation provenance or resolve manuscript discrepancies.
+This study maps to manuscript Figure 6 and SI Table S21/Figure S14. The literature source DOI is `10.1021/acscatal.3c00732`. The reaction-landscape records identify UMA-S-1.1 with the OMol task.
 
 ## Files and units
 
@@ -19,20 +19,14 @@ XYZ coordinates use Å. Helper/spectator rows in the profile have blank adjusted
 
 ## Figure and label mapping
 
-- Figure 7A uses spectator-adjusted relative Gibbs energies. `3a` corresponds to SI `Sub`; `4a` to `Prod`. Folder/CSV `Int1`, `int2`–`int5`, and `ts1`–`ts4` correspond to the formatted SI labels; `_prime` represents a prime mark.
-- Figure 7B/S14 use IRC paths. The requested unprimed TS1–TS4 and TS4′ energy tables contain 37, 16, 11, 51, and 51 points, respectively. File presence alone does not verify relaxed endpoint connectivity.
-- Figure 7C uses the 73-point UMA dihedral scan and the deposited DFT/UMA overlay table. Raw scan angles and plotting angles are distinct columns. The source/digitization procedure for the published DFT scan and treatment of discontinuities need documentation.
-- Figure 7D uses product-forming NEB paths. Deposited bands contain 18 frames for TS1 and 22 each for TS4/TS4′. The SI's general statement of 16 intermediate images must be reconciled per path, distinguishing endpoints and separately sampled MEP points.
-- Figure 7E compares four TS overlays. The table reproduces the quoted all-atom RMSDs: TS1 1.031, TS3 0.446, TS4 0.353, TS4′ 0.513 Å. Heavy-atom RMSDs are separate columns.
+- Figure 6A uses spectator-adjusted relative Gibbs energies. `3a` corresponds to SI `Sub`; `4a` to `Prod`. Folder/CSV `Int1`, `int2`–`int5`, and `ts1`–`ts4` correspond to the formatted SI labels; `_prime` represents a prime mark.
+- Figure 6B/S14 use IRC paths. The unprimed TS1–TS4 and TS4′ energy tables contain 37, 16, 11, 51, and 51 points, respectively.
+- Figure 6C uses the 73-point UMA dihedral scan and the [DFT/UMA overlay table](scan_paths/scan_dihedral/DFT_UMA_relaxed_scan_overlay.csv). Raw scan angles and plotting angles are distinct columns.
+- Figure 6D uses product-forming NEB paths. Deposited bands contain 18 frames for TS1 (16 intermediate images) and 22 each for TS4/TS4′ (20 intermediate images). MEP profiles are separately sampled paths.
+- Figure 6E compares four TS overlays. The tabulated all-atom RMSDs round to TS1 1.031, TS3 0.446, TS4 0.353, TS4′ 0.513 Å. Heavy-atom RMSDs are separate columns.
 
-## Outstanding provenance and document corrections
+## Structure and contact records
 
-The working SI describes ORCA 6.1.1, UMA-S-1.1/OMol through an external-method interface, RTX 5070, numerical frequencies, TIGHTOPT intermediate optimization, and bidirectional IRCs. These are reported settings; original per-job inputs/model records remain needed to verify each deposited calculation and thermochemistry/standard-state treatment.
+Table S21 lists the 20 retained UMA stationary species. The Pd contact comparison tables select contacts within 2.8 Å and record one-based atom indices for distances and angles.
 
-Table S21 lists the 20 retained UMA stationary species, including the corrected Int4 energies.
-
-The Pd contact comparison tables select contacts within 2.8 Å. They are not the exact set of distances/angles displayed in Figure 7E, which also includes forming bonds. Deposit those specific atom selections and fit/atom-correspondence conventions before treating the broad table as proof of every selected-metric claim.
-
-DFT coordinates are reported as extracted from Section 26 of `cs3c00732_si_001.pdf`; the manifest records page starts and Eopt in hartree. The PDF is not deposited. Original structure identification, extraction/atom mapping, and source notices need a complete provenance account.
-
-The main draft compares the calculation with related experimental substrates at 60 °C, explicitly noting that the exact modeled system was not experimentally characterized. Per-entry ee values, source pages, and the conversion account are still missing. The calculated 298.15 K Gibbs energies and experimental selectivity at 333.15 K are different conditions.
+The extraction notes identify Section 26 of `cs3c00732_si_001.pdf` as the source of the published DFT coordinates. The manifest records page starts and Eopt in hartree; each XYZ comment records its reported optimized energy.

@@ -17,9 +17,9 @@ jo8v,cyclic vs acylic TS ,C3H8Cl4O2SiTi,Chemoselective,0,1,10.1021/jo062218v,Ti,
 jo90,"5-conc2 / 5-sn2 (Pd, Br)",C5H14BrOPPdS,Chemoselective,0,1,10.1021/jo900178c,Pd,Metal-containing,True
 ol1s,TS1-RS / TS1-SR,C34H32O5S,Stereoselective,0,1,10.1021/ol0491641,,Metal-free,False
 ol7q,Boron aldol (C-C),C9H19BO3,Conformational,0,1,10.1021/ol061671q,,Metal-free,False
-ac16,Mn hydride transfer,C24H28MnN3O4,Stereoselective,0,1,10.1021/acscatal.1c00061,Mn,Metal-containing,True
+ac16,Mn hydride transfer,C24H28MnN3O4,Stereoselective,0,1,10.1021/acscatal.1c00616,Mn,Metal-containing,True
 ac27,C-N radical addition,C14H26N2OSi2,Regioselective,1,2,10.1021/acs.joc.3c01127,,Metal-free,False
-ac30,Ni alkyne insertion,C22H18N2NiO,Regioselective,0,1,,Ni,Metal-containing,True
+ac30,Ni alkyne insertion,C22H18N2NiO,Regioselective,0,1,10.1021/acsomega.9b00030,Ni,Metal-containing,True
 ac70,Ru cycloreversion,C25H32Cl4N2RuS,Stereoselective,0,1,10.1021/acs.organomet.5b00970,Ru,Metal-containing,True
 an04,Pt migratory insertion,C27H35B2N2O4PPt,Regioselective,0,1,10.1002/anie.202413504,Pt,Metal-containing,True
 c0sc,(4+3) oxyallyl-furan cycloaddition,C16H15NO4,Stereoselective,0,1,10.1039/C0SC00280A,,Metal-free,False
