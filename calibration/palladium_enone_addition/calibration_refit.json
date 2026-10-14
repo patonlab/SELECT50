@@ -6,7 +6,7 @@
   "seed": 20260810,
   "n_splits": 100,
   "partition_selection": "Existing saved memberships retained; no new random sampling",
-  "input_sha256": "ec510a6f015cdefafad0346a021a1e03db51cb72c6773cea3063ae1dd630f453",
+  "input_sha256": "d3a5f4bebe7ed9505b6d77a3f6b0af854051211b9a283fce498e40ccf4a4167d",
   "membership_flags_sha256": "1e2c08d2b7150971b36870a183c2788bac3029b10b843cf425e5a0d6bbe7eb31",
   "refit_method": "OLS with intercept, Python standard library",
   "python_version": "3.14.4"
