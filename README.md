@@ -26,6 +26,7 @@ The four sheets illustrate 50 transition-state pairs. Each pair is labelled by c
 | --- | --- | --- |
 | Reference and optimized geometries | Reference coordinates and method-specific transition-state XYZ files | [Reference structures](results/reference/starting_structures/), [optimized geometries](optimized-geometries/) |
 | Selectivity energies | Electronic- and Gibbs-energy separation tables, each containing 50 case rows | [Electronic energies](results/energetics/delta_delta_e.csv), [Gibbs energies](results/energetics/delta_delta_g.csv) |
+| Raw core energies | Absolute electronic and Gibbs energies, including MACE-OMOL thermochemistry | [Raw energy tables](results/energetics/) |
 | Geometry comparisons | 796 heavy-atom RMSD rows and 1,488 bond-distance rows | [RMSDs](results/geometry/heavy_atom_rmsd.csv), [bond distances](results/geometry/ts_bond_distances.csv) |
 | Transition-state recovery | 300 calculation logs and 300 XYZ exports, organized by transition structure, perturbation magnitude, and replicate | [Recovery calculations](ts_recovery/), [summary table](results/perturbed_guesses/ts_recovery_full_data.csv) |
 | Cycloaddition landscape | Ten stationary structures with E/G records, a 100-point two-dimensional scan, IRC trajectories, and 72 activation-strain rows | [Cycloaddition data](reaction_landscapes/cycloaddition/) |
@@ -52,7 +53,7 @@ The core contains 50 pairs, including an82. Seven geometry sets contain 100 stru
 
 - **Coordinates and geometry:** XYZ coordinates, RMSDs, and bond distances use ångströms (Å). Bond-table atom indices are one-based.
 - **Core energy differences:** CSV headers specify kcal/mol. ΔΔE = E(minor) − E(major), with the analogous definition for ΔΔG. Major is the lower reference electronic-energy structure; that role is fixed for both E and G. Only reference ΔΔE is positive by construction; five reference ΔΔG values are negative.
-- **Absolute energies:** Landscape and large-system tables report electronic and Gibbs energies in hartree. Relative landscape energies are recorded in kcal/mol.
+- **Absolute energies:** Core raw-energy tables in `results/energetics/`, landscape tables and large-system tables report electronic and Gibbs energies in hartree. Relative landscape energies are recorded in kcal/mol.
 - **Frequencies and timings:** Imaginary frequencies in the large-system table use cm⁻¹; its `time_seconds` field uses seconds.
 - **Structure names:** Core XYZ filenames use `<case_id>_major.xyz` and `<case_id>_minor.xyz`. Method geometries are organized as `optimized-geometries/<method>/<structure_id>/<structure_id>.xyz`.
 - **Heavy-atom RMSD:** The supplied calculation script pairs atoms by XYZ order, excludes hydrogen, and uses an equally weighted Kabsch alignment with proper rotation and no outlier rejection.

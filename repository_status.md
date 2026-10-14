@@ -1,13 +1,13 @@
 # Repository status
 
-Updated 2026-10-13 to describe the current deposited files and analysis conventions.
+Updated 2026-10-14 to describe the current deposited files and analysis conventions.
 
 ## Core inventory
 
 - 50 cases including an82; 100 reference copies, each byte-identical to the optimized DFT reference.
 - 896 optimized XYZs: seven methods ×100 and g-xTB/r²SCAN-3c ×98.
 - Two 50-row pair-energy tables; g-xTB evaluates 49 pairs in each.
-- Six 100-row raw electronic-energy tables using canonical major/minor structure identifiers.
+- Raw core energies in results/energetics/: six 100-row electronic-energy tables, five Gibbs-energy tables and the MACE-OMOL thermochemistry table.
 - 796 heavy-atom RMSDs, 1,488 bond distances and 1,322 non-reference bond errors.
 - 166 reference bonds over 98 structures. Both ja1g structures are excluded from bond analysis. g-xTB/r²SCAN-3c each cover 163 bonds over 96 structures.
 - 600 source-orientation records, case metadata and explicit geometry-failure ledgers.
