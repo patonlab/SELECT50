@@ -1,51 +1,51 @@
 benchmark_id,description,molecular_formula,selectivity_class,charge_e,spin_multiplicity,doi,metal_elements,metal_group,metal_containing
 an02,Intramolecular Diels-Alder (C-C),C34H39BNO2,Stereoselective,1,1,10.1002/anie.200802002,,Metal-free,False
-ja1g,6a-TS / 6b-TS (triplet),C8H9P,Chemoselective,0,3,10.1021/ja050891g,,Metal-free,False
-ja1m,R-1 / S-2 (Pd allyl substitution),C23H35ClN2OPd,Stereoselective,0,1,10.1021/ja031911m,Pd,Metal-containing,True
-ja20,Aldol (C-C),C13H21NO3,Stereoselective,0,1,10.1021/ja0507620,,Metal-free,False
-ja37,TS4a / TS4b (organocatalytic),C35H39F12N3O5Si,Stereoselective,0,1,10.1021/ja064637f,,Metal-free,False
-ja4q,"5,6-cyp / 5-met-tricyclyl-spiro",C10H9,Regioselective,0,2,10.1021/ja029584q,,Metal-free,False
-ja5j,TS3-E / TS3-Z,C20H21N2O4P,Stereoselective,0,1,10.1021/ja808715j,,Metal-free,False
-ja8y,model-B exo-anti / exo-syn,C8H19B2NO4,Stereoselective,0,1,10.1021/ja031778y,,Metal-free,False
-jo15,3a-RS / 3a-SS (Ti),C6H14O5Ti,Stereoselective,0,1,10.1021/jo016015c,Ti,Metal-containing,True
-jo5k,End-a / Ex-b,C20H21ClNO2,Stereoselective,-1,1,10.1021/jo801665k,,Metal-free,False
-jo78,Exo / Endo,C9H8O3,Stereoselective,0,1,10.1021/jo0158478,,Metal-free,False
-jo82,E-sin / Z-sin,C9H17NO5,Stereoselective,0,1,10.1021/jo0159082,,Metal-free,False
-jo84,"Coll-5a / Perp-5a (CH4, triplet)",C4H10O2,Conformational,0,3,10.1021/jo0266184,,Metal-free,False
-jo8a,anti-7a / syn-7a,C14H27IN2O2,Stereoselective,0,1,10.1021/jo052088a,,Metal-free,False
-jo8v,cyclic vs acylic TS ,C3H8Cl4O2SiTi,Chemoselective,0,1,10.1021/jo062218v,Ti,Metal-containing,True
-jo90,"5-conc2 / 5-sn2 (Pd, Br)",C5H14BrOPPdS,Chemoselective,0,1,10.1021/jo900178c,Pd,Metal-containing,True
-ol1s,TS1-RS / TS1-SR,C34H32O5S,Stereoselective,0,1,10.1021/ol0491641,,Metal-free,False
-ol7q,Boron aldol (C-C),C9H19BO3,Conformational,0,1,10.1021/ol061671q,,Metal-free,False
-ac16,Mn hydride transfer,C24H28MnN3O4,Stereoselective,0,1,10.1021/acscatal.1c00616,Mn,Metal-containing,True
-ac27,C-N radical addition,C14H26N2OSi2,Regioselective,1,2,10.1021/acs.joc.3c01127,,Metal-free,False
-ac30,Ni alkyne insertion,C22H18N2NiO,Regioselective,0,1,10.1021/acsomega.9b00030,Ni,Metal-containing,True
-ac70,Ru cycloreversion,C25H32Cl4N2RuS,Stereoselective,0,1,10.1021/acs.organomet.5b00970,Ru,Metal-containing,True
-an04,Pt migratory insertion,C27H35B2N2O4PPt,Regioselective,0,1,10.1002/anie.202413504,Pt,Metal-containing,True
+ja1g,Giesse addition vs rotation,C8H9P,Chemoselective,0,3,10.1021/ja050891g,,Metal-free,False
+ja1m,Pd-hydride migratory insertion,C23H35ClN2OPd,Stereoselective,0,1,10.1021/ja031911m,Pd,Metal-containing,True
+ja20,Proline catalyzed aldol,C13H21NO3,Stereoselective,0,1,10.1021/ja0507620,,Metal-free,False
+ja37,Organocatalyzed hetero-[4+2] cycloaddition,C35H39F12N3O5Si,Stereoselective,0,1,10.1021/ja064637f,,Metal-free,False
+ja4q,Regioselective radical spirocyclization,C10H9,Regioselective,0,2,10.1021/ja029584q,,Metal-free,False
+ja5j,Phosphoric acid catalyzed Strecker reaction,C20H21N2O4P,Stereoselective,0,1,10.1021/ja808715j,,Metal-free,False
+ja8y,Stereoselective borohydride transfer,C8H19B2NO4,Stereoselective,0,1,10.1021/ja031778y,,Metal-free,False
+jo15,Ti-catalyzed epoxidation,C6H14O5Ti,Stereoselective,0,1,10.1021/jo016015c,Ti,Metal-containing,True
+jo5k,Stereoselective enolate alkylation,C20H21ClNO2,Stereoselective,-1,1,10.1021/jo801665k,,Metal-free,False
+jo78,Exo vs endo cycloaddition,C9H8O3,Stereoselective,0,1,10.1021/jo0158478,,Metal-free,False
+jo82,Stereoselective hydroxylamine Micheal addition,C9H17NO5,Stereoselective,0,1,10.1021/jo0159082,,Metal-free,False
+jo84,Methane DMDO hydroxylation,C4H10O2,Conformational,0,3,10.1021/jo0266184,,Metal-free,False
+jo8a,Intramolecular enamine catalyzed alkylation,C14H27IN2O2,Stereoselective,0,1,10.1021/jo052088a,,Metal-free,False
+jo8v,Ti catalyzed aldol: Cyclic vs acylic,C3H8Cl4O2SiTi,Chemoselective,0,1,10.1021/jo062218v,Ti,Metal-containing,True
+jo90,3 centered vs SN2 Pd-oxidative addition,C5H14BrOPPdS,Chemoselective,0,1,10.1021/jo900178c,Pd,Metal-containing,True
+ol1s,Sulfur ylide aldol reaction,C34H32O5S,Stereoselective,0,1,10.1021/ol0491641,,Metal-free,False
+ol7q,Boron catalyzed cyclic aldol,C9H19BO3,Conformational,0,1,10.1021/ol061671q,,Metal-free,False
+ac16,Mn hydride outer sphere transfer,C24H28MnN3O4,Stereoselective,0,1,10.1021/acscatal.1c00616,Mn,Metal-containing,True
+ac27,C-N cation radical addition,C14H26N2OSi2,Regioselective,1,2,10.1021/acs.joc.3c01127,,Metal-free,False
+ac30,Ni-alkyne insertion,C22H18N2NiO,Regioselective,0,1,10.1021/acsomega.9b00030,Ni,Metal-containing,True
+ac70,Ru-catalyzed cycloreversion,C25H32Cl4N2RuS,Stereoselective,0,1,10.1021/acs.organomet.5b00970,Ru,Metal-containing,True
+an04,Pt-boryl migratory insertion,C27H35B2N2O4PPt,Regioselective,0,1,10.1002/anie.202413504,Pt,Metal-containing,True
 c0sc,(4+3) oxyallyl-furan cycloaddition,C16H15NO4,Stereoselective,0,1,10.1039/C0SC00280A,,Metal-free,False
-cp77,ene reaction,C11H18O2,Stereoselective,0,1,10.1002/cphc.202200377,,Metal-free,False
+cp77,Stereoselective ene reaction,C11H18O2,Stereoselective,0,1,10.1002/cphc.202200377,,Metal-free,False
 d12k,B-C carbene insertion,C30H28BF3N2O2,Stereoselective,0,1,10.1039/D1CY01232K,,Metal-free,False
-d15k,Cu alkene insertion,C27H41CuN2O3,Stereoselective,1,2,10.1039/D1CC03515K,Cu,Metal-containing,True
+d15k,Cu-catalyzed alkoxide insertion,C27H41CuN2O3,Stereoselective,1,2,10.1039/D1CC03515K,Cu,Metal-containing,True
 d17c,Se-C ene reaction,C10H18N2O6S2Se,Regioselective,0,1,10.1039/D1SC07067C,,Metal-free,False
-d22d,Pd carbene migratory insertion,C34H30BrO2PPd,Stereoselective,0,1,10.1039/D2CY01702D,Pd,Metal-containing,True
-ej84,C-C radical coupling,C9H7F3N,Regioselective,0,2,10.1002/ejoc.201901784,,Metal-free,False
-ja03,fluorine SN2,C29H24F13N3O3,Regioselective,0,1,10.1021/jacs.3c01303,,Metal-free,False
-ja44,C-C HAT,C21H45N2O2,Regioselective,0,2,10.1021/jacs.1c07144,,Metal-free,False
-ja5b,vicinal diamine-catalysed aldol,C19H28N3O3,Stereoselective,1,1,10.1021/jacs.5b12097,,Metal-free,False
-jo2y,Diels-Alder,C17H18O4,Stereoselective,0,1,10.1021/jo902572y,,Metal-free,False
-om7u,Rh proton shift / alkene coordination,C20H18NO3Rh,Stereoselective,0,1,10.1021/om400227u,Rh,Metal-containing,True
-jc93,Cyclisation vs staudinger fragmentation,C21H21NO2,Chemoselective,0,1,10.1016/j.checat.2025.101493,,Metal-free,False
+d22d,Pd-carbene migratory insertion,C34H30BrO2PPd,Stereoselective,0,1,10.1039/D2CY01702D,Pd,Metal-containing,True
+ej84,CF3 radical Giese addition,C9H7F3N,Regioselective,0,2,10.1002/ejoc.201901784,,Metal-free,False
+ja03,Bronsted acid catalyzed fluoride SN2,C29H24F13N3O3,Regioselective,0,1,10.1021/jacs.3c01303,,Metal-free,False
+ja44,Carbon radical centered HAT,C21H45N2O2,Regioselective,0,2,10.1021/jacs.1c07144,,Metal-free,False
+ja5b,Vicinal diamine-catalyzed aldol,C19H28N3O3,Stereoselective,1,1,10.1021/jacs.5b12097,,Metal-free,False
+jo2y,Stereoselective [4+2] cycloaddition,C17H18O4,Stereoselective,0,1,10.1021/jo902572y,,Metal-free,False
+om7u,Rh-proton shift / alkene coordination,C20H18NO3Rh,Stereoselective,0,1,10.1021/om400227u,Rh,Metal-containing,True
+jc93,Cyclisation vs Staudinger fragmentation,C21H21NO2,Chemoselective,0,1,10.1016/j.checat.2025.101493,,Metal-free,False
 s474,3 vs 5 membered ring radical migration,C17H17F3NO6S,Regioselective,0,2,10.1038/s41586-026-10347-4,,Metal-free,False
-an82,Decarboxylation vs HAT,C10H11O2,Chemoselective,0,2,10.1002/anie.202515582,,Metal-free,False
+an82,Decarboxlation vs HAT,C10H11O2,Chemoselective,0,2,10.1002/anie.202515582,,Metal-free,False
 ja61,internal vs terminal giesse addition,C11H15O2S,Regioselective,0,2,10.1021/jacs.5c08562,,Metal-free,False
 ac94,NCI driven steroselctive allylic addition,C44H62F6N2NiO2P2,Stereoselective,0,1,10.1021/acscatal.4c01194,Ni,Metal-containing,True
 an41,sigma vs pi insertion of carbene,C36H41AuF2N2,Chemoselective,0,1,10.1002/anie.202511941,Au,Metal-containing,True
-sc63,XAT vs HAT ,C12H18Br,Chemoselective,0,2,10.1126/science.abq8663,,Metal-free,False
-ac32,electrostatic switching of slectvity,C15H18N2O5,Stereoselective,0,1,10.1021/acs.joc.1c01032,,Metal-free,False
-ac57,oxidative addition: SN2 vs agostic,C21H42F2NiO5P2S,Chemoselective,0,1,10.1021/acscatal.3c00257,Ni,Metal-containing,True
-an85,Nuc addition to alkynes,C18H18F5NS,Regioselective,0,1,10.1002/anie.202300685,,Metal-free,False
-d08a,Chiral CPA Aza-cope,C63H52Br2NO4P,Stereoselective,0,1,10.1039/d0ob02458a,,Metal-free,False
-ja0q,Wittig E vs Z selectvity,C28H25O3P,Stereoselective,0,1,10.1021/ja056650q,,Metal-free,False
-ja2s,"guanidinium claisen, charge and NCI",C42H54N5O3,Stereoselective,1,1,10.1021/ja110842s,,Metal-free,False
-sc99,ipso vs ortho minisci,C16H16NO,Regioselective,0,2,10.1126/sciadv.aeg0999,,Metal-free,False
-ja86,Pd beta vs gamma C sp3-H arylation,C16H20F3N3O5Pd,Regioselective,0,1,10.1021/jacs.1c13586,Pd,Metal-containing,True
+sc63,Radical XAT vs HAT,C12H18Br,Chemoselective,0,2,10.1126/science.abq8663,,Metal-free,False
+ac32,Electrostatic effcts in enamine aldol reaction,C15H18N2O5,Stereoselective,0,1,10.1021/acs.joc.1c01032,,Metal-free,False
+ac57,Ni-oxidative addition: SN2 vs 3-centred,C21H42F2NiO5P2S,Chemoselective,0,1,10.1021/acscatal.3c00257,Ni,Metal-containing,True
+an85,Nucleophilic addition to alkynes,C18H18F5NS,Regioselective,0,1,10.1002/anie.202300685,,Metal-free,False
+d08a,Chiral CPA Aza-cope reaction,C63H52Br2NO4P,Stereoselective,0,1,10.1039/d0ob02458a,,Metal-free,False
+ja0q,Wittig E vs Z selectivity,C28H25O3P,Stereoselective,0,1,10.1021/ja056650q,,Metal-free,False
+ja2s,Guanidinium catalyzed Claisen rearrangement,C42H54N5O3,Stereoselective,1,1,10.1021/ja110842s,,Metal-free,False
+sc99,Ipso vs ortho menisci addition,C16H16NO,Regioselective,0,2,10.1126/sciadv.aeg0999,,Metal-free,False
+ja86,Pd-beta vs gamma Csp3-H arylation,C16H20F3N3O5Pd,Regioselective,0,1,10.1021/jacs.1c13586,Pd,Metal-containing,True
