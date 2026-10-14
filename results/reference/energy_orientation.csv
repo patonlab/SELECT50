@@ -50,7 +50,7 @@ s474,delta_delta_e,esen,-2.758396,-2.960171,-1
 sc63,delta_delta_e,esen,5.152179,3.607246,1
 sc99,delta_delta_e,esen,4.579563,4.256637,1
 ac16,delta_delta_e,mace_omol,5.190813,3.896,1
-ac27,delta_delta_e,mace_omol,-0.174258,-0.3088,-1
+ac27,delta_delta_e,mace_omol,-0.174258,0.3088,-1
 ac30,delta_delta_e,mace_omol,2.075866,2.877,1
 ac32,delta_delta_e,mace_omol,-0.440802,-0.0126,-1
 ac57,delta_delta_e,mace_omol,4.774895,1.511,1
@@ -65,10 +65,10 @@ cp77,delta_delta_e,mace_omol,0.402541,0.6156,1
 d08a,delta_delta_e,mace_omol,2.21118,1.709,1
 d12k,delta_delta_e,mace_omol,-0.215032,-0.472,-1
 d15k,delta_delta_e,mace_omol,5.604058,6.0155,1
-d17c,delta_delta_e,mace_omol,-0.129403,-0.079,-1
+d17c,delta_delta_e,mace_omol,-0.129403,0.079,-1
 d22d,delta_delta_e,mace_omol,3.155796,2.425,1
 ej84,delta_delta_e,mace_omol,0.409824,0.6913,1
-ja03,delta_delta_e,mace_omol,-0.42575,-0.4284,-1
+ja03,delta_delta_e,mace_omol,-0.42575,0.4284,-1
 ja0q,delta_delta_e,mace_omol,4.298871,4.413,1
 ja1g,delta_delta_e,mace_omol,8.057047,8.9643,1
 ja1m,delta_delta_e,mace_omol,3.234686,1.792,1

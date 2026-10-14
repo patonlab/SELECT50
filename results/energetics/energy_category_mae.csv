@@ -5,7 +5,7 @@ delta_delta_e,S9,selectivity_class,Stereoselective,uma_m,UMA-M-1.1,27,27,0.36960
 delta_delta_e,S9,selectivity_class,Stereoselective,uma_s,UMA-S-1.2,27,27,0.4661856481481481
 delta_delta_e,S9,selectivity_class,Stereoselective,gxtb,g-xTB,27,27,1.3136936666666668
 delta_delta_e,S9,selectivity_class,Regioselective,esen,eSEN-medium,13,13,0.4226894615384615
-delta_delta_e,S9,selectivity_class,Regioselective,mace_omol,MACE-OMOL,13,13,0.8116106153846154
+delta_delta_e,S9,selectivity_class,Regioselective,mace_omol,MACE-OMOL,13,13,0.9160733846153847
 delta_delta_e,S9,selectivity_class,Regioselective,uma_m,UMA-M-1.1,13,13,0.2167578461538461
 delta_delta_e,S9,selectivity_class,Regioselective,uma_s,UMA-S-1.2,13,13,0.4862799230769231
 delta_delta_e,S9,selectivity_class,Regioselective,gxtb,g-xTB,13,13,1.3487396923076924
@@ -20,12 +20,12 @@ delta_delta_e,S9,selectivity_class,Conformational,uma_m,UMA-M-1.1,2,2,0.07362549
 delta_delta_e,S9,selectivity_class,Conformational,uma_s,UMA-S-1.2,2,2,0.0223915000000001
 delta_delta_e,S9,selectivity_class,Conformational,gxtb,g-xTB,2,2,0.4138329999999998
 delta_delta_e,S10,charge_e,0,esen,eSEN-medium,44,44,0.5799916136363638
-delta_delta_e,S10,charge_e,0,mace_omol,MACE-OMOL,44,44,0.8259860909090908
+delta_delta_e,S10,charge_e,0,mace_omol,MACE-OMOL,44,44,0.8489292727272727
 delta_delta_e,S10,charge_e,0,uma_m,UMA-M-1.1,44,44,0.3622049545454546
 delta_delta_e,S10,charge_e,0,uma_s,UMA-S-1.2,44,44,0.4416292954545454
 delta_delta_e,S10,charge_e,0,gxtb,g-xTB,44,43,1.964368046511628
 delta_delta_e,S10,charge_e,+1,esen,eSEN-medium,5,5,0.5444720000000001
-delta_delta_e,S10,charge_e,+1,mace_omol,MACE-OMOL,5,5,0.2282394
+delta_delta_e,S10,charge_e,+1,mace_omol,MACE-OMOL,5,5,0.2979426
 delta_delta_e,S10,charge_e,+1,uma_m,UMA-M-1.1,5,5,0.4005397999999999
 delta_delta_e,S10,charge_e,+1,uma_s,UMA-S-1.2,5,5,0.4695590000000001
 delta_delta_e,S10,charge_e,+1,gxtb,g-xTB,5,5,1.3874786
@@ -35,12 +35,12 @@ delta_delta_e,S10,charge_e,-1,uma_m,UMA-M-1.1,1,1,0.0616194999999999
 delta_delta_e,S10,charge_e,-1,uma_s,UMA-S-1.2,1,1,0.4155294999999999
 delta_delta_e,S10,charge_e,-1,gxtb,g-xTB,1,1,1.829661
 delta_delta_e,S11,spin_multiplicity,Singlet,esen,eSEN-medium,38,38,0.5995261052631579
-delta_delta_e,S11,spin_multiplicity,Singlet,mace_omol,MACE-OMOL,38,38,0.6744779473684211
+delta_delta_e,S11,spin_multiplicity,Singlet,mace_omol,MACE-OMOL,38,38,0.7010437368421053
 delta_delta_e,S11,spin_multiplicity,Singlet,uma_m,UMA-M-1.1,38,38,0.4130374078947369
 delta_delta_e,S11,spin_multiplicity,Singlet,uma_s,UMA-S-1.2,38,38,0.4851682763157895
 delta_delta_e,S11,spin_multiplicity,Singlet,gxtb,g-xTB,38,38,1.9200167894736844
 delta_delta_e,S11,spin_multiplicity,Doublet,esen,eSEN-medium,10,10,0.4569318000000001
-delta_delta_e,S11,spin_multiplicity,Doublet,mace_omol,MACE-OMOL,10,10,0.9143758000000002
+delta_delta_e,S11,spin_multiplicity,Doublet,mace_omol,MACE-OMOL,10,10,0.9492274000000002
 delta_delta_e,S11,spin_multiplicity,Doublet,uma_m,UMA-M-1.1,10,10,0.1702999999999998
 delta_delta_e,S11,spin_multiplicity,Doublet,uma_s,UMA-S-1.2,10,10,0.3308686000000002
 delta_delta_e,S11,spin_multiplicity,Doublet,gxtb,g-xTB,10,9,2.1584323333333333
@@ -55,7 +55,7 @@ delta_delta_e,S12,metal_group,Metal-containing,uma_m,UMA-M-1.1,15,15,0.674712533
 delta_delta_e,S12,metal_group,Metal-containing,uma_s,UMA-S-1.2,15,15,0.6680657333333334
 delta_delta_e,S12,metal_group,Metal-containing,gxtb,g-xTB,15,15,3.3530966666666666
 delta_delta_e,S12,metal_group,Metal-free,esen,eSEN-medium,35,35,0.4362920285714285
-delta_delta_e,S12,metal_group,Metal-free,mace_omol,MACE-OMOL,35,35,0.600725342857143
+delta_delta_e,S12,metal_group,Metal-free,mace_omol,MACE-OMOL,35,35,0.6395258
 delta_delta_e,S12,metal_group,Metal-free,uma_m,UMA-M-1.1,35,35,0.2251613857142857
 delta_delta_e,S12,metal_group,Metal-free,uma_s,UMA-S-1.2,35,35,0.3478293571428571
 delta_delta_e,S12,metal_group,Metal-free,gxtb,g-xTB,35,34,1.262895

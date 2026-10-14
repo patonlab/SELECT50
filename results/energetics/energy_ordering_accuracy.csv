@@ -11,8 +11,8 @@ delta_delta_e,S13,esen,eSEN-medium,all,50,50,46,92.0
 delta_delta_e,S13,esen,eSEN-medium,lt_0p5,9,9,8,88.88888888888889
 delta_delta_e,S13,esen,eSEN-medium,0p5_to_1p0_inclusive,2,2,2,100.0
 delta_delta_e,S13,esen,eSEN-medium,gt_1p0,39,39,36,92.3076923076923
-delta_delta_e,S13,mace_omol,MACE-OMOL,all,50,50,49,98.0
-delta_delta_e,S13,mace_omol,MACE-OMOL,lt_0p5,9,9,8,88.88888888888889
+delta_delta_e,S13,mace_omol,MACE-OMOL,all,50,50,46,92.0
+delta_delta_e,S13,mace_omol,MACE-OMOL,lt_0p5,9,9,5,55.55555555555556
 delta_delta_e,S13,mace_omol,MACE-OMOL,0p5_to_1p0_inclusive,2,2,2,100.0
 delta_delta_e,S13,mace_omol,MACE-OMOL,gt_1p0,39,39,39,100.0
 delta_delta_e,S13,gxtb,g-xTB,all,50,49,39,79.59183673469387
