@@ -1,11 +1,11 @@
 {
   "temperature_K": 307.15,
-  "temperature_source": "Author-confirmed experimental temperature, 2026-10-13",
+  "temperature_source": "Reaction study, DOI 10.1021/jacs.1c08105",
   "R_kcal_mol_K": 0.00198720425864083,
   "formula": "R*T*ln((1+ee/100)/(1-ee/100))",
   "seed": 20260810,
   "n_splits": 100,
-  "partition_selection": "Existing saved memberships retained; no new random sampling",
+  "partition_selection": "100 recorded training/test partitions",
   "input_sha256": "132fa46f44f6f064970f08774c62108a9b5686d4d12862c1d27b15c0398d589b",
   "membership_flags_sha256": "01246f52907f05671dea99c6d817e5efb29c4ff51fd99d114b92603d572308d1",
   "refit_method": "OLS with intercept, Python standard library",

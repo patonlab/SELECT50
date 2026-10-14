@@ -1,6 +1,6 @@
 # Palladium-cyclization landscape — Figure 6
 
-This study maps to manuscript Figure 6 and SI Table S21/Figure S14. The literature source DOI is `10.1021/acscatal.3c00732`. The reaction-landscape records identify UMA-S-1.1 with the OMol task.
+This study maps to manuscript Figure 6 and SI Table S21/Figure S14. The literature source DOI is `10.1021/acscatal.3c00732`. Calculations use UMA-S-1.1 with the OMol task.
 
 ## Files and units
 
@@ -27,6 +27,6 @@ XYZ coordinates use Å. Helper/spectator rows in the profile have blank adjusted
 
 ## Structure and contact records
 
-Table S21 lists the 20 retained UMA stationary species. The Pd contact comparison tables select contacts within 2.8 Å and record one-based atom indices for distances and angles.
+Table S21 lists the 20 UMA stationary species. The Pd contact comparison tables select contacts within 2.8 Å and record one-based atom indices for distances and angles.
 
 The extraction notes identify Section 26 of `cs3c00732_si_001.pdf` as the source of the published DFT coordinates. The manifest records page starts and Eopt in hartree; each XYZ comment records its reported optimized energy.

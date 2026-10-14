@@ -44,9 +44,9 @@ OUTPUT AND REPRODUCIBILITY
   and checkpoint version/hash alongside results. This is a supplied workflow
   example; it is not a record of the settings for every SELECT50 calculation.
 
-OTHER BACKENDS AND EXISTING DEFAULTS
+OTHER BACKENDS AND DEFAULTS
   The supplied driver also supports UMA and AIMNet2. Always specify
-  --calculator mace-omol for the examples above: the existing default is UMA.
+  --calculator mace-omol for the examples above: the default is UMA.
   Optional UMA dependencies: python -m pip install fairchem-core huggingface_hub
   Optional AIMNet dependencies: python -m pip install "aimnet[ase,hf]"
   Follow the selected model's access/setup instructions for those backends.
@@ -849,8 +849,8 @@ def find_geometric_trajectory(args: argparse.Namespace, run_dir: Path) -> Path |
     geomeTRIC usually writes:
       <input_stem>_optim.xyz
 
-    This function checks the expected name first, then falls back to the newest
-    *_optim.xyz in the run directory and input directory.
+    Prefer the expected filename in the run directory, then the input directory.
+    A fallback is accepted only when there is one unique *_optim.xyz file.
     """
 
     candidate_files: list[Path] = []
@@ -858,11 +858,11 @@ def find_geometric_trajectory(args: argparse.Namespace, run_dir: Path) -> Path |
     expected_run_dir = run_dir / f"{args.xyz.stem}_optim.xyz"
     expected_input_dir = args.xyz.parent / f"{args.xyz.stem}_optim.xyz"
 
-    if expected_run_dir.exists():
-        candidate_files.append(expected_run_dir)
+    if expected_run_dir.is_file():
+        return expected_run_dir
 
-    if expected_input_dir.exists():
-        candidate_files.append(expected_input_dir)
+    if expected_input_dir.is_file():
+        return expected_input_dir
 
     search_dirs: list[Path] = []
 
@@ -873,14 +873,14 @@ def find_geometric_trajectory(args: argparse.Namespace, run_dir: Path) -> Path |
     for search_dir in search_dirs:
         candidate_files.extend(search_dir.glob("*_optim.xyz"))
 
-    candidate_files = sorted(
-        set(candidate_files),
-        key=lambda p: p.stat().st_mtime if p.exists() else 0.0,
-        reverse=True,
-    )
+    candidate_files = sorted({p.resolve() for p in candidate_files if p.is_file()})
 
     if not candidate_files:
         return None
+
+    if len(candidate_files) > 1:
+        raise ValueError("Ambiguous optimization trajectories: "
+                         + ", ".join(str(p) for p in candidate_files))
 
     return candidate_files[0]
 
@@ -984,11 +984,15 @@ def run_geometric(args: argparse.Namespace, run_dir: Path, env: dict) -> int:
         print("No final optimized single-structure XYZ was written because geomeTRIC did not finish successfully.")
         return result.returncode
 
+    # Preserve the optimization trajectory and write a clean single-frame optimized structure.
+    try:
+        write_geometric_xyz_outputs(args, run_dir)
+    except ValueError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
+
     print("")
     print("Done.")
-
-    # Preserve the optimization trajectory and write a clean single-frame optimized structure.
-    write_geometric_xyz_outputs(args, run_dir)
 
     if args.opt_type == "ts":
         print(

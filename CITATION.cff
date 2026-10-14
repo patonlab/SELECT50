@@ -10,11 +10,9 @@ authors:
 repository-code: "https://github.com/apounder/SELECT50"
 url: "https://github.com/apounder/SELECT50"
 abstract: >-
-  Data and benchmark materials for Mapping Organic Selectivity with
-  Machine-Learned Interatomic Potentials: Introduction of the SELECT50 Data
-  Set. Scientific data and documentation are licensed under CC BY 4.0;
-  source code and repository automation and configuration are MIT licensed.
-  This citation identifies the repository, not the associated manuscript.
+  Molecular geometries, energies and analysis scripts accompanying Mapping
+  Organic Selectivity with Machine-Learned Interatomic Potentials:
+  Introduction of the SELECT50 Data Set.
 keywords:
   - organic selectivity
   - machine-learned interatomic potentials

@@ -1,98 +1,74 @@
 # SELECT50
 
-![SELECT50 banner showing two selectivity energy profiles](assets/select50-github-banner.png)
+![SELECT50](assets/select50-github-banner.png)
 
-**Molecular geometries and energetics for studying organic and organometallic reaction selectivity with machine-learned interatomic potentials.**
+## Overview
 
-SELECT50 examines competing transition-state structures, their relative electronic and Gibbs energies, and the structural changes obtained with different computational methods. The repository accompanies *Mapping Organic Selectivity with Machine-Learned Interatomic Potentials: Introduction of the SELECT50 Data Set*.
+Data and scripts accompanying *Mapping Organic Selectivity with Machine-Learned Interatomic Potentials: Introduction of the SELECT50 Data Set*.
 
-The data cover transition-state geometry comparisons, selectivity-energy benchmarks, recovery from perturbed starting geometries, reaction landscapes, larger molecular systems, and calibration against experimental selectivity.
+SELECT50 contains 50 pairs of competing transition structures for comparing calculated reaction selectivities. The repository also includes transition-state recovery calculations, two reaction landscapes, six larger molecular systems, and calibration against experimental nickel- and palladium-catalyzed selectivities.
 
-## Transition-state gallery
+Reference geometries were optimized at ωB97X-D3(BJ)/def2-TZVP. The electronic-energy reference is ωB97M-V/def2-TZVPD on those geometries. Comparison methods include eSEN-medium, MACE-OMOL, UMA-M-1.1, UMA-S-1.2, g-xTB, r²SCAN-3c, PBE0-D3(BJ)/def2-SVP and ωB97X-D3(BJ)/def2-SVP. The reaction-landscape calculations use UMA-S-1.1.
 
-The four sheets illustrate 50 transition-state pairs. Each pair is labelled by case ID, with major and minor structures shown side by side. Select a sheet to open the full-size PNG.
-
-[![SELECT50 transition-state gallery, sheet 1](assets/figure_01.png)](assets/figure_01.png)
-
-[![SELECT50 transition-state gallery, sheet 2](assets/figure_02.png)](assets/figure_02.png)
-
-[![SELECT50 transition-state gallery, sheet 3](assets/figure_03.png)](assets/figure_03.png)
-
-[![SELECT50 transition-state gallery, sheet 4](assets/figure_04.png)](assets/figure_04.png)
-
-## Repository contents
+## Data
 
 | Dataset | Contents | Location |
 | --- | --- | --- |
-| Reference and optimized geometries | Reference coordinates and method-specific transition-state XYZ files | [Reference structures](results/reference/starting_structures/), [optimized geometries](optimized-geometries/) |
-| Selectivity energies | Electronic- and Gibbs-energy separation tables, each containing 50 case rows | [Electronic energies](results/energetics/delta_delta_e.csv), [Gibbs energies](results/energetics/delta_delta_g.csv) |
-| Raw core energies | Absolute electronic and Gibbs energies, including MACE-OMOL thermochemistry | [Raw energy tables](results/energetics/) |
-| Geometry comparisons | 796 heavy-atom RMSD rows and 1,488 bond-distance rows | [RMSDs](results/geometry/heavy_atom_rmsd.csv), [bond distances](results/geometry/ts_bond_distances.csv) |
-| Transition-state recovery | 300 calculation logs and 300 XYZ exports, organized by transition structure, perturbation magnitude, and replicate | [Recovery calculations](ts_recovery/), [summary table](results/perturbed_guesses/ts_recovery_full_data.csv) |
-| Cycloaddition landscape | Ten stationary structures with E/G records, a 100-point two-dimensional scan, IRC trajectories, and 72 activation-strain rows | [Cycloaddition data](reaction_landscapes/cycloaddition/) |
-| Palladium-cyclization landscape | 20 UMA stationary structures, spectator-adjusted energy profiles, IRC and NEB paths, a 73-point dihedral scan, and 21 published DFT structures | [Palladium data](reaction_landscapes/palladium_cyclization/) |
-| Larger systems | Six transition-state pairs: 12 optimized structures, 12 DFT starting structures, and a table of energies, frequencies, and recorded timings | [Structures](large_systems/), [transition-pair table](large_systems/large_system_transition_pairs.csv) |
-| Experimental calibration | Ni and Pd series with 13 and 15 entries, respectively, plus transition structures, fitting scripts, saved split memberships, and held-out predictions | [Nickel series](calibration/nickel_epoxide_arylation/), [palladium series](calibration/palladium_enone_addition/) |
+| Core benchmark | Reference structures, metadata, energy differences and geometry comparisons | [Data guide](results/README.md) |
+| Optimized geometries | Method-specific transition structures | [XYZ files](optimized-geometries/) |
+| Raw energies | Electronic and Gibbs energies, including MACE-OMOL thermochemistry | [Energy tables](results/energetics/) |
+| Transition-state recovery | 300 perturbed-geometry calculations | [Calculations](ts_recovery/), [summary](results/perturbed_guesses/ts_recovery_full_data.csv) |
+| Reaction landscapes | Stationary points, scans, IRCs and pathway comparisons | [Cycloaddition](reaction_landscapes/cycloaddition/), [palladium cyclization](reaction_landscapes/palladium_cyclization/) |
+| Larger systems | Six transition-state pairs, DFT comparison structures, energies and timings | [Structures and tables](large_systems/) |
+| Experimental calibration | Ni and Pd datasets with 100 training/test partitions each | [Nickel](calibration/nickel_epoxide_arylation/), [palladium](calibration/palladium_enone_addition/) |
 
-## Computational methods
+Coordinates and geometric errors use ångströms; absolute energies use hartree and relative energies use kcal/mol. Major/minor roles are fixed by the reference electronic energies, with ΔΔE = E(minor) − E(major) and the same structure assignments for ΔΔG. See the [reference definitions](results/reference/README.md) for roles and exclusions.
 
-The optimized-geometry directories represent the following methods:
+<details>
+<summary>Transition-state gallery: 50 pairs</summary>
 
-| Category | Methods |
-| --- | --- |
-| Reference DFT | ωB97X-D3(BJ)/def2-TZVP |
-| Machine-learned interatomic potentials | eSEN-medium, MACE-OMOL, UMA-M-1.1, UMA-S-1.2 |
-| Additional DFT methods | PBE0-D3(BJ)/def2-SVP, r²SCAN-3c, ωB97X-D3(BJ)/def2-SVP |
-| Semiempirical method | g-xTB |
+[![Gallery sheet 1](assets/figure_01.png)](assets/figure_01.png)
 
-The recovery logs identify UMA-S-1.2 with the OMol task. Reaction-landscape records identify UMA-S-1.1 with the OMol task through ORCA's external-method interface.
+[![Gallery sheet 2](assets/figure_02.png)](assets/figure_02.png)
 
-The core contains 50 pairs, including an82. Seven geometry sets contain 100 structures each; g-xTB and r²SCAN-3c contain 98 each because both an82 calculations failed. The g-xTB energy tables evaluate 49 pairs. Both ja1g structures are excluded from bond analysis. See [metadata and exclusions](results/reference/README.md).
+[![Gallery sheet 3](assets/figure_03.png)](assets/figure_03.png)
 
-## Data conventions
+[![Gallery sheet 4](assets/figure_04.png)](assets/figure_04.png)
 
-- **Coordinates and geometry:** XYZ coordinates, RMSDs, and bond distances use ångströms (Å). Bond-table atom indices are one-based.
-- **Core energy differences:** CSV headers specify kcal/mol. ΔΔE = E(minor) − E(major), with the analogous definition for ΔΔG. Major is the lower reference electronic-energy structure; that role is fixed for both E and G. Only reference ΔΔE is positive by construction; five reference ΔΔG values are negative.
-- **Absolute energies:** Core raw-energy tables in `results/energetics/`, landscape tables and large-system tables report electronic and Gibbs energies in hartree. Relative landscape energies are recorded in kcal/mol.
-- **Frequencies and timings:** Imaginary frequencies in the large-system table use cm⁻¹; its `time_seconds` field uses seconds.
-- **Structure names:** Core XYZ filenames use `<case_id>_major.xyz` and `<case_id>_minor.xyz`. Method geometries are organized as `optimized-geometries/<method>/<structure_id>/<structure_id>.xyz`.
-- **Heavy-atom RMSD:** The supplied calculation script pairs atoms by XYZ order, excludes hydrogen, and uses an equally weighted Kabsch alignment with proper rotation and no outlier rejection.
+</details>
 
-Recovery runs are arranged at six target Cartesian RMSD magnitudes—0.05, 0.08, 0.11, 0.14, 0.17, and 0.20 Å—with five replicates for each of ten transition structures. Their logs include optimization status, step counts, electronic energies, vibrational frequencies, and thermochemical corrections.
+## Usage
 
-The saved Ni and Pd calibration analyses each contain 100 partitions. Their tables record training/test memberships, fitted coefficients, held-out predictions, and raw and calibrated error metrics.
-
-Experimental calibration gaps are converted from signed ee at **307.15 K for Ni** and **333 K for Pd**. Each series includes partition-level plotting data and per-entry held-out prediction means/sample SDs. The [saved-partition refresh driver](calibration/refresh_saved_calibration.py) recomputes these records without changing the saved training/test memberships.
-
-## Access and analysis
-
-Clone the repository and record the commit used for an analysis:
+Clone the repository and check the data:
 
 ```sh
 git clone https://github.com/apounder/SELECT50.git
 cd SELECT50
-git rev-parse HEAD
+python3 scripts/validate_data.py
 ```
 
-Coordinates are distributed as XYZ files, tabulated results as CSV files, and recovery output as text logs. These formats can be read directly with molecular visualization tools, spreadsheets, or analysis scripts.
+The validator and calibration analysis use only the Python standard library. Reproduce both calibration datasets from their recorded partitions with:
 
-The repository includes:
+```sh
+python3 calibration/refresh_saved_calibration.py
+```
 
-- A [MACE-OMOL/ASE calculation example](examples/calculations/opt_mace_omol.py) with setup and run instructions.
-- ORCA external-UMA templates for [minimum optimization](examples/calculations/job_orca.inp), [TS optimization](examples/calculations/job_orca_ts.inp), [relaxed scans](examples/calculations/job_orca_scan.inp), and [IRC calculations](examples/calculations/job_orca_irc.inp).
-- [A structural data validator](scripts/validate_data.py) for XYZ parsing, table schemas, case coverage, atom ordering, bond distances, and local documentation links.
-- [A heavy-atom RMSD calculator](scripts/calculate_heavy_atom_rmsd.py) using NumPy and the ωB97X-D3(BJ)/def2-TZVP geometry directory as its reference.
-- [Ni calibration](calibration/nickel_epoxide_arylation/calibrate.py) and [Pd calibration](calibration/palladium_enone_addition/calibrate.py) scripts using NumPy for repeated-split linear fits of experimental ΔΔG against computed ΔΔG.
-- [Python tests](tests/) for the geometry-analysis and validation code.
+To recalculate heavy-atom RMSDs and run all tests, install NumPy:
+
+```sh
+python3 -m pip install numpy
+python3 scripts/calculate_heavy_atom_rmsd.py --output rmsd_recalculated.csv
+python3 -m unittest discover -s tests
+```
+
+The [RMSD guide](results/geometry/README.md) describes atom matching and alignment. Calculation examples include a [MACE-OMOL driver](examples/calculations/opt_mace_omol.py) and ORCA/UMA templates for [minima](examples/calculations/job_orca.inp), [transition states](examples/calculations/job_orca_ts.inp), [scans](examples/calculations/job_orca_scan.inp) and [IRCs](examples/calculations/job_orca_irc.inp). The driver documents its calculation dependencies and command-line options; run it with `-h` for help.
 
 ## Citation
 
-Use the repository's [citation metadata](CITATION.cff) when citing these data or scripts. Include the repository URL and the commit hash used in your analysis to identify the data version.
+Please cite the [repository](CITATION.cff) when using these data or scripts. Record the version with `git rev-parse HEAD` and include that commit hash with the repository URL.
 
 ## License
 
-Scientific data and documentation are licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE-DATA). Source code, tests, and repository automation and configuration are licensed under the [MIT License](LICENSE-CODE). See [LICENSE](LICENSE) for the scope of each license. Separately identified third-party material retains its original license and attribution notices.
+Scientific data and documentation are licensed under [CC BY 4.0](LICENSE-DATA); source code, tests and repository configuration are licensed under the [MIT License](LICENSE-CODE). See [LICENSE](LICENSE) for scope. Separately identified third-party material retains its original license and attribution.
 
-## Contributions
-
-Corrections and contributions are welcome through GitHub issues and pull requests. See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+Contributions are welcome through GitHub issues and pull requests. See [CONTRIBUTING.md](CONTRIBUTING.md).

@@ -1,4 +1,4 @@
-"""Refit Ni/Pd calibration at the input temperatures, retaining saved partitions.
+"""Analyze Ni/Pd calibration using the recorded training/test partitions.
 
 Run from the repository root: python calibration/refresh_saved_calibration.py
 Only the Python standard library is required. No random sampling is performed.
@@ -211,10 +211,11 @@ def prepare(family, folder, n, ntrain):
                     row['test_spearman_p_value'] = (1 - rho) ** 2 * (1 + rho / 2)
         outputs[extra] = detailed
     provenance = dict(temperature_K=summary['temperature_K'],
-                      temperature_source='Author-confirmed experimental temperature, 2026-10-13',
+                      temperature_source=('Reaction study, DOI 10.1021/jacs.1c08105' if family == 'ni'
+                                          else 'Reaction study, DOI 10.1021/ja401713g'),
                       R_kcal_mol_K=R, formula='R*T*ln((1+ee/100)/(1-ee/100))',
                       seed=int(summary['seed']), n_splits=100,
-                      partition_selection='Existing saved memberships retained; no new random sampling',
+                      partition_selection='100 recorded training/test partitions',
                       input_sha256=hashlib.sha256(table_bytes(series_path, series)).hexdigest(),
                       membership_flags_sha256=hashlib.sha256((base / f'{family}_train_test_flags.csv').read_bytes()).hexdigest(),
                       refit_method='OLS with intercept, Python standard library', python_version=platform.python_version())
@@ -223,8 +224,8 @@ def prepare(family, folder, n, ntrain):
     return encoded, summary
 
 
-def main():
-    prepared = [prepare(family, *config) for family, config in FAMILIES.items()]
+def run(families):
+    prepared = [prepare(family, *FAMILIES[family]) for family in families]
     for outputs, summary in prepared:
         for path, content in outputs.items():
             path.write_bytes(content)
@@ -235,4 +236,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    run(FAMILIES)

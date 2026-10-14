@@ -1,6 +1,6 @@
 # Large-system transition structures — Figure 7
 
-This folder contains six optimized transition-state pairs (12 XYZ files), twelve matching DFT starting structures in [starting_DFT_structures/](starting_DFT_structures/), and [large_system_transition_pairs.csv](large_system_transition_pairs.csv). The study maps to manuscript Figure 7 and SI Table S22.
+This folder contains six optimized transition-state pairs (12 XYZ files), twelve matching DFT starting structures in [starting_DFT_structures/](starting_DFT_structures/), [large_system_transition_pairs.csv](large_system_transition_pairs.csv), and [large_system_rmsd.csv](large_system_rmsd.csv). The study maps to manuscript Figure 7 and SI Table S22.
 
 ## Files, units and methods
 

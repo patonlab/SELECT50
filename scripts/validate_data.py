@@ -1,6 +1,7 @@
 """Validate the supplied SELECT50 snapshot without external dependencies."""
 
 import csv
+from decimal import Decimal
 import math
 from pathlib import Path
 import re
@@ -21,7 +22,7 @@ METHODS = {
     "dft_geometry_reference": "wB97X-D3(BJ)-def2-TZVP",
 }
 REFERENCE = "dft_geometry_reference"
-# Author confirmed 2026-10-12: preserve the current SI/table exclusion of both.
+# These structures are included in RMSD comparisons and excluded from bond analysis.
 BONDLESS_STRUCTURES = {"ja1g_major", "ja1g_minor"}
 GEOMETRY_FAILURES = {(s, m) for s in ("an82_major", "an82_minor")
                      for m in ("gxtb", "r2scan_3c")}
@@ -160,6 +161,126 @@ def check_energy_summary(rows, energies):
     require(seen == expected, "Missing energy summaries")
 
 
+def check_raw_energy_table(rows, energies, quantity, model, id_column, value_column, label):
+    expected = {f"{case}_{role}" for case in energies[quantity] for role in ("major", "minor")}
+    excluded = {f"{case}_{role}" for q, case, m in ENERGY_FAILURES
+                if q == quantity and m == model for role in ("major", "minor")}
+    values = {}
+    for row in rows:
+        structure = row[id_column]
+        require(structure in expected and structure not in values,
+                f"{label}: unknown or duplicate structure ID: {structure}")
+        number(row[value_column])
+        values[structure] = Decimal(row[value_column])
+    require(expected - excluded <= values.keys(), f"{label}: missing raw energy records")
+    prefix = "dft_reference" if model == "dft" else ENERGY_METHODS[model]
+    checked = 0
+    for case, row in energies[quantity].items():
+        if (quantity, case, model) in ENERGY_FAILURES:
+            continue
+        gap = (values[f"{case}_minor"] - values[f"{case}_major"]) * Decimal("627.5094740631")
+        require(abs(gap - Decimal(row[f"{prefix}_{quantity}_kcal_mol"])) <= Decimal("0.001"),
+                f"{label}/{case}: raw energy gap differs from master by more than 0.001 kcal/mol")
+        checked += 1
+    return values, checked
+
+
+def check_raw_energies(root, energies):
+    base = root / "results/energetics"
+    models = ("dft", "esen", "gxtb", "mace_omol", "uma_m", "uma_s")
+    checked, electronic = 0, {}
+    for quantity, suffix, value_column in (("delta_delta_e", "energies", "E_hartree"),
+                                            ("delta_delta_g", "Gibbs_energies", "G_hartree")):
+        for model in models:
+            if quantity == "delta_delta_g" and model == "mace_omol":
+                path = base / "mace_omol_raw_thermochemistry.csv"
+                id_column, value = "system", "free_energy_hartree"
+                columns = [id_column, "electronic_energy_hartree", "thermal_correction_hartree", value]
+            else:
+                path = base / f"{model}_raw_{suffix}.csv"
+                id_column, value = "structure_id", value_column
+                columns = [id_column, value]
+            rows = read_table(path, columns)
+            values, count = check_raw_energy_table(rows, energies, quantity, model, id_column, value, path.name)
+            checked += count
+            if quantity == "delta_delta_e":
+                electronic[model] = values
+            elif model == "mace_omol":
+                for row in rows:
+                    for column in columns[1:]:
+                        number(row[column])
+                    e, correction, g = (Decimal(row[k]) for k in columns[1:])
+                    require(abs(e + correction - g) <= Decimal("1e-8"),
+                            f"{row['system']}: MACE E + correction differs from G")
+                    require(abs(e - electronic[model][row[id_column]]) <= Decimal("1e-8"),
+                            f"{row['system']}: MACE electronic tables disagree")
+    return checked
+
+
+def check_energy_categories(rows, energies):
+    categories = {
+        "selectivity_class": ("Stereoselective", "Regioselective", "Chemoselective", "Conformational"),
+        "charge_e": ("0", "+1", "-1"),
+        "spin_multiplicity": ("Singlet", "Doublet", "Triplet"),
+        "metal_group": ("Metal-containing", "Metal-free"),
+    }
+    tables = {"delta_delta_e": ("S9", "S10", "S11", "S12"),
+              "delta_delta_g": ("S14", "S15", "S16", "S17")}
+    expected = {(q, table, field, category, model) for q in energies
+                for table, (field, groups) in zip(tables[q], categories.items())
+                for category in groups for model in ENERGY_METHODS if model != "specorr"}
+    seen = set()
+    for row in rows:
+        q, table, field, category, model = (row[k] for k in
+                                          ("quantity", "table_id", "category_field", "category", "model_id"))
+        key = q, table, field, category, model
+        require(key in expected and key not in seen, f"Unknown/duplicate energy category: {key}")
+        seen.add(key)
+        if field == "metal_group":
+            group = [r for r in energies[q].values()
+                     if (r['metal_containing'].lower() == 'true') == (category == 'Metal-containing')]
+        else:
+            value = {"Singlet": "1", "Doublet": "2", "Triplet": "3"}.get(category, category)
+            group = [r for r in energies[q].values()
+                     if (int(r[field]) == int(value) if field == "charge_e" else r[field] == value)]
+        column = f"{ENERGY_METHODS[model]}_{q}_kcal_mol"
+        evaluated = [r for r in group if r[column]]
+        require(evaluated, f"{key}: no evaluated category entries")
+        mae = sum(abs(number(r[column]) - number(r[f"dft_reference_{q}_kcal_mol"]))
+                  for r in evaluated) / len(evaluated)
+        for field, actual in (("n_pairs_in_category", len(group)), ("n_pairs_evaluated", len(evaluated)),
+                              ("mae_kcal_mol", mae)):
+            require(abs(number(row[field]) - actual) <= 1e-9, f"Energy category differs: {key}/{field}")
+    require(seen == expected, "Missing energy category summaries")
+
+
+def check_energy_ordering(rows, energies):
+    bins = {"all", "lt_0p5", "0p5_to_1p0_inclusive", "gt_1p0"}
+    expected = {(q, "S13" if q == "delta_delta_e" else "S18", model, bin_id)
+                for q in energies for model in ENERGY_METHODS if model != "specorr" for bin_id in bins}
+    seen = set()
+    for row in rows:
+        q, table, model, bin_id = (row[k] for k in ("quantity", "table_id", "model_id", "gap_bin"))
+        key = q, table, model, bin_id
+        require(key in expected and key not in seen, f"Unknown/duplicate energy ordering: {key}")
+        seen.add(key)
+        group = []
+        for entry in energies[q].values():
+            gap = abs(number(entry[f"dft_reference_{q}_kcal_mol"]))
+            if {"all": True, "lt_0p5": gap < .5, "0p5_to_1p0_inclusive": .5 <= gap <= 1,
+                "gt_1p0": gap > 1}[bin_id]:
+                group.append(entry)
+        column = f"{ENERGY_METHODS[model]}_{q}_kcal_mol"
+        evaluated = [r for r in group if r[column]]
+        require(evaluated, f"{key}: no evaluated ordering entries")
+        correct = sum((number(r[column]) > 0) == (number(r[f"dft_reference_{q}_kcal_mol"]) > 0)
+                      for r in evaluated)
+        for field, actual in (("n_pairs_in_bin", len(group)), ("n_pairs_evaluated", len(evaluated)),
+                              ("n_correct", correct), ("accuracy_percent", 100 * correct / len(evaluated))):
+            require(abs(number(row[field]) - actual) <= 1e-9, f"Energy ordering differs: {key}/{field}")
+    require(seen == expected, "Missing energy ordering summaries")
+
+
 def validate(root=ROOT):
     reference_root = root / "results/reference"
     failure_rows = read_table(reference_root / "failed_calculations.csv",
@@ -203,9 +324,9 @@ def validate(root=ROOT):
     require(len(refs) == 100, "Expected 100 reference structures")
     require(all(re.fullmatch(r"[a-z0-9]+_(major|minor)", s) for s in refs), "Invalid structure ID")
     cases = {s.rsplit("_", 1)[0] for s in refs}
-    require(len(cases) == 50 and "an82" in cases and "ja30" not in cases and
+    require(len(cases) == 50 and "an82" in cases and
             set(refs) == {f"{c}_{role}" for c in cases for role in ("major", "minor")},
-            "Expected 50 complete current major/minor pairs including an82, excluding ja30")
+            "Expected 50 complete major/minor pairs including an82")
     metadata = read_table(reference_root / "case_metadata.csv",
                           ["benchmark_id", "description", "molecular_formula", "selectivity_class", "charge_e",
                            "spin_multiplicity", "doi", "metal_elements", "metal_group", "metal_containing"],
@@ -262,6 +383,9 @@ def validate(root=ROOT):
                               nullable=("source_predicted_gap_kcal_mol",))
     check_energy_orientation(orientation, energies, cases)
     check_energy_summary(tables["results/energetics/energy_method_summary.csv"], energies)
+    raw_gap_count = check_raw_energies(root, energies)
+    check_energy_categories(tables["results/energetics/energy_category_mae.csv"], energies)
+    check_energy_ordering(tables["results/energetics/energy_ordering_accuracy.csv"], energies)
     rmsd = tables["results/geometry/heavy_atom_rmsd.csv"]
     expected = {(s, t) for s in refs for t in METHODS if t != REFERENCE} - failures
     require(len(rmsd) == len(expected) and {(r["structure_id"], r["model_id"]) for r in rmsd} == expected,
@@ -302,7 +426,8 @@ def validate(root=ROOT):
     check_links(root)
     print(f"PASS: {len(cases)} cases, {len(xyz)} XYZ files, {sum(map(len, xyz.values()))} frames, "
           f"{len(folders)} method sets, {len(rmsd)} RMSD rows, {len(bonds)} verified bond rows; local links valid.")
-    print("PASS: required schemas, metadata counts, 600 orientations, energy summaries and 1322 bond errors.")
+    print(f"PASS: {raw_gap_count} raw energy gaps (0.001 kcal/mol tolerance), MACE thermochemistry, "
+          "600 orientations, method/category/ordering summaries and 1322 bond errors.")
     print("NOTE: two failed energy values and four failed geometries are declared for an82; both ja1g structures are excluded from bond analysis.")
 
 

@@ -1,11 +1,16 @@
 # Contributing SELECT50 results
 
-Download the [100 current starting XYZ files](results/reference/starting_structures/) and check [repository_status.md](repository_status.md) for current coverage, fixed electronic-energy roles and remaining provenance gaps.
+The [data guide](results/README.md) describes the benchmark files, methods and conventions. Use the [reference XYZ files](results/reference/starting_structures/) as inputs and retain their case IDs and fixed `major`/`minor` roles.
 
-1. Use the reference XYZ coordinates as inputs and retain current case IDs and `major`/`minor` roles. Document deviations from the reference protocol.
-2. Add optimized structures under `optimized-geometries/<method-version>/<structure_id>/<structure_id>.xyz`. Keep original benchmark data unchanged.
-3. Include a method `README.md` stating model/checkpoint, software versions, charge and spin treatment, optimization and convergence settings, hardware if relevant, and run date.
-4. Include starting-structure IDs, raw outputs, an energy table with explicit units, and failures or excluded cases. Distinguish electronic energies from free energies and state temperature and thermochemistry settings where applicable.
-5. Run `python3 scripts/validate_data.py` and `python3 -m unittest discover -s tests` before submitting a pull request. Register a new method's table label and folder in the validator when adding it to summary tables, and update documented counts.
+1. Add optimized XYZ files under `optimized-geometries/<method-version>/<structure_id>/<structure_id>.xyz`, retaining the reference atom order.
+2. Place raw electronic and Gibbs energy CSVs in `results/energetics/`. Identify each structure and state energy units explicitly.
+3. Describe the model/checkpoint, software versions, charge and spin treatment, optimization settings and convergence criteria. For Gibbs energies, state the temperature and thermochemistry settings. Include hardware and timing definitions when reporting calculation times.
+4. Record calculation failures and exclusions explicitly. Keep failed predictions blank in the pair-energy tables.
+5. Register new methods in the validator, update the corresponding summary tables and documentation, and run:
 
-The [data guide](results/README.md) describes current files. Preserve the recorded aliases and fixed E/G roles. Update the validator’s required columns for intentional schema changes and document any changed failure/exclusion policy. Missing calculations must remain explicit; do not fill them with zero or a substitute geometry.
+```sh
+python3 scripts/validate_data.py
+python3 -m unittest discover -s tests
+```
+
+NumPy is required for the RMSD tests. Preserve the signed minor-minus-major convention and cite the calculation or experimental sources associated with each dataset.

@@ -1,10 +1,13 @@
 import copy
+import csv
+import shutil
 import tempfile
 import unittest
 from pathlib import Path
 
 from scripts.validate_data import (REFERENCE, ENERGY_METHODS, check_bond, check_bond_coverage,
-                                   check_energy_orientation, check_links, number, read_table, read_xyz)
+                                   check_energy_categories, check_energy_ordering, check_raw_energy_table,
+                                   check_raw_energies, check_energy_orientation, check_links, number, read_table, read_xyz)
 
 
 class ValidationTests(unittest.TestCase):
@@ -127,6 +130,105 @@ class ValidationTests(unittest.TestCase):
         self.write("README.md", "[missing](absent.csv)\n")
         with self.assertRaisesRegex(ValueError, "broken link"):
             check_links(self.root)
+
+    def test_raw_energies_reject_duplicates_missing_records_and_sign_changes(self):
+        rows = [dict(structure_id="example_major", E_hartree="-1.000"),
+                dict(structure_id="example_minor", E_hartree="-1.001")]
+        energies = {"delta_delta_e": {"example": {"esen_medium_delta_delta_e_kcal_mol": "-0.6275094740631"}}}
+        def check(raw):
+            return check_raw_energy_table(raw, energies, "delta_delta_e", "esen",
+                                          "structure_id", "E_hartree", "example.csv")
+        self.assertEqual(check(rows)[1], 1)
+        for bad in (rows + [rows[0]], rows[:1],
+                    [rows[0], rows[1] | {"E_hartree": "-0.999"}],
+                    [rows[0], rows[1] | {"E_hartree": "nan"}],
+                    [rows[0], rows[1] | {"structure_id": "example_min"}]):
+            with self.subTest(rows=bad), self.assertRaises(ValueError):
+                check(bad)
+        energies["delta_delta_e"]["example"]["esen_medium_delta_delta_e_kcal_mol"] = "-0.627"
+        check(rows)
+
+    def test_raw_exclusions_allow_an82_without_hiding_other_missing_pairs(self):
+        energies = {"delta_delta_g": {
+            "example": {"g_xtb_delta_delta_g_kcal_mol": "0.6275094740631"},
+            "an82": {"g_xtb_delta_delta_g_kcal_mol": ""}}}
+        rows = [dict(structure_id="example_major", G_hartree="-1.001"),
+                dict(structure_id="example_minor", G_hartree="-1.000"),
+                dict(structure_id="an82_minor", G_hartree="-2")]
+        args = (energies, "delta_delta_g", "gxtb", "structure_id", "G_hartree", "gxtb.csv")
+        self.assertEqual(check_raw_energy_table(rows, *args)[1], 1)
+        with self.assertRaisesRegex(ValueError, "missing raw"):
+            check_raw_energy_table(rows[1:], *args)
+
+    def energy_tables(self):
+        base = Path(__file__).resolve().parents[1] / "results/energetics"
+        def load(name):
+            with (base / name).open(encoding="utf-8-sig", newline="") as handle:
+                return list(csv.DictReader(handle))
+        energies = {q: {r['benchmark_id']: r for r in load(q + '.csv')}
+                    for q in ('delta_delta_e', 'delta_delta_g')}
+        return load, energies
+
+    def test_category_summaries_reject_wrong_values_and_incomplete_coverage(self):
+        load, energies = self.energy_tables()
+        rows = load("energy_category_mae.csv")
+        check_energy_categories(rows, energies)
+        wrong = copy.deepcopy(rows)
+        wrong[0]['mae_kcal_mol'] = str(float(wrong[0]['mae_kcal_mol']) + .01)
+        for bad in (wrong, rows[:-1], rows + [rows[0]]):
+            with self.subTest(count=len(bad)), self.assertRaises(ValueError):
+                check_energy_categories(bad, energies)
+
+    def test_ordering_summaries_reject_wrong_counts_and_incomplete_coverage(self):
+        load, energies = self.energy_tables()
+        rows = load("energy_ordering_accuracy.csv")
+        check_energy_ordering(rows, energies)
+        wrong = copy.deepcopy(rows)
+        wrong[0]['n_correct'] = str(int(wrong[0]['n_correct']) - 1)
+        for bad in (wrong, rows[:-1], rows + [rows[0]]):
+            with self.subTest(count=len(bad)), self.assertRaises(ValueError):
+                check_energy_ordering(bad, energies)
+
+    def test_ordering_bin_boundaries_use_absolute_reference_gaps(self):
+        q = 'delta_delta_e'
+        energies = {q: {}}
+        for i, (reference, prediction) in enumerate([(-.49, -.4), (.5, -.3), (-1, 1), (1.01, 2)]):
+            energies[q][str(i)] = {f'dft_reference_{q}_kcal_mol': str(reference)} | {
+                f'{prefix}_{q}_kcal_mol': str(prediction) for prefix in ENERGY_METHODS.values()}
+        rows = [dict(quantity=q, table_id='S13', model_id=model, gap_bin=bin_id,
+                     n_pairs_in_bin=str(n), n_pairs_evaluated=str(n), n_correct=str(correct),
+                     accuracy_percent=str(100 * correct / n))
+                for model in ENERGY_METHODS if model != 'specorr'
+                for bin_id, n, correct in [('all', 4, 2), ('lt_0p5', 1, 1),
+                                          ('0p5_to_1p0_inclusive', 2, 0), ('gt_1p0', 1, 1)]]
+        check_energy_ordering(rows, energies)
+
+    def test_raw_file_validation_checks_mace_thermochemistry_and_electronic_consistency(self):
+        _, energies = self.energy_tables()
+        source = Path(__file__).resolve().parents[1] / 'results/energetics'
+        target = self.root / 'results/energetics'
+        target.mkdir(parents=True)
+        for path in source.glob('*_raw_*.csv'):
+            shutil.copy2(path, target)
+        self.assertEqual(check_raw_energies(self.root, energies), 598)
+        path = target / 'mace_omol_raw_thermochemistry.csv'
+        with path.open(newline='') as handle:
+            rows = list(csv.DictReader(handle))
+        bad_correction = copy.deepcopy(rows)
+        bad_correction[0]['thermal_correction_hartree'] = 'nan'
+        broken_sum = copy.deepcopy(rows)
+        broken_sum[0]['thermal_correction_hartree'] = str(float(rows[0]['thermal_correction_hartree']) + .01)
+        common_offset = copy.deepcopy(rows)
+        for row in common_offset:
+            for field in ('electronic_energy_hartree', 'free_energy_hartree'):
+                row[field] = str(float(row[field]) + .01)
+        for bad in (bad_correction, broken_sum, common_offset):
+            with self.subTest(first=bad[0]), self.assertRaises(ValueError):
+                with path.open('w', newline='') as handle:
+                    writer = csv.DictWriter(handle, fieldnames=list(bad[0]))
+                    writer.writeheader()
+                    writer.writerows(bad)
+                check_raw_energies(self.root, energies)
 
 
 if __name__ == "__main__":

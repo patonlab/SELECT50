@@ -1,4 +1,4 @@
-# Local credentials and agent configuration
+# Local files and credentials
 .aws/
 .agents/
 .codex/

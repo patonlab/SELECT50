@@ -9,7 +9,7 @@ This study maps to manuscript Figure 5, SI Tables S19/S20, and Figure S13. The l
 - Figure 5B/S19: ten stationary-point E/G rows in `gibbs_energies.csv`; absolute energies in hartree, relative energies in kcal/mol, recorded temperature 298.15 K, pressure 1 atm, quasi-RRHO flag, and imaginary frequencies in cm⁻¹.
 - Figure 5C: 100 points in `2d-scan/scan2d.csv`, headers `r1,r2,E_rel_kcal`; distances and XYZ coordinates in Å, relative electronic energies in kcal/mol.
 - Figure 5D/S13: UMA IRC paths for TSA–TSD and the activation-strain inputs below. [normalized_IRC_DFT_MLIP.csv](normalized_IRC_DFT_MLIP.csv) contains the tabulated DFT/UMA path comparison.
-- Figure 5E/S20: [ts_bond_lengths.csv](ts_bond_lengths.csv) contains all-atom RMSDs and two forming-bond distances for TSA–TSD. The DFT TSB `r2` value is 2.060679 Å, rounding to 2.06 Å.
+- Figure 5E/S20: [ts_bond_lengths.csv](ts_bond_lengths.csv) contains all-atom RMSDs and two forming-bond distances for TSA–TSD.
 
 CSV labels `alkene`, `diazomethane`, `ts-a`–`ts-d`, and `prod-a`–`prod-d` correspond to S19's cyclopentenone, TMS-diazomethane, TSA–TSD, and Prod-A–D, respectively. The SI RMSDs for this study are all-atom values, distinct from the core heavy-atom benchmark.
 
@@ -37,7 +37,7 @@ For the TSA and TSB pathways, fragments were extracted from IRC geometries and t
 
 The complex and both fragments are neutral singlets. [fragment_definition.csv](fragment_definition.csv) records the fragment membership using one-based indices in the full complex geometry. Fragment 1 has formula C13H22O4Si and fragment 2 has formula C4H10N2Si; their memberships together cover all 57 atoms of the complex without overlap.
 
-The reaction coordinates are the two forming-bond distances, verified against the deposited IRC coordinates for both pathways:
+The reaction coordinates are the two forming-bond distances:
 
 | CSV coordinate | Atom pair, one-based | Units |
 | --- | --- | --- |
@@ -70,4 +70,4 @@ The activation-strain table contains 72 rows:
 - **TSA:** 23 points, numbered 0–22. Their forming-bond distances match frames 23–1 of [TSA.xyz](irc/TSA.xyz), respectively, corresponding to IRC steps −1 through −23 in [TSA.csv](irc/TSA.csv). This covers the negative branch and excludes the step-0 transition state and positive branch.
 - **TSB:** 49 points, numbered 0–48. Their forming-bond distances match frames 1–49 of [TSB.xyz](irc/TSB.xyz), respectively, corresponding to IRC steps −25 through +23 in [TSB.csv](irc/TSB.csv).
 
-These mappings are established from the deposited bond distances. The CSV tables contain the complex and fragment electronic energies, thermochemical quantities, and activation-strain terms; the XYZ files provide the stationary-point, scan, and IRC geometries. Fragment membership is specified in `fragment_definition.csv` using one-based indices in the full complex geometry.
+The CSV tables contain the complex and fragment electronic energies, thermochemical quantities, and activation-strain terms; the XYZ files provide the stationary-point, scan, and IRC geometries. Fragment membership is specified in `fragment_definition.csv` using one-based indices in the full complex geometry.
