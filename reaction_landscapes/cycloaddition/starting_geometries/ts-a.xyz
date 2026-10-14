@@ -1,5 +1,5 @@
 57
-TS A | pathway A | source=tsa_qcalibrate_ts_conf_01_opt | Eopt=-1656.175749000 Eh | qh-G(195.15 K)=-1656.042597000 Eh | selected_by=minimum quasi-harmonic Gibbs free energy at 195.15 K
+ts-a | starting geometry | pathway=A | source=tsa_qcalibrate_ts_conf_01_opt | Eopt=-1656.175749000 Eh | qh-G(195.15 K)=-1656.042597000 Eh | selected_by=minimum quasi-harmonic Gibbs free energy at 195.15 K
 H   1.101758000  0.245377000  1.378702000
 C   1.061871000 -0.420214000  0.523302000
 C  -0.149204000 -1.328930000  0.347358000

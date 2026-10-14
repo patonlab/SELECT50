@@ -1,5 +1,5 @@
 57
-Product 5b | pathway B | source=5b_clustered_conf_03_opt | Eopt=-1656.228800000 Eh | qh-G(195.15 K)=-1656.091092000 Eh | selected_by=minimum quasi-harmonic Gibbs free energy at 195.15 K
+prod-b | starting geometry | pathway=B | source=5b_clustered_conf_03_opt | Eopt=-1656.228800000 Eh | qh-G(195.15 K)=-1656.091092000 Eh | selected_by=minimum quasi-harmonic Gibbs free energy at 195.15 K
 H   0.503251000 -0.459925000  0.482775000
 C   0.819510000 -0.159357000 -0.517664000
 C  -0.397902000 -0.198924000 -1.475508000

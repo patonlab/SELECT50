@@ -13,6 +13,24 @@ This study maps to manuscript Figure 5, SI Tables S19/S20, and Figure S13. The l
 
 CSV labels `alkene`, `diazomethane`, `ts-a`–`ts-d`, and `prod-a`–`prod-d` correspond to S19's cyclopentenone, TMS-diazomethane, TSA–TSD, and Prod-A–D, respectively. The SI RMSDs for this study are all-atom values, distinct from the core heavy-atom benchmark.
 
+## Starting geometries
+
+The [starting geometries](starting_geometries/) use the same labels in their filenames and XYZ comments as the stationary-point CSVs. Their comments retain the recorded conformer energies, quasi-harmonic thermochemistry at 195.15 K and selection criterion. Transition-structure and product comments also retain their original conformer source labels. The 40-atom reactant is the alkene, C13H22O4Si.
+
+| Starting XYZ | SI label |
+| --- | --- |
+| [alkene.xyz](starting_geometries/alkene.xyz) | Cyclopentenone / starting material 4 |
+| [ts-a.xyz](starting_geometries/ts-a.xyz) | TSA |
+| [prod-a.xyz](starting_geometries/prod-a.xyz) | Prod-A / product 5 |
+| [ts-b.xyz](starting_geometries/ts-b.xyz) | TSB |
+| [prod-b.xyz](starting_geometries/prod-b.xyz) | Prod-B / product 5b |
+| [ts-c.xyz](starting_geometries/ts-c.xyz) | TSC |
+| [prod-c.xyz](starting_geometries/prod-c.xyz) | Prod-C / product 5c |
+| [ts-d.xyz](starting_geometries/ts-d.xyz) | TSD |
+| [prod-d.xyz](starting_geometries/prod-d.xyz) | Prod-D / product 5d |
+
+The four starting TS geometries provide the DFT comparison coordinates for Table S20 and Figure 5E. Their atom order matches the corresponding UMA frames in `cycloaddition_structures.xyz`.
+
 ## Activation-strain methods
 
 For the TSA and TSB pathways, fragments were extracted from IRC geometries and their electronic energies evaluated at the same level as the ORCA UMA-S-1.1 jobs, as confirmed by the repository author. The associated IRC tables record the model/task as `UMA-s-1p1/omol`. The decomposition uses electronic energies; Gibbs energies and thermal corrections are not used in the activation-strain terms.

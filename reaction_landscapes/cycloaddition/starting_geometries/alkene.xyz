@@ -1,5 +1,5 @@
 40
-Starting material 4 | pathway Reactant | source=tms-diazomethane_clustered_conf_03_opt | Eopt=-1098.847382000 Eh | qh-G(195.15 K)=-1098.782504000 Eh | selected_by=minimum quasi-harmonic Gibbs free energy at 195.15 K
+alkene | starting geometry | pathway=reactant | source=alkene_clustered_conf_03_opt | Eopt=-1098.847382000 Eh | qh-G(195.15 K)=-1098.782504000 Eh | selected_by=minimum quasi-harmonic Gibbs free energy at 195.15 K
 H   0.941301000 -1.247443000 -0.882387000
 C   1.210503000 -0.243739000 -0.567189000
 C   2.438320000  0.128109000 -0.180989000

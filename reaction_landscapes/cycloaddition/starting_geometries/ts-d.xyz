@@ -1,5 +1,5 @@
 57
-TS D | pathway D | source=tsd_qcalibrate_ts_conf_04_opt | Eopt=-1656.165513000 Eh | qh-G(195.15 K)=-1656.037003000 Eh | selected_by=minimum quasi-harmonic Gibbs free energy at 195.15 K
+ts-d | starting geometry | pathway=D | source=tsd_qcalibrate_ts_conf_04_opt | Eopt=-1656.165513000 Eh | qh-G(195.15 K)=-1656.037003000 Eh | selected_by=minimum quasi-harmonic Gibbs free energy at 195.15 K
 H  -0.329083000  0.231862000 -1.273464000
 C  -0.669080000  0.336461000 -0.247255000
 C   0.175520000 -0.297452000  0.862295000
