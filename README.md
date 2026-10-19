@@ -8,7 +8,7 @@ Data and scripts accompanying *Accelerating Mechanistic Understanding and Predic
 
 SELECT50 contains 50 pairs of competing transition structures for comparing calculated reaction selectivities. The repository also includes transition-state recovery calculations, two reaction landscapes, six larger molecular systems, and calibration against experimental nickel- and palladium-catalyzed selectivities.
 
-Reference geometries were optimized at ωB97X-D3(BJ)/def2-TZVP. The electronic-energy reference is ωB97M-V/def2-TZVPD on those geometries. Comparison methods include eSEN-medium, MACE-OMOL, UMA-M-1.1, UMA-S-1.2, g-xTB, r²SCAN-3c, PBE0-D3(BJ)/def2-SVP and ωB97X-D3(BJ)/def2-SVP. The reaction-landscape calculations use UMA-S-1.1.
+Reference geometries were optimized at ωB97X-D3(BJ)/def2-TZVP. The electronic-energy reference is ωB97M-V/def2-TZVPD on those geometries. Comparison methods include eSEN-small, MACE-OMOL, UMA-M-1.1, UMA-S-1.2, g-xTB, r²SCAN-3c, PBE0-D3(BJ)/def2-SVP and ωB97X-D3(BJ)/def2-SVP. The reaction-landscape calculations use UMA-S-1.1.
 
 ## Data
 

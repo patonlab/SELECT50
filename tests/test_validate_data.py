@@ -134,7 +134,7 @@ class ValidationTests(unittest.TestCase):
     def test_raw_energies_reject_duplicates_missing_records_and_sign_changes(self):
         rows = [dict(structure_id="example_major", E_hartree="-1.000"),
                 dict(structure_id="example_minor", E_hartree="-1.001")]
-        energies = {"delta_delta_e": {"example": {"esen_medium_delta_delta_e_kcal_mol": "-0.6275094740631"}}}
+        energies = {"delta_delta_e": {"example": {"esen_small_delta_delta_e_kcal_mol": "-0.6275094740631"}}}
         def check(raw):
             return check_raw_energy_table(raw, energies, "delta_delta_e", "esen",
                                           "structure_id", "E_hartree", "example.csv")
@@ -145,7 +145,7 @@ class ValidationTests(unittest.TestCase):
                     [rows[0], rows[1] | {"structure_id": "example_min"}]):
             with self.subTest(rows=bad), self.assertRaises(ValueError):
                 check(bad)
-        energies["delta_delta_e"]["example"]["esen_medium_delta_delta_e_kcal_mol"] = "-0.627"
+        energies["delta_delta_e"]["example"]["esen_small_delta_delta_e_kcal_mol"] = "-0.627"
         check(rows)
 
     def test_raw_exclusions_allow_an82_without_hiding_other_missing_pairs(self):

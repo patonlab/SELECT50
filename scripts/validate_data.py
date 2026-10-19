@@ -27,7 +27,7 @@ BONDLESS_STRUCTURES = {"ja1g_major", "ja1g_minor"}
 GEOMETRY_FAILURES = {(s, m) for s in ("an82_major", "an82_minor")
                      for m in ("gxtb", "r2scan_3c")}
 ENERGY_FAILURES = {(q, "an82", "gxtb") for q in ("delta_delta_e", "delta_delta_g")}
-ENERGY_METHODS = {"esen": "esen_medium", "mace_omol": "mace_omol",
+ENERGY_METHODS = {"esen": "esen_small", "mace_omol": "mace_omol",
                   "uma_m": "uma_m_1_1", "uma_s": "uma_s_1_2",
                   "gxtb": "g_xtb", "specorr": "specorr"}
 ELEMENTS = set("H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Cs Ba La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn Fr Ra Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr Rf Db Sg Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv Ts Og".split())
