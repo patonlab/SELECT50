@@ -4,7 +4,7 @@
 
 ## Overview
 
-Data and scripts accompanying *Mapping Organic Selectivity with Machine-Learned Interatomic Potentials: Introduction of the SELECT50 Data Set*.
+Data and scripts accompanying *Accelerating Mechanistic Understanding and Prediction of Chemical Selectivity with Foundation Machine-Learned Interatomic Potentials*.
 
 SELECT50 contains 50 pairs of competing transition structures for comparing calculated reaction selectivities. The repository also includes transition-state recovery calculations, two reaction landscapes, six larger molecular systems, and calibration against experimental nickel- and palladium-catalyzed selectivities.
 
